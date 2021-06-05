@@ -1,126 +1,89 @@
 import { Link } from "gatsby";
 import React from "react";
+import Logo from "../images/cas-logo.svg"
+import PortableText from "./portableText";
+import { getHref } from "../lib/helpers"
 
-const Footer = ({ siteTitle }) => (
-  <footer className="bg-white">
-    <div className="container mx-auto  px-8">
-      <div className="w-full flex flex-col md:flex-row py-6">
-        <div className="flex-1 mb-6">
-          <a
-            className="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-            href="#"
-          >
-            <svg
-              className="h-8 fill-current inline"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512.005 512.005"
-            >
-              <rect
-                fill="#2a2a31"
-                x="16.539"
-                y="425.626"
-                width="479.767"
-                height="50.502"
-                transform="matrix(1,0,0,1,0,0)"
-                fill="rgb(0,0,0)"
-              />
-              <path
-                className="plane-take-off"
-                d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
-              />
-            </svg>{" "}
-            {siteTitle}
+const Footer = ({ data }) => {
+  const { site, navs } = data
+  let socials = navs.edges.find(n => n.node.title === "Social URLs")
+  if (socials) socials = socials.node.items
+
+  let col1 = navs.edges.find(n => n.node.title === "Footer column 1")
+  if (col1) col1 = col1.node.items
+
+  let col2 = navs.edges.find(n => n.node.title === "Footer column 2")
+  if (col2) col2 = col2.node.items
+
+  return (
+    <footer class="text-cas font-body text-lg pb-20" style={{ background: "#F6F6F6", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
+      <div class="container px-5 pt-24 pb-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div class="lg:w-1/5 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left w-full">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center">
+            <Logo />
           </a>
+          <p class="mt-6">Follow us on</p>
+          <div className="mt-2 flex justify-center lg:justify-start">
+            <a className="bg-cas text-white p-2 mr-2 rounded-full border border-cas hover:text-cas hover:bg-transparent" href={getHref(socials.find(s => s.title === "Instagram"))} target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a className="bg-cas text-white p-2 lg:mr-2 rounded-full border border-cas hover:text-cas hover:bg-transparent" href={getHref(socials.find(s => s.title === "Facebook"))} target="_blank">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-
-        <div className="flex-1">
-          <p className="uppercase text-gray-500 md:mb-6">Links</p>
-          <ul className="list-reset mb-6">
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.tailwindtoolbox.com/templates/landing-page">
-                <span className="hover:underline text-gray-800 hover:text-orange-500">
-                  Page theme
-                </span>
-              </a>
-            </li>
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="https://sanity.io/docs"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Sanity Help
-              </a>
-            </li>
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="https://slack.sanity.io"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Slack Community
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="flex-1">
-          <p className="uppercase text-gray-500 md:mb-6">Legal</p>
-          <ul className="list-reset mb-6">
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <span className="no-underline hover:underline text-gray-800 hover:text-orange-500">
-                Terms
-              </span>
-            </li>
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <span className="no-underline hover:underline text-gray-800 hover:text-orange-500">
-                Privacy
-              </span>
-            </li>
-          </ul>
-        </div>
-        <div className="flex-1">
-          <p className="uppercase text-gray-500 md:mb-6">Social</p>
-          <ul className="list-reset mb-6">
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="https://twitter.com/sanity_io"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Twitter
-              </a>
-            </li>
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="https://www.linkedin.com/company/sanity-io/"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Linkedin
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="flex-1">
-          <p className="uppercase text-gray-500 md:mb-6">Company</p>
-          <ul className="list-reset mb-6">
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <Link
-                to="/blog"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Blog
-              </Link>
-            </li>
-            <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a
-                href="https://www.sanity.io/contact"
-                className="no-underline hover:underline text-gray-800 hover:text-orange-500"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
+        <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="font-bold mb-4">Explore</h2>
+            <nav class="list-none">
+              {col1.map(nav => (
+                <li className="mt-4">
+                  <a href={getHref(nav)}>{nav.title}</a>
+                </li>
+              ))}
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <nav class="list-none mb-4 lg:mt-12">
+              {col2.map(nav => (
+                <li className="mt-4">
+                  <a href={getHref(nav)}>{nav.title}</a>
+                </li>
+              ))}
+            </nav>
+          </div>
+          <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+            <h2 class="font-bold mb-4">Contact Us</h2>
+            
+            <nav class="list-none mb-4">
+              <li>
+                <PortableText blocks={site._rawAddress} />
+              </li>
+              <li className="mt-4">
+                <a href={`tel: ${site.mobile}`}><strong>M</strong> {site.mobile}</a>
+              </li>
+              <li className="mt-4">
+                <a href={`tel: ${site.tel}`}><strong>T</strong> {site.tel}</a>
+              </li>
+              <li className="mt-4">
+                <a href={`mailto: ${site.email}`}><strong>E</strong> {site.email}</a>
+              </li>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-);
+      <div class="bg-transparent lg:-mt-8">
+        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+          <p class="text-cas text-center sm:text-left">© Craft a Shade Pte Ltd</p>
+        </div>
+      </div>
+    </footer>
+  )
+};
 
 export default Footer;
