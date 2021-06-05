@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.carousel-root.dots-left .carousel .control-dots {
+  width: initial;
+  left: 6rem;
+}
+
 /*
 blockquote {
   font-family: monospace;
