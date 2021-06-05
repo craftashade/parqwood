@@ -1,37 +1,9 @@
 import React from "react";
 import PortableText from "./portableText";
-
-import { getGatsbyImageData } from "gatsby-source-sanity";
-import clientConfig from "../../client-config";
-import { GatsbyImage } from "gatsby-plugin-image";
-
-const maybeImage = illustration => {
-  let img = null;
-  if (
-    illustration &&
-    illustration.disabled !== true &&
-    illustration.image &&
-    illustration.image.asset
-  ) {
-    const imageData = getGatsbyImageData(
-      illustration.image,
-      { maxWidth: 960 },
-      clientConfig.sanity
-    );
-
-    img = (
-      <GatsbyImage
-        className="w-full sm:h-64 mx-auto"
-        image={imageData}
-        alt={illustration.image.alt}
-      />
-    );
-  }
-  return img;
-};
+import { maybeIllustration } from "../lib/helpers"
 
 const InfoRow = props => {
-  const img = maybeImage(props.illustration);
+  const img = maybeIllustration(props.illustration);
   const sizeClass = img ? "sm:w-1/2" : "sm:w-1/1";
   return (
     <div className={"flex flex-wrap pb-6"}>
@@ -47,7 +19,7 @@ const InfoRow = props => {
 };
 
 const InfoRowFlipped = props => {
-  const img = maybeImage(props.illustration);
+  const img = maybeIllustration(props.illustration);
   const sizeClass = img ? "sm:w-1/2" : "sm:w-1/1";
   return (
     <div className={"flex flex-wrap pb-6 flex-col-reverse sm:flex-row"}>
