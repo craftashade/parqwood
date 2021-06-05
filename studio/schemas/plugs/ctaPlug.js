@@ -1,3 +1,5 @@
+import { GoMegaphone } from 'react-icons/go'
+
 export default {
   type: 'object',
   name: 'ctaPlug',
@@ -18,14 +20,8 @@ export default {
       title: 'Body'
     },
     {
-      name: 'ctas',
-      type: 'array',
-      of: [
-        {
-          name: 'cta',
-          type: 'cta'
-        }
-      ]
+      name: 'cta',
+      type: 'cta',
     }
   ],
   preview: {
@@ -36,7 +32,8 @@ export default {
     prepare({ title, subtitle }) {
       return {
         title: `Call to action: ${title || 'Title not set'}`,
-        subtitle
+        subtitle,
+        media: GoMegaphone
       }
     }
   }
