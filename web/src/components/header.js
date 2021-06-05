@@ -12,12 +12,14 @@ const Header = ({ showNav, scrolled, navMenuItems = [], data }) => {
   let navContentClass =
     "w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 p-4 lg:p-0 z-20";
 
-  const { navs } = data
-  let socials = navs.edges.find(n => n.node.title === "Social URLs")
-  if (socials) socials = socials.node.items
-
-  let headerCTA = navs.edges.find(n => n.node.title === "Header CTA")
-  if (headerCTA) headerCTA = headerCTA.node.items
+  let socials = [], headerCTA = []
+  if (data && data.navs) {
+    socials = data.navs.edges.find(n => n.node.title === "Social URLs")
+    if (socials) socials = socials.node.items
+  
+    headerCTA = data.navs.edges.find(n => n.node.title === "Header CTA")
+    if (headerCTA) headerCTA = headerCTA.node.items
+  }
 
   return (
     <header class="text-white font-body absolute w-full z-10">

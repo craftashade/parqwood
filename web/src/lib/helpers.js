@@ -102,6 +102,7 @@ export const maybeImage = (image, imgStyles, classes, maxWidth) => {
 };
 
 export const getHref = (item) => {
+  if (!item) return "#"
   let link = item.route || item.link || "#";
   if (
     item.landingPageRoute &&

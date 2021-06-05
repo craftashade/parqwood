@@ -5,15 +5,21 @@ import PortableText from "./portableText";
 import { getHref } from "../lib/helpers"
 
 const Footer = ({ data }) => {
-  const { site, navs } = data
-  let socials = navs.edges.find(n => n.node.title === "Social URLs")
-  if (socials) socials = socials.node.items
+  let socials = [], col1 = [], col2 = [], site = {}
 
-  let col1 = navs.edges.find(n => n.node.title === "Footer column 1")
-  if (col1) col1 = col1.node.items
-
-  let col2 = navs.edges.find(n => n.node.title === "Footer column 2")
-  if (col2) col2 = col2.node.items
+  if (data) {
+    if (data.navs) {
+      let socials = data.navs.edges.find(n => n.node.title === "Social URLs")
+      if (socials) socials = socials.node.items
+    
+      let col1 = data.navs.edges.find(n => n.node.title === "Footer column 1")
+      if (col1) col1 = col1.node.items
+    
+      let col2 = data.navs.edges.find(n => n.node.title === "Footer column 2")
+      if (col2) col2 = col2.node.items
+    }
+    if (data.site) site = data.site
+  }
 
   return (
     <footer class="text-cas font-body text-lg pb-20" style={{ background: "#F6F6F6", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
