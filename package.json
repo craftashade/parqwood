@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "sanity-kitchen-sink",
+  "name": "craft-a-shade",
   "version": "1.0.4",
   "scripts": {
     "build": "lerna run build --parallel",

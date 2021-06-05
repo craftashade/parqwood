@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "sanity-kitchen-sink-studio",
+  "name": "craft-a-shade-studio",
   "version": "1.0.7",
   "main": "package.json",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Abu Uzayr <abu.uzayr@builtforfifty.com>",
   "scripts": {
     "dev": "sanity start",
     "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
