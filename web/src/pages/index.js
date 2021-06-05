@@ -41,18 +41,31 @@ export const query = graphql`
     }
 
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      primaryColor {
-        hex
-      }
-      secondaryColor {
-        hex
-      }
       title
       openGraph {
         title
         description
         image {
           ...SanityImage
+        }
+      }
+      _rawAddress
+      mobile
+      tel
+      email
+    }
+
+    navs: allSanityNavigationMenu {
+      edges {
+        node {
+          title
+          items {
+            title
+            route
+            link
+            kind
+            _rawLandingPageRoute
+          }
         }
       }
     }
