@@ -1,3 +1,5 @@
+import { BiCarousel } from 'react-icons/bi'
+
 export default {
   type: 'object',
   name: 'hero',
@@ -17,12 +19,17 @@ export default {
       type: 'simpleBlockContent'
     },
     {
-      name: 'illustration',
-      type: 'illustration'
-    },
-    {
       name: 'cta',
       type: 'cta'
+    },
+    {
+      name: 'slides',
+      type: 'array',
+      title: 'Slides',
+      description: 'Add, edit, and reorder slides',
+      of: [
+        { type: 'illustration' }
+      ]
     }
   ],
   preview: {
@@ -33,7 +40,8 @@ export default {
     },
     prepare({ title, disabled }) {
       return {
-        title: `Hero: ${disabled ? 'DISABLED' : title}`
+        title: `Hero: ${disabled ? 'DISABLED' : title}`,
+        media: BiCarousel
       }
     }
   }
