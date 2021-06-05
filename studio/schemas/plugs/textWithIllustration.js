@@ -7,12 +7,20 @@ export default {
       name: 'title'
     },
     {
+      type: 'image',
+      name: 'icon'
+    },
+    {
       type: 'simpleBlockContent',
       name: 'text'
     },
     {
       type: 'illustration',
       name: 'illustration'
+    },
+    {
+      type: 'url',
+      name: 'url'
     }
   ]
 }
