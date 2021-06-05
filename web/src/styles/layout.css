@@ -7,6 +7,17 @@
   left: 6rem;
 }
 
+.carousel-root:after {
+  display: block;
+  background: black;
+  width: 100%;
+  height: calc(100% - 8px);
+  content: ' ';
+  position: absolute;
+  top: 0;
+  opacity: 0.2;
+}
+
 /*
 blockquote {
   font-family: monospace;
