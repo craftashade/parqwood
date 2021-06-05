@@ -5,8 +5,11 @@ import Hero from "../components/hero";
 import InfoRows from "../components/InfoRows";
 import CTAColumns from "../components/cta-columns";
 import CTA from "../components/cta";
-import Pricing from "../components/pricing";
+import CTAWithImage from "../components/ctaWithImage";
 import { TopWave, BottomWave } from "../components/wave";
+import Services from "../components/Services"
+import QuoteBlock from "../components/QuoteBlock"
+import Features from "../components/Features"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -24,12 +27,6 @@ export const query = graphql`
       }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      primaryColor {
-        hex
-      }
-      secondaryColor {
-        hex
-      }
       title
       openGraph {
         title
@@ -38,6 +35,10 @@ export const query = graphql`
           ...SanityImage
         }
       }
+      _rawAddress
+      mobile
+      tel
+      email
     }
   }
 `;
@@ -68,8 +69,8 @@ const Page = props => {
     .map((c, i) => {
       let el = null;
       switch (c._type) {
-        case "pricing":
-          el = <Pricing key={c._key} {...c} />;
+        case "services":
+          el = <Services key={c._key} {...c} />;
           break;
         case "infoRows":
           el = <InfoRows key={c._key} {...c} />;
@@ -82,6 +83,18 @@ const Page = props => {
           break;
         case "ctaPlug":
           el = <CTA key={c._key} {...c} />;
+          break;
+        case "ctaWithImage":
+          el = <CTAWithImage key={c._key} {...c} />;
+          break;
+        case "quoteBlock":
+          el = <QuoteBlock key={c._key} {...c} />;
+          break;
+        case "features":
+          el = <Features key={c._key} {...c} />;
+          break;
+        case "articles":
+          // el = <div>articles"</div>;
           break;
         case "uiComponentRef":
           switch (c.name) {
@@ -101,26 +114,19 @@ const Page = props => {
       return el;
     });
 
-  const gradient = {
-    from: (site.primaryColor && site.primaryColor.hex) || "#d53369",
-    to: (site.secondaryColor && site.secondaryColor.hex) || "#daae51"
-  };
-
   const menuItems = page.navMenu && (page.navMenu.items || []);
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
 
   return (
-    <Layout navMenuItems={menuItems} textWhite={true}>
+    <Layout navMenuItems={menuItems} textWhite={true} data={data} >
       <SEO
         title={pageTitle}
         description={site.description}
         keywords={site.keywords}
-        bodyAttr={{
-          class: "leading-normal tracking-normal text-white gradient"
-        }}
-        gradient={gradient}
       />
-      <div className="pt-24">{content}</div>
+      <div className="font-body">
+        {content}
+      </div>
     </Layout>
   );
 };
