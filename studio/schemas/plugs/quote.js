@@ -4,17 +4,21 @@ export default {
     title: 'Quote',
     fields: [
         {
+            name: 'person',
+            type: 'string'
+        },
+        {
             name: 'content',
-            type: 'blockContent'
+            type: 'simpleBlockContent'
         }
     ],
     preview: {
         select: {
-            content: 'content'
+            title: 'person',
         },
-        prepare({content}) {
+        prepare({title}) {
             return {
-                title: 'Quote'
+                title
             }
         }
     }
