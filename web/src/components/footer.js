@@ -9,13 +9,13 @@ const Footer = ({ data }) => {
 
   if (data) {
     if (data.navs) {
-      let socials = data.navs.edges.find(n => n.node.title === "Social URLs")
+      socials = data.navs.edges.find(n => n.node.title === "Social URLs")
       if (socials) socials = socials.node.items
     
-      let col1 = data.navs.edges.find(n => n.node.title === "Footer column 1")
+      col1 = data.navs.edges.find(n => n.node.title === "Footer column 1")
       if (col1) col1 = col1.node.items
     
-      let col2 = data.navs.edges.find(n => n.node.title === "Footer column 2")
+      col2 = data.navs.edges.find(n => n.node.title === "Footer column 2")
       if (col2) col2 = col2.node.items
     }
     if (data.site) site = data.site
