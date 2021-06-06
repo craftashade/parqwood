@@ -66,7 +66,7 @@ function Hero(props) {
           )
         })}
       </Carousel>
-      <div class="mx-auto flex p-24 md:flex-row flex-col items-center absolute text-white" style={{ top: "20%" }}>
+      <div class="mx-auto flex py-24 md:flex-row flex-col items-center absolute text-white container left-0 right-0" style={{ top: "20%" }}>
         <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 class="title-font sm:text-5xl text-3xl leading-none mb-4 font-bold">{heading}</h1>
           <p class="mb-8 leading-relaxed text-lg">
