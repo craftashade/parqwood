@@ -3,8 +3,32 @@
 @tailwind utilities;
 
 .carousel-root.dots-left .carousel .control-dots {
-  width: initial;
-  left: 6rem;
+  width: 100%;
+  @apply text-left m-0 mx-auto left-0 right-0;
+}
+
+@media (min-width: 640px) {
+  .carousel-root.dots-left .carousel .control-dots {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-root.dots-left .carousel .control-dots {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-root.dots-left .carousel .control-dots {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-root.dots-left .carousel .control-dots {
+    max-width: 1280px;
+  }
 }
 
 .carousel-root .gatsby-image-wrapper:after {
