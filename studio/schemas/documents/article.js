@@ -1,7 +1,7 @@
 export default {
-  name: 'post',
+  name: 'article',
   type: 'document',
-  title: 'Blog Post',
+  title: 'Article',
   fields: [
     {
       name: 'title',
@@ -13,7 +13,7 @@ export default {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description: 'Some frontends will require a slug to be set to be able to show the post',
+      description: 'Some frontends will require a slug to be set to be able to show the article',
       options: {
         source: 'title',
         maxLength: 96,
@@ -23,7 +23,7 @@ export default {
       name: 'publishedAt',
       type: 'datetime',
       title: 'Published at',
-      description: 'This can be used to schedule post for publishing',
+      description: 'This can be used to schedule article for publishing',
     },
     {
       name: 'mainImage',
@@ -35,7 +35,7 @@ export default {
       type: 'excerptPortableText',
       title: 'Excerpt',
       description:
-        'This ends up on summary pages, on Google, when people share your post in social media.',
+        'This ends up on summary pages, on Google, when people share your article in social media.',
     },
     {
       name: 'authors',
@@ -104,7 +104,7 @@ export default {
       media: 'mainImage',
     },
     prepare({ title = 'No title', publishedAt, slug = {}, media }) {
-      const path = `/blog/${slug.current}`
+      const path = `/article/${slug.current}`
       return {
         title,
         media,

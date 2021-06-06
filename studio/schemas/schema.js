@@ -9,7 +9,7 @@ import localeString from './objects/localeString'
 import navMenu from './documents/navMenu'
 import author from './documents/author'
 import category from './documents/category'
-import post from './documents/post'
+import article from './documents/article'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import route from './documents/route'
@@ -37,7 +37,7 @@ const allPlugs = Object.values(plugs).map((plug) => {
 })
 
 export default createSchema({
-  name: 'blog',
+  name: 'article',
   types: schemaTypes // Built-in types
     // Our custom types
     .concat([
@@ -51,7 +51,7 @@ export default createSchema({
       simpleBlockContent,
       cta,
       siteSettings,
-      post,
+      article,
       navMenu,
       page,
       category,

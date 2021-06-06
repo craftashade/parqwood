@@ -2,14 +2,14 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import BlogPost from "../components/blog-post";
+import Article from "../components/article";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { toPlainText } from "../lib/helpers";
 
 export const query = graphql`
-  query BlogPostTemplateQuery($id: String!) {
-    post: sanityPost(id: { eq: $id }) {
+  query ArticleTemplateQuery($id: String!) {
+    article: sanityArticle(id: { eq: $id }) {
       id
       publishedAt
       categories {
@@ -57,17 +57,17 @@ export const query = graphql`
   }
 `;
 
-const BlogPostTemplate = props => {
+const ArticleTemplate = props => {
   const { data, errors } = props;
-  const post = data && data.post;
+  const article = data && data.article;
   return (
     <Layout textWhite={true}>
       {errors && <SEO title="GraphQL Error" />}
-      {post && (
+      {article && (
         <SEO
-          title={post.title || "Untitled"}
-          description={toPlainText(post._rawExcerpt)}
-          image={post.mainImage}
+          title={article.title || "Untitled"}
+          description={toPlainText(article._rawExcerpt)}
+          image={article.mainImage}
         />
       )}
 
@@ -77,9 +77,9 @@ const BlogPostTemplate = props => {
         </Container>
       )}
 
-      {post && <BlogPost {...post} />}
+      {article && <Article {...article} />}
     </Layout>
   );
 };
 
-export default BlogPostTemplate;
+export default ArticleTemplate;

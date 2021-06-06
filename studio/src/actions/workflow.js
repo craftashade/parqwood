@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
 import { PublishAction } from 'part:@sanity/base/document-actions'
 import client from 'part:@sanity/base/client'
-import { icons } from '../structure/blog'
+import { icons } from '../structure/articles'
 
 // Get the latest workflow status for a draft revision
 async function workflowStatus(draft) {

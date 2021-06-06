@@ -12,7 +12,7 @@ export const instagram = {
     {
       type: 'url',
       name: 'url',
-      description: 'The URL to the post as seen in a desktop browser',
+      description: 'The URL to the article as seen in a desktop browser',
     },
   ],
   preview: {

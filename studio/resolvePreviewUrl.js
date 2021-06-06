@@ -8,8 +8,8 @@ export default function resolvePreviewUrl(document) {
         return baseUrl
       }
       return `${baseUrl}/${document.slug.current}`
-    case 'post':
-      return `${baseUrl}/blog/${document.slug.current}`
+    case 'article':
+      return `${baseUrl}/article/${document.slug.current}`
     case 'siteSettings':
       return baseUrl
     case 'page':

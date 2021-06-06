@@ -8,7 +8,7 @@ const { isFuture } = require("date-fns");
 exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes([
     schema.buildObjectType({
-      name: "SanityPost",
+      name: "SanityArticle",
       interfaces: ["Node"],
       fields: {
         isPublished: {
@@ -52,11 +52,11 @@ async function createLandingPages(pathPrefix = "/", graphql, actions, reporter) 
   });
 }
 
-async function createBlogPostPages(pathPrefix = "/blog", graphql, actions, reporter) {
+async function createArticlePages(pathPrefix = "/articles", graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanityPost(filter: { slug: { current: { ne: null } }, isPublished: { eq: true } }) {
+      allSanityArticle(filter: { slug: { current: { ne: null } }, isPublished: { eq: true } }) {
         edges {
           node {
             id
@@ -72,16 +72,16 @@ async function createBlogPostPages(pathPrefix = "/blog", graphql, actions, repor
 
   if (result.errors) throw result.errors;
 
-  const postEdges = (result.data.allSanityPost || {}).edges || [];
-  postEdges
+  const articleEdges = (result.data.allSanityArticle || {}).edges || [];
+  articleEdges
     .filter(edge => !isFuture(edge.node.publishedAt))
     .forEach(edge => {
       const { id, slug = {} } = edge.node;
       const path = `${pathPrefix}/${slug.current}/`;
-      reporter.info(`Creating blog post page: ${path}`);
+      reporter.info(`Creating article page: ${path}`);
       createPage({
         path,
-        component: require.resolve("./src/templates/blog-post.js"),
+        component: require.resolve("./src/templates/article.js"),
         context: { id }
       });
     });
@@ -89,5 +89,5 @@ async function createBlogPostPages(pathPrefix = "/blog", graphql, actions, repor
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
-  await createBlogPostPages("/blog", graphql, actions, reporter);
+  await createArticlePages("/articles", graphql, actions, reporter);
 };

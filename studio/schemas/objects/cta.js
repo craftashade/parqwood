@@ -26,7 +26,7 @@ export default {
       title: 'Path',
       name: 'route',
       fieldset: 'link',
-      description: 'Example: /blog',
+      description: 'Example: /articles',
       type: 'string'
     },
     {

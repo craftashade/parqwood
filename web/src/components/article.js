@@ -6,9 +6,9 @@ import PortableText from "./portableText";
 import Container from "./container";
 import AuthorList from "./author-list";
 
-import * as styles from "./blog-post.module.css";
+import * as styles from "./article.module.css";
 
-function BlogPost(props) {
+function Article(props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props;
   return (
     <article className={styles.root}>
@@ -57,4 +57,4 @@ function BlogPost(props) {
   );
 }
 
-export default BlogPost;
+export default Article;

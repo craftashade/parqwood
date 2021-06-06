@@ -19,7 +19,7 @@ export default {
                 },
                 {
                   buildHookId: '60a9c358ceae0771c59444a7',
-                  title: 'Blog Website',
+                  title: 'Website',
                   name: 'craft-a-shade',
                   apiId: 'f042e0c0-e245-4801-8c6f-e782a466b681'
                 }
@@ -40,7 +40,7 @@ export default {
     {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: {title: 'Recent blog posts', order: '_createdAt desc', types: ['post']},
+      options: {title: 'Recent articles', order: '_createdAt desc', types: ['article']},
       layout: {width: 'medium'}
     }
   ]

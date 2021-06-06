@@ -5,7 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
-import BlogPostPreviewList from "../components/blog-post-preview-list";
+import ArticlePreviewList from "../components/article-preview-list";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -16,7 +16,7 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
-    posts: allSanityPost(
+    articles: allSanityArticle(
       limit: 6
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
@@ -52,8 +52,8 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site;
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
+  const articleNodes = (data || {}).articles
+    ? mapEdgesToNodes(data.articles)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
@@ -73,7 +73,7 @@ const IndexPage = props => {
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-        <div className="py-6">{postNodes && <BlogPostPreviewList nodes={postNodes} />}</div>
+        <div className="py-6">{articleNodes && <ArticlePreviewList nodes={articleNodes} />}</div>
       </Container>
     </Layout>
   );

@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
-import BlogPostPreview from "./blog-post-preview";
+import ArticlePreview from "./article-preview";
 
-function BlogPostPreviewGrid({ nodes }) {
+function ArticlePreviewGrid({ nodes }) {
   return (
     <div className="flex flex-wrap -mx-2 overflow-hidden md:-mx-2 lg:-mx-2 xl:-mx-2">
       <div className="my-2 px-2 w-full overflow-hidden md:my-2 md:px-2 md:w-1/2 lg:my-2 lg:px-2 lg:w-1/3 xl:my-2 xl:px-2 xl:w-1/4">
@@ -10,7 +10,7 @@ function BlogPostPreviewGrid({ nodes }) {
           {nodes &&
             nodes.map(node => (
               <li key={node.id}>
-                <BlogPostPreview {...node} />
+                <ArticlePreview {...node} />
               </li>
             ))}
         </ul>
@@ -19,10 +19,10 @@ function BlogPostPreviewGrid({ nodes }) {
   );
 }
 
-BlogPostPreviewGrid.defaultProps = {
+ArticlePreviewGrid.defaultProps = {
   title: "",
   nodes: [],
   browseMoreHref: ""
 };
 
-export default BlogPostPreviewGrid;
+export default ArticlePreviewGrid;
