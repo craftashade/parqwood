@@ -54,6 +54,34 @@ export const query = graphql`
         }
       }
     }
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      openGraph {
+        title
+        description
+        image {
+          ...SanityImage
+        }
+      }
+      _rawAddress
+      mobile
+      tel
+      email
+    }
+    navs: allSanityNavigationMenu {
+      edges {
+        node {
+          title
+          items {
+            title
+            route
+            link
+            kind
+            _rawLandingPageRoute
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -61,7 +89,7 @@ const ArticleTemplate = props => {
   const { data, errors } = props;
   const article = data && data.article;
   return (
-    <Layout textWhite={true}>
+    <Layout showNav={true} data={data} textWhite={false}>
       {errors && <SEO title="GraphQL Error" />}
       {article && (
         <SEO
