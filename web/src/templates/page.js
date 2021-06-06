@@ -118,7 +118,7 @@ const Page = props => {
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
 
   return (
-    <Layout navMenuItems={menuItems} textWhite={true} data={data} >
+    <Layout navMenuItems={menuItems} textWhite={true} data={data} absolute={true}>
       <SEO
         title={pageTitle}
         description={site.description}

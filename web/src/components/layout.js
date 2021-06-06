@@ -36,8 +36,9 @@ class Layout extends React.Component {
       showNav,
       siteTitle,
       navMenuItems,
-      textWhite = true,
-      data
+      textWhite,
+      data,
+      absolute
     } = this.props;
     const { scrolled } = this.state;
     return (
@@ -51,6 +52,7 @@ class Layout extends React.Component {
           scrolled={scrolled}
           textWhite={textWhite}
           data={data}
+          absolute={absolute}
         />
         <>{children}</>
         <Footer siteTitle={siteTitle} data={data} />
