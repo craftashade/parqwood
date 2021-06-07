@@ -15,6 +15,25 @@ export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
+      _rawAddress
+      mobile
+      tel
+      email
+    }
+
+    navs: allSanityNavigationMenu {
+      edges {
+        node {
+          title
+          items {
+            title
+            route
+            link
+            kind
+            _rawLandingPageRoute
+          }
+        }
+      }
     }
     articles: allSanityArticle(
       limit: 6
@@ -33,6 +52,24 @@ export const query = graphql`
           _rawExcerpt
           slug {
             current
+          }
+        }
+      }
+    }
+    services: allSanityService {
+      nodes {
+        title
+        serviceCategory {
+          title
+        }
+      }
+    }
+    categories: allSanityServiceCategory {
+      nodes {
+        title
+        image {
+          image {
+            ...SanityImage
           }
         }
       }
@@ -65,7 +102,7 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout textWhite={false}>
+    <Layout textWhite={false} data={data}>
       <SEO
         title={site.title || "Missing title"}
         description={site.description || "Missing description"}
