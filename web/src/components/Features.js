@@ -8,7 +8,7 @@ const Features = ({ features }) => {
     <section style={{ background: "#20215B", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
       <div className="container px-5 py-24 mx-auto text-white">
         <div className="flex flex-wrap -m-4">
-          {features.map(feature => {
+          {features && features.map(feature => {
             const icon = maybeImage(feature.icon)
             return (
               <div className="p-4 md:w-1/2 w-full text-center">
