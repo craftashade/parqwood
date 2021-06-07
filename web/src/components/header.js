@@ -79,7 +79,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
         <div class="container mx-auto flex flex-wrap py-5 flex-col md:flex-row items-center">
           <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10">
             {['Services', 'Brands', 'Projects'].map(menu => (
-              <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu ? '' : menu)}>
+              <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                 <span>{menu}</span>
                 <div className={`ml-2${megamenu === menu ? ' transform rotate-180' : ''}`}>
                   <Chevron />
