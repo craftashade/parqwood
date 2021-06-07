@@ -2,6 +2,45 @@ import React, { useState } from "react";
 import CTALink from "./CTALink";
 import Logo from "../images/cas-logo.svg"
 import { getHref } from "../lib/helpers"
+import { maybeIllustration, slugify } from "../lib/helpers"
+
+const Megamenu = ({ selected, data }) => {
+  const categoriesToShow = ["Curtains", "Blinds", "Others"]
+  return (
+    <div className="container mx-auto p-5 text-cas">
+      <h2 className="font-bold text-xl mb-5">{selected}</h2>
+      <div className="flex flex-row">
+        {categoriesToShow.map((cat, index) => {
+          const category = data.categories.nodes.find(c => c.title === cat)
+          const img = maybeIllustration(category.image)
+          const services = data.services.nodes.filter(s => s.serviceCategory.title === cat)
+          let slicer = 6
+          if (services.length > 12) slicer = Math.ceil(services.length / 2)
+          let firstCol = services.slice(0, slicer)
+          let secondCol = services.slice(slicer, services.length)
+          return (
+            <div className={`w-1/3${index ? ' ml-5' : ''}`}>
+              <div className="rounded-3xl overflow-hidden">{img}</div>
+              <h4 className="font-bold my-4">{cat}</h4>
+              <div className="flex flex-row">
+                <div className="w-1/2">
+                  {firstCol.map(s => (
+                    <a href={`/services/${slugify(`${cat}-${s.title}`)}`} className="block mb-4">{s.title}</a>
+                  ))}
+                </div>
+                <div className="w-1/2">
+                  {secondCol.map(s => (
+                    <a href={`/services/${slugify(`${cat}-${s.title}`)}`} className="block mb-4">{s.title}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 
 const Chevron = () => (
   <svg width="8" height="4" viewBox="0 0 8 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +48,7 @@ const Chevron = () => (
   </svg>
 )
 
-const Header = ({ showNav, scrolled, navMenuItems = [], data, textWhite, absolute = false }) => {
+const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false }) => {
   const [megamenu, setMegamenu] = useState('')
 
   let navActionClass = "mx-auto lg:mx-0 rounded-xl mt-4 lg:mt-0 py-4 px-6 border-2 hover:bg-white hover:text-black";
@@ -26,43 +65,18 @@ const Header = ({ showNav, scrolled, navMenuItems = [], data, textWhite, absolut
     if (headerCTA) headerCTA = headerCTA.node.items
   }
 
+  if (!navMenuItems.length) {
+    navMenuItems = data.navs.edges.find(n => n.node.title === "Main nav menu")
+    if (navMenuItems) navMenuItems = navMenuItems.node.items
+  }
+
   return (
     <>
-      <div className={`absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
-        {megamenu === 'Services' && 
-        <div className="container mx-auto p-5">
-          <h2 className="font-bold text-xl">Services</h2>
-          <div className="flex flex-row">
-            <div className="w-1/3">
-              <img src="" />
-              Curtains
-              <div className="flex flex-row">
-                <div className="w-1/2">col</div>
-                <div className="w-1/2">col</div>
-              </div>
-            </div>
-            <div className="w-1/3">
-              <img src="" />
-              Blinds
-              <div className="flex flex-row">
-                <div className="w-1/2">col</div>
-                <div className="w-1/2">col</div>
-              </div>
-            </div>
-            <div className="w-1/3">
-              <img src="" />
-              Others
-              <div className="flex flex-row">
-                <div className="w-1/2">col</div>
-                <div className="w-1/2">col</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        }
+      <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
+        <Megamenu selected={megamenu} data={data} />
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div class="container mx-auto flex flex-wrap py-5 flex-col md:flex-row items-center">
           <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10">
             {['Services', 'Brands', 'Projects'].map(menu => (
               <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu ? '' : menu)}>
