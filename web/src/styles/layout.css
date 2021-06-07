@@ -42,6 +42,10 @@
   opacity: 0.2;
 }
 
+.p-mb p {
+  margin-bottom: 1rem;
+}
+
 /*
 blockquote {
   font-family: monospace;
