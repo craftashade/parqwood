@@ -5,6 +5,8 @@ const { isFuture } = require("date-fns");
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const slugify = (str) => str.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+
 exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes([
     schema.buildObjectType({
@@ -87,7 +89,42 @@ async function createArticlePages(pathPrefix = "/articles", graphql, actions, re
     });
 }
 
+async function createServicePages(pathPrefix = "/services", graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityService {
+        edges {
+          node {
+            id
+            title
+            serviceCategory {
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const serviceEdges = (result.data.allSanityService || {}).edges || [];
+  serviceEdges
+    .forEach(edge => {
+      const { id, title, serviceCategory } = edge.node;
+      const path = `${pathPrefix}/${slugify(`${serviceCategory.title} ${title}`)}/`;
+      reporter.info(`Creating service page: ${path}`);
+      createPage({
+        path,
+        component: require.resolve("./src/templates/service.js"),
+        context: { id }
+      });
+    });
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
   await createArticlePages("/articles", graphql, actions, reporter);
+  await createServicePages("/services", graphql, actions, reporter);
 };
