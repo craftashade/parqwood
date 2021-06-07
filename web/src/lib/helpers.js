@@ -113,3 +113,7 @@ export const getHref = (item) => {
   }
   return link
 }
+
+export function slugify(str) {
+  return str.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+}
