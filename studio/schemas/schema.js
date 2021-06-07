@@ -13,6 +13,8 @@ import article from './documents/article'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import route from './documents/route'
+import service from './documents/service'
+import serviceCategory from './documents/serviceCategory'
 
 import experiment from './objects/experiment'
 import simpleBlockContent from './objects/simpleBlockContent'
@@ -37,7 +39,7 @@ const allPlugs = Object.values(plugs).map((plug) => {
 })
 
 export default createSchema({
-  name: 'article',
+  name: 'website',
   types: schemaTypes // Built-in types
     // Our custom types
     .concat([
@@ -62,6 +64,8 @@ export default createSchema({
       videoEmbed,
       bodyPortableText,
       excerptPortableText,
+      service,
+      serviceCategory
     ])
     .concat(allPlugs),
 })
