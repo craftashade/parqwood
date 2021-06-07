@@ -57,7 +57,6 @@ function Hero(props) {
         );
       }}>
         {slides.length && slides.map(slide => {
-          console.log(slide)
           const img = maybeImage(slide);
           return (
             <div>
