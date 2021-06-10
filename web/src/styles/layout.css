@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero-overlay {
+  top: 10%;
+}
+
 .carousel-root.dots-left .carousel .control-dots {
   width: 100%;
   @apply text-left m-0 mx-auto left-0 right-0;
@@ -23,6 +27,9 @@
   .carousel-root.dots-left .carousel .control-dots {
     max-width: 1024px;
   }
+  .hero-overlay {
+    top: 20%;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -31,7 +38,8 @@
   }
 }
 
-.carousel-root .gatsby-image-wrapper:after {
+.carousel-root .gatsby-image-wrapper:after,
+.mobile-hero:after {
   display: block;
   background: black;
   width: 100%;
@@ -44,6 +52,12 @@
 
 .p-mb p {
   margin-bottom: 1rem;
+}
+
+.madu {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
 }
 
 /*
