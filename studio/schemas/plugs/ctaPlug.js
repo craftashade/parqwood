@@ -22,6 +22,11 @@ export default {
     {
       name: 'cta',
       type: 'cta',
+    },
+    {
+      name: 'transparentBg',
+      title: 'Use transparent background',
+      type: 'boolean',
     }
   ],
   preview: {
