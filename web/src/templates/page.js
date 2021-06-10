@@ -10,6 +10,9 @@ import { TopWave, BottomWave } from "../components/wave";
 import Services from "../components/Services"
 import QuoteBlock from "../components/QuoteBlock"
 import Features from "../components/Features"
+import FullWidthImage from "../components/FullWidthImage"
+import TextParagraph from "../components/TextParagraph"
+import ContactForm from "../components/ContactForm"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -17,6 +20,9 @@ import Layout from "../containers/layout";
 
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
+    frontpage: sanityPage(title: {eq: "Frontpage"}) {
+      ...PageInfo
+    }
     route: sanityRoute(id: { eq: $id }) {
       slug {
         current
@@ -36,9 +42,38 @@ export const query = graphql`
         }
       }
       _rawAddress
+      addressLink
       mobile
       tel
       email
+    }
+
+    navs: allSanityNavigationMenu {
+      edges {
+        node {
+          title
+          ...NavMenu
+        }
+      }
+    }
+
+    services: allSanityService {
+      nodes {
+        title
+        serviceCategory {
+          title
+        }
+      }
+    }
+    categories: allSanityServiceCategory {
+      nodes {
+        title
+        image {
+          image {
+            ...SanityImage
+          }
+        }
+      }
     }
   }
 `;
@@ -93,6 +128,15 @@ const Page = props => {
         case "features":
           el = <Features key={c._key} {...c} />;
           break;
+        case "fullWidthImage":
+          el = <FullWidthImage key={c._key} {...c} />;
+          break;
+        case "textParagraph":
+          el = <TextParagraph key={c._key} {...c} />;
+          break;
+        case "contactForm":
+          el = <ContactForm key={c._key} {...c} siteData={site} />;
+          break;
         case "articles":
           // el = <div>articles"</div>;
           break;
@@ -118,14 +162,30 @@ const Page = props => {
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
 
   return (
-    <Layout navMenuItems={menuItems} textWhite={true} data={data} absolute={true}>
+    <Layout navMenuItems={menuItems} textWhite={!data.route} data={data} absolute={!data.route}>
       <SEO
         title={pageTitle}
         description={site.description}
         keywords={site.keywords}
       />
       <div className="font-body">
+        { 
+          page && page.breadcrumb && page.title &&
+          <div className="my-8 text-gray-400 text-sm container mx-auto lg:w-5/6 w-11/12">
+            Home > <span className="font-semibold">{page.title}</span>
+          </div>
+        }
         {content}
+        {
+          data.route && 
+          page.ctaBlock && 
+          <CTA {...(data.frontpage ? data.frontpage._rawContent.find(c => c._type === 'ctaPlug') : [])} />
+        }
+        {
+          data.route &&
+          page.featuresBlock && 
+          <Features {...(data.frontpage ? data.frontpage._rawContent.find(c => c._type === 'features') : [])}  />
+        }
       </div>
     </Layout>
   );
