@@ -99,7 +99,7 @@ export default {
       name: 'campaign',
       type: 'string',
       title: 'Campaign',
-      description: 'UTM for campaings'
+      description: 'UTM for campaigns'
     },
     /*
     // This can be used by a server-side rendered website. We plan to figure out proper JAMstack support
