@@ -65,7 +65,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
     if (headerCTA) headerCTA = headerCTA.node.items
   }
 
-  if (!navMenuItems.length) {
+  if (!navMenuItems.length && data && data.navs) {
     navMenuItems = data.navs.edges.find(n => n.node.title === "Main nav menu")
     if (navMenuItems) navMenuItems = navMenuItems.node.items
   }
