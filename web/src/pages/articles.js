@@ -16,6 +16,7 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       _rawAddress
+      addressLink
       mobile
       tel
       email
@@ -25,13 +26,7 @@ export const query = graphql`
       edges {
         node {
           title
-          items {
-            title
-            route
-            link
-            kind
-            _rawLandingPageRoute
-          }
+          ...NavMenu
         }
       }
     }

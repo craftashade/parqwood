@@ -35,6 +35,7 @@ export const query = graphql`
         }
       }
       _rawAddress
+      addressLink
       mobile
       tel
       email
@@ -43,13 +44,7 @@ export const query = graphql`
       edges {
         node {
           title
-          items {
-            title
-            route
-            link
-            kind
-            _rawLandingPageRoute
-          }
+          ...NavMenu
         }
       }
     }
