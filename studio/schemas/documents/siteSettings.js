@@ -3,6 +3,12 @@ export default {
   type: 'document',
   title: 'Site Settings',
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
+  fieldsets: [
+    {
+      name: 'contact',
+      title: 'Contact information'
+    }
+  ],
   fields: [
     {
       name: 'title',
@@ -18,22 +24,32 @@ export default {
     {
       name: 'address',
       type: 'simpleBlockContent',
-      title: 'Address'
+      title: 'Address',
+      fieldset: 'contact'
+    },
+    {
+      name: 'addressLink',
+      type: 'url',
+      title: 'Address link to',
+      fieldset: 'contact'
     },
     {
       name: 'mobile',
       type: 'string',
-      title: 'Mobile'
+      title: 'Mobile',
+      fieldset: 'contact'
     },
     {
       name: 'tel',
       type: 'string',
-      title: 'Tel'
+      title: 'Tel',
+      fieldset: 'contact'
     },
     {
       name: 'email',
       type: 'string',
-      title: 'Email'
+      title: 'Email',
+      fieldset: 'contact'
     },
   ]
 }
