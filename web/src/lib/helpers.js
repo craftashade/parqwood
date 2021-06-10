@@ -50,7 +50,7 @@ export function toPlainText(blocks) {
     .join("\n\n");
 }
 
-export const maybeIllustration = (illustration, maxWidth) => {
+export const maybeIllustration = (illustration, maxWidth, className = "") => {
   let img = null;
   if (
     illustration &&
@@ -66,7 +66,7 @@ export const maybeIllustration = (illustration, maxWidth) => {
 
     img = (
       <GatsbyImage
-        className="w-full mx-auto"
+        className={`w-full mx-auto ${className}`}
         image={imageData}
         alt={illustration.image.alt}
       />
