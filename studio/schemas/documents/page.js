@@ -2,6 +2,18 @@ export default {
   type: 'document',
   name: 'page',
   title: 'Page',
+  initialValue: {
+    breadcrumb: true,
+    ctaBlock: true,
+    featuresBlock: true,
+  },
+  fieldsets: [
+    {
+      title: 'Options',
+      name: 'options',
+      description: 'These options do not apply to frontpage'
+    },
+  ],
   fields: [
     {
       name: 'title',
@@ -29,7 +41,30 @@ export default {
         { type: 'quoteBlock' },
         { type: 'features' },
         { type: 'articles' },
+        { type: 'fullWidthImage' },
+        { type: 'textParagraph' },
+        { type: 'contactForm' },
       ],
+    },
+    {
+      name: 'breadcrumb',
+      type: 'boolean',
+      title: 'Show breadcrumbs',
+      fieldset: 'options'
+    },
+    {
+      title: 'Show CTA block',
+      description: 'Toggle showing of CTA block at the bottom of the page',
+      name: 'ctaBlock',
+      type: 'boolean',
+      fieldset: 'options'
+    },
+    {
+      title: 'Show Features block',
+      description: 'Toggle showing of Features block at the bottom of the page',
+      name: 'featuresBlock',
+      type: 'boolean',
+      fieldset: 'options'
     },
   ],
 }
