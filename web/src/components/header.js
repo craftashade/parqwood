@@ -5,12 +5,12 @@ import { getHref } from "../lib/helpers"
 import { maybeIllustration, slugify } from "../lib/helpers"
 
 const Megamenu = ({ selected, data }) => {
-  const categoriesToShow = ["Curtains", "Blinds", "Others"]
+  const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
   return (
     <div className="container mx-auto p-5 text-cas">
       <h2 className="font-bold text-xl mb-5">{selected}</h2>
       <div className="flex flex-row">
-        {categoriesToShow.map((cat, index) => {
+        {selected === 'Services' && serviceCategoriesToShow.map((cat, index) => {
           const category = data.categories.nodes.find(c => c.title === cat)
           const img = maybeIllustration(category.image)
           const services = data.services.nodes.filter(s => s.serviceCategory.title === cat)
