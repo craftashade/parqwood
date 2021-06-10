@@ -26,7 +26,7 @@ const Services = ({ title, text, rows }) => (
                 </div>
                 <div className="clear-both">
                   <h2 class="text-xl font-bold title-font mt-5">{title}</h2>
-                  <p class="text-base leading-relaxed mt-2"><PortableText blocks={text} /></p>
+                  <div class="text-base leading-relaxed mt-2" style={{ height: 80 }}><PortableText blocks={text} /></div>
                   <a href={url} class="rounded-xl border border-cas w-full p-4 block mt-4 text-center hover:bg-cas hover:text-white font-bold text-sm">Find Out More</a>
                 </div>
               </div>

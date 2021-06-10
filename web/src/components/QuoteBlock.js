@@ -31,7 +31,7 @@ const Quotes = ({ quotes }) => {
         );
       }}>
         {quotes.map(q => (
-          <div class="container px-5 py-24 mx-auto">
+          <div class="container px-5 py-24 mx-auto lg:w-full w-11/12 mx-auto">
             <div class="xl:w-2/3 w-full mx-auto text-center">
               <p class="leading-snug text-3xl font-bold">
                 <PortableText blocks={q.content} />
