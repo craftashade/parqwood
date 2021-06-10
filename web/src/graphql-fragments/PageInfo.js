@@ -8,5 +8,8 @@ export const PostInfo = graphql`
     }
     _rawContent(resolveReferences: { maxDepth: 10 })
     title
+    breadcrumb
+    ctaBlock
+    featuresBlock
   }
 `;
