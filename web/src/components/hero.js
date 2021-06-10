@@ -31,7 +31,7 @@ function Hero(props) {
   const { slides, cta, tagline, heading } = props
   return (
     <section class="relative">
-      <Carousel showStatus={false} showThumbs={false} className="dots-left" renderIndicator={(onClickHandler, isSelected, index, label) => {
+      <Carousel showStatus={false} showThumbs={false} className="dots-left hidden lg:block" renderIndicator={(onClickHandler, isSelected, index, label) => {
         const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-white"
         if (isSelected) {
           return (
@@ -65,15 +65,16 @@ function Hero(props) {
           )
         })}
       </Carousel>
-      <div class="mx-auto flex py-24 md:flex-row flex-col items-center absolute text-white container left-0 right-0" style={{ top: "20%" }}>
-        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <div style={{ height: 500, overflow: "hidden", background: `url('${slides[0] && slides[0].image.asset.url}')`, backgroundRepeat: "no-repeat", backgroundPosition: "top center", backgroundSize: "cover" }} className="block lg:hidden mobile-hero"></div>
+      <div class="mx-auto flex py-24 lg:py-16 xl:py-24 md:flex-row flex-col items-center absolute text-white container left-0 right-0 hero-overlay w-11/12 lg:w-full">
+        <div class="lg:flex-grow xl:w-1/2 md:w-2/3 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 class="title-font sm:text-5xl text-3xl leading-none mb-4 font-bold">{heading}</h1>
           <p class="mb-8 leading-relaxed text-lg">
             <PortableText blocks={tagline} />
           </p>
-          <CTALink {...cta} buttonActionClass="bg-airbnb border border-airbnb py-3 px-10 focus:outline-none hover:bg-transparent rounded-xl text-sm hover:text-airbnb"></CTALink>
+          <CTALink {...cta} buttonActionClass="bg-airbnb py-3 px-10 focus:outline-none hover:bg-white rounded-xl text-sm hover:text-airbnb font-semibold"></CTALink>
         </div>
-        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 hidden lg:block">
+        <div class="lg:max-w-lg lg:w-full xl:w-1/2 md:w-1/3 w-5/6 hidden lg:block">
         </div>
       </div>
     </section>
