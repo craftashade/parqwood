@@ -37,6 +37,9 @@
   .logo-wrapper {
     height: 60px;
   }
+  .fixed-service-text-height {
+    height: 80px;
+  }
 }
 
 @media (min-width: 1024px) {
