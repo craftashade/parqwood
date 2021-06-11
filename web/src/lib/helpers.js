@@ -111,6 +111,7 @@ export const getHref = (item) => {
   ) {
     link = item.landingPageRoute.slug.current;
   }
+  if (link.slice(0,1) !== "/") link = "/" + link
   return link
 }
 
