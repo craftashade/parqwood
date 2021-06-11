@@ -3,6 +3,60 @@ import CTALink from "./CTALink";
 import Logo from "../images/cas-logo.svg"
 import { getHref } from "../lib/helpers"
 import { maybeIllustration, slugify } from "../lib/helpers"
+import { motion, useCycle } from "framer-motion";
+import { MenuToggle } from "./MenuToggle";
+
+const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCTA }) => {
+  const menu = {
+    open: {
+      transform: 'translateY(calc(0px - 0px))'
+    },
+    closed: {
+      transform: 'translateY(calc(0px - 100vh))'
+    }
+  };
+  return (
+    <motion.nav
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+    >
+      <motion.div className="absolute top-0 right-0 w-full h-screen bg-white" variants={menu}>
+        <div className="pt-24">
+          <ul>
+            {navItems.map((i, index) => (
+              <li className={`px-6 py-6 border-t font-semibold ${index === (navItems.length - 1) ? 'border-b' : ''}`}>
+                <CTALink {...i} />
+              </li>
+            ))}
+            {
+              socials.length && 
+              <div className="flex flex-row items-center justify-center">
+                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Instagram"))} target="_blank">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </a>
+                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Facebook"))} target="_blank">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+              </div>
+            }
+            { 
+              headerCTA.length && 
+              <div className="mb-4 text-center">
+                <CTALink {...headerCTA[0]} buttonActionClass="border-2 rounded-2xl py-3 px-8 border-cas w-11/12 text-sm font-semibold" />
+              </div>
+            }
+          </ul>
+        </div>
+      </motion.div>
+      <MenuToggle toggle={() => toggleOpen()} white={!isOpen && textWhite} />
+    </motion.nav>
+  );
+}
 
 const Megamenu = ({ selected, data }) => {
   const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
@@ -50,6 +104,7 @@ const Chevron = () => (
 
 const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false }) => {
   const [megamenu, setMegamenu] = useState('')
+  const [isOpen, toggleOpen] = useCycle(false, true);
 
   let navActionClass = "mx-auto lg:mx-0 rounded-xl mt-4 lg:mt-0 py-4 px-6 border-2 hover:bg-white hover:text-black";
 
@@ -75,9 +130,9 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
-      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
-        <div class="container mx-auto flex flex-wrap py-5 flex-col md:flex-row items-center">
-          <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10">
+      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
+        <div class="container mx-auto flex py-5 flex-row items-center w-11/12 items-">
+          <nav class="lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10 hidden md:flex">
             {['Services', 'Brands', 'Projects'].map(menu => (
               <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                 <span>{menu}</span>
@@ -87,7 +142,10 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
               </div>
             ))}
           </nav>
-          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0 z-10" href="/">
+          <div className="block md:hidden ml-auto">
+            <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} />
+          </div>
+          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0 z-10 logo-wrapper" href="/">
             <Logo />
           </a>
           <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
@@ -114,7 +172,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
                       </svg>
                     </a>
                   </li>
-                  {headerCTA && <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-white hover:bg-white hover:text-cas' : 'border-cas hover:bg-cas hover:text-white'}`} />}
+                  {headerCTA.length && <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-white hover:bg-white hover:text-cas' : 'border-cas hover:bg-cas hover:text-white'}`} />}
                 </ul>
               </div>
             )}
