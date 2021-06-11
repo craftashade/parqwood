@@ -25,7 +25,7 @@ const Footer = ({ data }) => {
     <footer class="text-cas font-body text-lg pb-20" style={{ background: "#F6F6F6", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
       <div class="container px-5 pt-24 pb-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="md:w-1/5 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left w-full">
-          <a class="flex title-font font-medium items-center md:justify-start justify-center">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center logo-wrapper-fixed">
             <Logo />
           </a>
           <p class="mt-6">Follow us on</p>
