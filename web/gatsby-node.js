@@ -89,7 +89,7 @@ async function createArticlePages(pathPrefix = "/articles", graphql, actions, re
     });
 }
 
-async function createServicePages(pathPrefix = "/services", graphql, actions, reporter) {
+async function createServicePages(pathPrefix = "/", graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
@@ -113,7 +113,7 @@ async function createServicePages(pathPrefix = "/services", graphql, actions, re
   serviceEdges
     .forEach(edge => {
       const { id, title, serviceCategory } = edge.node;
-      const path = `${pathPrefix}/${slugify(`${serviceCategory.title} ${title}`)}/`;
+      const path = `${slugify(serviceCategory.title)}/${slugify(title)}/`;
       reporter.info(`Creating service page: ${path}`);
       createPage({
         path,
@@ -126,5 +126,5 @@ async function createServicePages(pathPrefix = "/services", graphql, actions, re
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
   await createArticlePages("/articles", graphql, actions, reporter);
-  await createServicePages("/services", graphql, actions, reporter);
+  await createServicePages("/", graphql, actions, reporter);
 };
