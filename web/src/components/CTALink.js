@@ -23,6 +23,8 @@ const CTALink = props => {
     link = props.landingPageRoute.slug.current;
   }
 
+  if (link.slice(0,1) !== "/") link = "/" + link
+
   if (props.kind === "button") {
     return (
       <button
