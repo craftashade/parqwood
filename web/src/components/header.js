@@ -6,7 +6,11 @@ import { maybeIllustration, slugify } from "../lib/helpers"
 import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 
-const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCTA }) => {
+const categories = ['Services', 'Brands', 'Projects']
+const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
+
+const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCTA, data }) => {
+  const [openService, toggleOpenService] = useCycle(false, true)
   const menu = {
     open: {
       transform: 'translateY(calc(0px - 0px))'
@@ -23,9 +27,36 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
       <motion.div className="absolute top-0 right-0 w-full h-screen bg-white" variants={menu}>
         <div className="pt-24">
           <ul>
+            {categories.map((i, index) => {
+              if (i === 'Services') {
+                return (
+                  <li>
+                    <div onClick={() => toggleOpenService()} className="flex flex-row cursor-pointer px-6 py-6 font-semibold border-t items-center">
+                      {i}
+                      <div className={`ml-auto${openService ? ' transform rotate-180' : ''}`}>
+                        <ChevronLine />
+                      </div>
+                    </div>
+                    {
+                      openService && <ul>
+                        {serviceCategoriesToShow.map((cat, index) => (
+                          <a href={`/${cat.toLowerCase()}`} className={`px-6 pb-6 font-semibold w-full block${index === 0 ? ' border-t pt-6' : ''}`}>{cat}</a>
+                        ))}
+                      </ul>
+                    }
+                  </li>
+                )
+              } else {
+                return (
+                  <li>
+                    <a href={`/${i.toLowerCase()}`} className={`px-6 py-6 border-t font-semibold w-full block`}>{i}</a>
+                  </li>
+                )
+              }
+            })}
             {navItems.map((i, index) => (
-              <li className={`px-6 py-6 border-t font-semibold ${index === (navItems.length - 1) ? 'border-b' : ''}`}>
-                <CTALink {...i} />
+              <li>
+                <a href={getHref(i)} className={`px-6 py-6 border-t font-semibold ${index === (navItems.length - 1) ? 'border-b' : ''} w-full block`}>{i.title}</a>
               </li>
             ))}
             {
@@ -59,7 +90,6 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
 }
 
 const Megamenu = ({ selected, data }) => {
-  const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
   return (
     <div className="container mx-auto p-5 text-cas">
       <h2 className="font-bold text-xl mb-5">{selected}</h2>
@@ -79,12 +109,12 @@ const Megamenu = ({ selected, data }) => {
               <div className="flex flex-row">
                 <div className="w-1/2">
                   {firstCol.map(s => (
-                    <a href={`/services/${slugify(`${cat}-${s.title}`)}`} className="block mb-4">{s.title}</a>
+                    <a href={`/${slugify(cat)}/${slugify(s.title)}`} className="block mb-4">{s.title}</a>
                   ))}
                 </div>
                 <div className="w-1/2">
                   {secondCol.map(s => (
-                    <a href={`/services/${slugify(`${cat}-${s.title}`)}`} className="block mb-4">{s.title}</a>
+                    <a href={`/${slugify(cat)}/${slugify(s.title)}`} className="block mb-4">{s.title}</a>
                   ))}
                 </div>
               </div>
@@ -101,6 +131,12 @@ const Chevron = () => (
     <path d="M3.64645 3.64645L0.853553 0.853553C0.538571 0.538571 0.761654 0 1.20711 0H6.79289C7.23835 0 7.46143 0.53857 7.14645 0.853553L4.35355 3.64645C4.15829 3.84171 3.84171 3.84171 3.64645 3.64645Z" fill="currentColor" />
   </svg>
 )
+
+const ChevronLine = () => (
+  <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1.66602 1.66683L8.99935 8.3335L16.3327 1.66683" stroke="#20215B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+) 
 
 const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false }) => {
   const [megamenu, setMegamenu] = useState('')
@@ -133,7 +169,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
         <div class="container mx-auto flex py-5 flex-row items-center w-11/12 items-">
           <nav class="lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10 hidden md:flex">
-            {['Services', 'Brands', 'Projects'].map(menu => (
+            {categories.map(menu => (
               <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                 <span>{menu}</span>
                 <div className={`ml-2${megamenu === menu ? ' transform rotate-180' : ''}`}>
@@ -143,7 +179,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
             ))}
           </nav>
           <div className="block md:hidden ml-auto">
-            <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} />
+            <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} data={data} />
           </div>
           <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0 z-10 logo-wrapper" href="/">
             <Logo />
