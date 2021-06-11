@@ -24,7 +24,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
       initial={false}
       animate={isOpen ? "open" : "closed"}
     >
-      <motion.div className="absolute top-0 right-0 w-full h-screen bg-white" variants={menu}>
+      <motion.div className="absolute top-0 right-0 w-full h-screen bg-white z-10" variants={menu}>
         <div className="pt-24">
           <ul>
             {categories.map((i, index) => {
@@ -208,7 +208,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
                       </svg>
                     </a>
                   </li>
-                  {headerCTA.length && <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-white hover:bg-white hover:text-cas' : 'border-cas hover:bg-cas hover:text-white'}`} />}
+                  {headerCTA.length ? <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-white hover:bg-white hover:text-cas' : 'border-cas hover:bg-cas hover:text-white'}`} /> : <></>}
                 </ul>
               </div>
             )}
