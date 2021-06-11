@@ -89,7 +89,7 @@ async function createArticlePages(pathPrefix = "/articles", graphql, actions, re
     });
 }
 
-async function createServicePages(pathPrefix = "/", graphql, actions, reporter) {
+async function createServicePages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
@@ -121,10 +121,33 @@ async function createServicePages(pathPrefix = "/", graphql, actions, reporter) 
         context: { id }
       });
     });
+
+  // Create category pages
+  const categoriesObj = serviceEdges.reduce((obj, edge) => {
+    if (obj.hasOwnProperty(edge.node.serviceCategory.title)) {
+      obj[edge.node.serviceCategory.title] = [...obj[edge.node.serviceCategory.title], edge.node.id]
+    } else {
+      obj[edge.node.serviceCategory.title] = [edge.node.id]
+    }
+    return obj
+  }, {})
+
+  Object.keys(categoriesObj)
+    .forEach(category => {
+      const ids = categoriesObj[category];
+      const path = `${slugify(category)}/`;
+      reporter.info(`Creating service category page: ${path}`);
+      createPage({
+        path,
+        component: require.resolve("./src/templates/serviceCategory.js"),
+        context: { title: category, ids }
+      });
+    });
+
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
   await createArticlePages("/articles", graphql, actions, reporter);
-  await createServicePages("/", graphql, actions, reporter);
+  await createServicePages(graphql, actions, reporter);
 };
