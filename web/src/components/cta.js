@@ -12,8 +12,8 @@ const CTA = ({ label, title, body, cta, transparentBg }) => (
             <PortableText blocks={body} />
           </p>
         </div>
-        <div className="lg:w-1/2 text-right">
-          <CTALink {...cta} kind="button" buttonActionClass={`bg-cas text-white text-sm font-medium px-10 py-4 rounded-2xl hover:bg-white hover:text-cas font-semibold ${transparentBg ? 'border border-cas' : ''}`}></CTALink>
+        <div className="lg:w-1/2 text-right w-full sm:w-auto mt-4 lg:mt-0">
+          <CTALink {...cta} kind="button" buttonActionClass={`bg-cas w-full sm:w-auto text-white text-sm font-medium px-10 py-4 rounded-2xl hover:bg-white hover:text-cas font-semibold ${transparentBg ? 'border border-cas' : ''}`}></CTALink>
         </div>
       </div>
     </div>
