@@ -1,12 +1,12 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MdMenu } from "react-icons/md"
 import { GoBrowser as PageIcon, GoHome, GoSettings, GoTools } from "react-icons/go"
+import { BiCamera } from "react-icons/bi"
 import articles from './src/structure/articles'
 import landingPages from './src/structure/landingPages'
 import PreviewIFrame from './src/components/previewIFrame'
 
 const hiddenDocTypes = (listItem) =>
-  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'service', 'serviceCategory'].includes(
+  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'service', 'serviceCategory', 'project'].includes(
     listItem.getId()
   )
 
@@ -48,6 +48,7 @@ export default () =>
             S.documentTypeListItem('serviceCategory').title('Service Categories').icon(GoTools),
           ]),
         ),
+      S.documentTypeListItem('project').title('Projects').icon(BiCamera),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above

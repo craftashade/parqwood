@@ -15,6 +15,7 @@ import siteSettings from './documents/siteSettings'
 import route from './documents/route'
 import service from './documents/service'
 import serviceCategory from './documents/serviceCategory'
+import project from './documents/project'
 
 import experiment from './objects/experiment'
 import simpleBlockContent from './objects/simpleBlockContent'
@@ -65,7 +66,8 @@ export default createSchema({
       bodyPortableText,
       excerptPortableText,
       service,
-      serviceCategory
+      serviceCategory,
+      project
     ])
     .concat(allPlugs),
 })
