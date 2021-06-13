@@ -175,6 +175,15 @@ async function createProjectPages(pathPrefix = "/projects", graphql, actions, re
         context: { id }
       });
     });
+
+  // create base projects page also
+  if (projectEdges[0]) {
+    createPage({
+      path: pathPrefix,
+      component: require.resolve("./src/templates/project.js"),
+      context: { id: projectEdges[0].node.id }
+    });
+  }
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
