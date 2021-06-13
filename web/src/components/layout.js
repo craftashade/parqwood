@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import "../styles/layout.css";
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 class Layout extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Layout extends React.Component {
     } = this.props;
     const { scrolled } = this.state;
     return (
-      <>
+      <SimpleReactLightbox>
         <Header
           navMenuItems={navMenuItems}
           siteTitle={siteTitle}
@@ -56,7 +57,7 @@ class Layout extends React.Component {
         />
         <>{children}</>
         <Footer siteTitle={siteTitle} data={data} />
-      </>
+      </SimpleReactLightbox>
     );
   }
 }
