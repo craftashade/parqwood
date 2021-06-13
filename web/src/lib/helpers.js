@@ -116,5 +116,5 @@ export const getHref = (item) => {
 }
 
 export function slugify(str) {
-  return str.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+  return str ? str.toLowerCase().replace(/\s+/g, '-').slice(0, 200) : str
 }
