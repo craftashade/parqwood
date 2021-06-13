@@ -146,8 +146,40 @@ async function createServicePages(graphql, actions, reporter) {
 
 }
 
+async function createProjectPages(pathPrefix = "/projects", graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityProject {
+        edges {
+          node {
+            id
+            title
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const projectEdges = (result.data.allSanityProject || {}).edges || [];
+  projectEdges
+    .forEach(edge => {
+      const { id, title } = edge.node;
+      const path = `${pathPrefix}/${slugify(title)}/`;
+      reporter.info(`Creating project page: ${path}`);
+      createPage({
+        path,
+        component: require.resolve("./src/templates/project.js"),
+        context: { id }
+      });
+    });
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
   await createArticlePages("/articles", graphql, actions, reporter);
   await createServicePages(graphql, actions, reporter);
+  await createProjectPages("/projects", graphql, actions, reporter);
 };
