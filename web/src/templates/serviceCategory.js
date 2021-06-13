@@ -74,6 +74,21 @@ export const query = graphql`
         }
       }
     }
+    projects: allSanityProject {
+      nodes {
+        images {
+          image {
+            ...SanityImage
+          }
+        }
+        thumbnail {
+          image {
+            ...SanityImage
+          }
+        }
+        title
+      }
+    }
   }
 `;
 
