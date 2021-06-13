@@ -28,12 +28,7 @@ export default {
           }
         ],
         data: [
-          {
-            title: 'GitHub repo',
-            value: 'https://github.com/abuuzayr/craft-a-shade',
-            category: 'Code'
-          },
-          {title: 'Frontend', value: 'https://craft-a-shade.netlify.app', category: 'apps'}
+          { title: 'Frontend', value: 'https://craftashade.com', category: 'apps'}
         ]
       }
     },
