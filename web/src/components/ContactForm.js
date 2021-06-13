@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PortableText from "./portableText"
 import { useDropzone } from 'react-dropzone'
+import Toast from 'light-toast';
 
 const typeSelection = ['Visit Showroom', 'Request for Callback']
 const serviceSelection = ['General Enquiries', 'Sales - Curtains', 'Sales - Window Blinds']
@@ -48,10 +49,17 @@ const ContactForm = ({ text, heading, siteData }) => {
   const [file, setFile] = useState(null);
   const [type, setType] = useState(typeSelection[0])
   const [date, setDate] = useState('')
-  const [timeslot, setTimeslot] = useState('')
+  const [timeslot, setTimeslot] = useState('09:00am')
   const [service, setService] = useState(serviceSelection[0])
   const [mobile, setMobile] = useState('+65 ')
 
+  useEffect(() => {
+    const usp = new URLSearchParams(window.location.search)
+    if (usp.get('submitted') && usp.get('submitted') === 'true') {
+      Toast.success("Form successfully submitted!", 5000)
+    }
+
+  }, [])
   const onDrop = acceptedFiles => {
     console.log(acceptedFiles)
     setFile(acceptedFiles[0])
@@ -97,7 +105,7 @@ const ContactForm = ({ text, heading, siteData }) => {
     }
   }
   return (
-    <section className="container mx-auto my-8 lg:w-5/6 text-cas w-11/12">
+    <section className="container mx-auto my-8 lg:w-5/6 text-cas w-11/12" id="appointment">
       <div className="lg:flex flex-row items-center mb-6 lg:mb-0">
         <div className="lg:w-2/3">
           {heading && <h1 className="lg:text-5xl font-bold mb-4 leading-tight text-3xl">{heading}</h1>}
@@ -116,11 +124,11 @@ const ContactForm = ({ text, heading, siteData }) => {
           }
         </div>
       </div>
-      <form method="POST" action={`https://formsubmit.co/${siteData.emailTo}`} enctype="multipart/form-data" id="appointment">
+      <form method="POST" action={`https://formsubmit.co/${siteData.emailTo}`} enctype="multipart/form-data">
         <div className="lg:flex lg:flex-row w-full">
           <div className="lg:w-5/12 relative">
             <input type="text" name="_honey" className="madu" />
-            <input type="hidden" name="_next" value={`${process.env.GATSBY_BASE_URL}/visit-us?submitted=true`} />
+            <input type="hidden" name="_next" value={`${process.env.GATSBY_BASE_URL}/visit-us?submitted=true#appointment`} />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <div className="mb-5">
