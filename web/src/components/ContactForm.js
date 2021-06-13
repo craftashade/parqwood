@@ -98,14 +98,14 @@ const ContactForm = ({ text, heading, siteData }) => {
   }
   return (
     <section className="container mx-auto my-8 lg:w-5/6 text-cas w-11/12">
-      <div className="lg:flex flex-row items-center">
-        <div className="lg:w-1/2">
-          {heading && <h1 className="text-5xl font-bold mb-4">{heading}</h1>}
-          <div className="text-lg p-mb mb-12 text-lg">
+      <div className="lg:flex flex-row items-center mb-6 lg:mb-0">
+        <div className="lg:w-2/3">
+          {heading && <h1 className="lg:text-5xl font-bold mb-4 leading-tight text-3xl">{heading}</h1>}
+          <div className="text-lg p-mb lg:mb-12 text-lg">
             <PortableText blocks={text} />
           </div>
         </div>
-        <div className="lg:w-1/2 lg:text-right text-lg">
+        <div className="lg:w-1/3 lg:text-right text-lg">
           <div className="font-bold">Showroom location</div>
           {
             siteData && 
@@ -116,18 +116,18 @@ const ContactForm = ({ text, heading, siteData }) => {
           }
         </div>
       </div>
-      <form method="POST" action="https://formsubmit.co/fawyna@gmail.com" enctype="multipart/form-data">
+      <form method="POST" action={`https://formsubmit.co/${siteData.emailTo}`} enctype="multipart/form-data" id="appointment">
         <div className="lg:flex lg:flex-row w-full">
           <div className="lg:w-5/12 relative">
             <input type="text" name="_honey" className="madu" />
-            <input type="hidden" name="_next" value="http://localhost:8000/visit-us?submitted=true" />
+            <input type="hidden" name="_next" value={`${process.env.GATSBY_BASE_URL}/visit-us?submitted=true`} />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <div className="mb-5">
               <div className="text-lg text-gray-500 mb-2">Appointment Type</div>
               <div className="flex flex-row">
                 {typeSelection.map((t, i) => (
-                  <div className={`w-1/${typeSelection.length} rounded-2xl py-3 text-center font-semibold ${i === typeSelection.length ? '' : 'lg:mr-3 '}${type === t ? 'border-2 border-cas' : 'bg-f6 border-f6 hover:bg-white border-2 hover:border-cas'} cursor-pointer`} onClick={() => setType(t)}>{t}</div>
+                  <div className={`w-1/${typeSelection.length} rounded-2xl py-3 text-center font-semibold ${i === (typeSelection.length - 1) ? '' : 'mr-3 '}${type === t ? 'border-2 border-cas' : 'bg-f6 border-f6 hover:bg-white border-2 hover:border-cas'} cursor-pointer`} onClick={() => setType(t)}>{t}</div>
                 ))}
                 <input type="hidden" name="type" value={type} />
               </div>
