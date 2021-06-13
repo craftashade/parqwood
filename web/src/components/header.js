@@ -8,6 +8,7 @@ import { MenuToggle } from "./MenuToggle";
 
 const categories = ['Services', 'Brands', 'Projects']
 const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
+const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
 const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCTA, data }) => {
   const [openService, toggleOpenService] = useCycle(false, true)
@@ -121,6 +122,16 @@ const Megamenu = ({ selected, data }) => {
             </div>
           )
         })}
+        {selected === 'Projects' && projectsToShow.map((projectToShow, index) => {
+          const project = data.projects.nodes.find(p => p.title === projectToShow)
+          const img = maybeIllustration(project.thumbnail)
+          return (
+            <a className={`w-1/4${index ? ' ml-5' : ''}`} href={`/projects/${slugify(projectToShow)}`}>
+              <div className="rounded-3xl overflow-hidden">{img}</div>
+              <h4 className="font-bold my-4 text-center">{projectToShow}</h4>
+            </a>
+          )
+        })}
       </div>
     </div>
   )
@@ -168,7 +179,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
         <div class="container mx-auto flex py-5 flex-row items-center w-11/12 items-">
-          <nav class="lg:w-2/5 flex-wrap items-center text-base md:ml-auto z-10 hidden md:flex">
+          <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
             {categories.map(menu => (
               <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                 <span>{menu}</span>
@@ -178,10 +189,10 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
               </div>
             ))}
           </nav>
-          <div className="block md:hidden ml-auto">
+          <div className="block lg:hidden ml-auto">
             <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} data={data} />
           </div>
-          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0 z-10 logo-wrapper" href="/">
+          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-0 z-10 logo-wrapper" href="/">
             <Logo />
           </a>
           <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
