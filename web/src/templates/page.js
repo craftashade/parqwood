@@ -46,6 +46,7 @@ export const query = graphql`
       mobile
       tel
       email
+      emailTo
     }
 
     navs: allSanityNavigationMenu {
@@ -73,6 +74,21 @@ export const query = graphql`
             ...SanityImage
           }
         }
+      }
+    }
+    projects: allSanityProject {
+      nodes {
+        images {
+          image {
+            ...SanityImage
+          }
+        }
+        thumbnail {
+          image {
+            ...SanityImage
+          }
+        }
+        title
       }
     }
   }
