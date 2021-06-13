@@ -31,6 +31,7 @@ export default {
       name: 'addressLink',
       type: 'url',
       title: 'Address link to',
+      description: 'Enter a Google Maps URL to open when address is clicked',
       fieldset: 'contact'
     },
     {
@@ -50,6 +51,12 @@ export default {
       type: 'string',
       title: 'Email',
       fieldset: 'contact'
+    },
+    {
+      name: 'emailTo',
+      type: 'string',
+      title: 'Contact form submission destination',
+      description: 'Enter an email address or a secret token (token preferred)',
     },
   ]
 }
