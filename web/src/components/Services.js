@@ -1,6 +1,7 @@
 import React from "react";
 import PortableText from "./portableText"
 import { maybeIllustration, maybeImage } from "../lib/helpers";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Services = ({ title, text, rows }) => (
   <section class="text-cas">
@@ -20,7 +21,11 @@ const Services = ({ title, text, rows }) => (
           return (
             <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
               <div class="rounded-3xl overflow-hidden">
-                {illustrationSet}
+                <img
+                  src={illustration.image.asset.url}
+                  alt={illustration.image.alt}
+                  className="w-full mx-auto"
+                />
               </div>
               <div className="p-4">
                 <div className="float-left mb-4">
