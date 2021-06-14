@@ -18,12 +18,18 @@ const Services = ({ title, text, rows }) => (
           const { text, title, icon, illustration, url, excerpt } = row
           const iconSet = maybeImage(icon)
           const illustrationSet = maybeIllustration(illustration)
+          const img = illustration && illustration.image
+          let imgUrl = '', imgAlt = ''
+          if (img) {
+            if (img.asset) imgUrl = img.asset.url
+            imgAlt = img.alt
+          }
           return (
             <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
               <div class="rounded-3xl overflow-hidden">
                 <img
-                  src={illustration.image.asset.url}
-                  alt={illustration.image.alt}
+                  src={imgUrl}
+                  alt={imgAlt}
                   className="w-full mx-auto"
                 />
               </div>
