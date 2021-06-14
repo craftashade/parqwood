@@ -127,7 +127,13 @@ const Megamenu = ({ selected, data }) => {
           const img = maybeIllustration(project.thumbnail)
           return (
             <a className={`w-1/4${index ? ' ml-5' : ''}`} href={`/projects/${slugify(projectToShow)}`}>
-              <div className="rounded-3xl overflow-hidden">{img}</div>
+              <div className="rounded-3xl overflow-hidden">
+                <img
+                  src={project._rawThumbnail.image.asset.url}
+                  alt={project.thumbnail.image.alt}
+                  className="w-full mx-auto"
+                />
+              </div>
               <h4 className="font-bold my-4 text-center">{projectToShow}</h4>
             </a>
           )

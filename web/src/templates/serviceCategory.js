@@ -87,6 +87,7 @@ export const query = graphql`
           }
         }
         title
+        _rawThumbnail(resolveReferences: {maxDepth: 10})
       }
     }
   }
