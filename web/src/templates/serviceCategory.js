@@ -29,6 +29,7 @@ export const query = graphql`
             ...SanityImage
           }
         }
+        _rawThumbnail(resolveReferences: {maxDepth: 10})
         title
         excerpt
       }

@@ -23,11 +23,11 @@ export default function ServiceCategory({ data }) {
         </div>
       </div>
       <Services rows={data.servicesForRows.nodes.map(node => {
-        const { excerpt, title, thumbnail } = node
+        const { excerpt, title, _rawThumbnail } = node
         return {
           excerpt,
           title,
-          illustration: thumbnail,
+          illustration: _rawThumbnail,
           url: `/${slugify(data.serviceCategory.title)}/${slugify(title)}`
         }
       })} />
