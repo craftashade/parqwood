@@ -19,6 +19,7 @@ export const query = graphql`
           ...SanityImage
         }
       }
+      _rawImages(resolveReferences: {maxDepth: 10})
       title
       _rawText
       serviceCategory {
