@@ -27,7 +27,7 @@ export default function Project({ data }) {
         </div>
         <SRLWrapper>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-10">
-            {data.project._rawImages.map(i => {
+            {data.project._rawImages && data.project._rawImages.map(i => {
                 const img = maybeIllustration(i)
                 return <a href="#" className="rounded-3xl overflow-hidden">
                   <img src={i.image.asset.url} alt={i.image.alt} className="w-full mx-auto" />
