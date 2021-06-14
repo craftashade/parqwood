@@ -1,5 +1,12 @@
 module.exports = {
   mode: 'jit',
+  purge: [
+    "./pages/**/*.js",
+    "./components/**/*.js",
+    "./templates/**/*.js",
+    "./static/**/*.js",
+    "./containers/**/*.js"
+  ],
   theme: {
     extend: {
       colors: {
