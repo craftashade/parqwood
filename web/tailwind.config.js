@@ -1,11 +1,11 @@
 module.exports = {
   mode: 'jit',
   purge: [
-    "./pages/**/*.js",
-    "./components/**/*.js",
-    "./templates/**/*.js",
-    "./static/**/*.js",
-    "./containers/**/*.js"
+    "./src/pages/**/*.js",
+    "./src/components/**/*.js",
+    "./src/templates/**/*.js",
+    "./src/static/**/*.js",
+    "./src/containers/**/*.js"
   ],
   theme: {
     extend: {
