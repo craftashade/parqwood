@@ -187,9 +187,9 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
         <div class="container mx-auto flex py-5 flex-row items-center w-11/12 items-">
           <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
             {categories.map(menu => (
-              <div className={`flex mr-5 items-center cursor-pointer${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
+              <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                 <span>{menu}</span>
-                <div className={`ml-2${megamenu === menu ? ' transform rotate-180' : ''}`}>
+                <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
                   <Chevron />
                 </div>
               </div>
