@@ -65,6 +65,7 @@ export const query = graphql`
             ...SanityImage
           }
         }
+        _rawImage(resolveReferences: {maxDepth: 10})
       }
     }
     projects: allSanityProject {

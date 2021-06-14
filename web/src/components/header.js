@@ -98,6 +98,12 @@ const Megamenu = ({ selected, data }) => {
         {selected === 'Services' && serviceCategoriesToShow.map((cat, index) => {
           const category = data.categories.nodes.find(c => c.title === cat)
           const img = maybeIllustration(category.image)
+          const image = category._rawImage && category._rawImage.image
+          let imageUrl = '', imageAlt = ''
+          if (image) {
+            if (image.asset) imageUrl = image.asset.url
+            imageAlt = image.alt
+          }
           const services = data.services.nodes.filter(s => s.serviceCategory.title === cat)
           let slicer = 6
           if (services.length > 12) slicer = Math.ceil(services.length / 2)
@@ -105,7 +111,9 @@ const Megamenu = ({ selected, data }) => {
           let secondCol = services.slice(slicer, services.length)
           return (
             <div className={`w-1/3${index ? ' ml-5' : ''}`}>
-              <div className="rounded-3xl overflow-hidden">{img}</div>
+              <div className="rounded-3xl overflow-hidden">
+                <img src={imageUrl} alt={imageAlt} className="mx-auto w-full" />
+              </div>
               <h4 className="font-bold my-4">{cat}</h4>
               <div className="flex flex-row">
                 <div className="w-1/2">
