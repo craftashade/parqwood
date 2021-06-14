@@ -19,7 +19,8 @@ export const query = graphql`
         image {
           ...SanityImage
         }
-      }
+      } 
+      _rawImages(resolveReferences: {maxDepth: 10})
       thumbnail {
         image {
           ...SanityImage
@@ -80,6 +81,7 @@ export const query = graphql`
           }
         }
         title
+        _rawThumbnail(resolveReferences: {maxDepth: 10})
       }
     }
   }
