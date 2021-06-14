@@ -57,6 +57,7 @@
   }
 }
 
+.carousel-root .img-overlay:after,
 .carousel-root .gatsby-image-wrapper:after,
 .mobile-hero:after {
   display: block;

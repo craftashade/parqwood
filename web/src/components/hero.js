@@ -55,12 +55,12 @@ function Hero(props) {
             aria-label={`${label} ${index + 1}`}
           />
         );
-      }}>
+      }} dynamicHeight={true}>
         {slides.length && slides.map(slide => {
           const img = maybeImage(slide);
           return (
-            <div>
-              {img}
+            <div style={{ background: `center / cover no-repeat url('${slide.image.asset.url}')` }} className="img-overlay">
+              <img src={slide.image.asset.url} style={{ maxHeight: 1000 }} className="invisible pointer-events-none" />
             </div>
           )
         })}
