@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Hero from "../components/hero";
 import InfoRows from "../components/InfoRows";
@@ -190,7 +190,7 @@ const Page = props => {
         { 
           page && page.breadcrumb && page.title &&
           <div className="my-8 text-gray-400 text-sm container mx-auto lg:w-5/6 w-11/12">
-            Home > <span className="font-semibold">{page.title}</span>
+            <Link to="/">Home</Link> > <span className="font-semibold">{page.title}</span>
           </div>
         }
         {content}
