@@ -15,6 +15,7 @@ export default {
       to: [{ type: 'serviceCategory' }],
       title: 'Service Category',
       description: 'Category of service',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'text',
