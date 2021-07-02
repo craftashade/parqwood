@@ -17,11 +17,6 @@ export default {
       description: 'Category of service',
     },
     {
-      name: 'excerpt',
-      type: 'text',
-      title: 'Excerpt'
-    },
-    {
       name: 'text',
       type: 'simpleBlockContent',
       title: 'Text'
