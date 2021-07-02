@@ -31,7 +31,7 @@ export const query = graphql`
         }
         _rawThumbnail(resolveReferences: {maxDepth: 10})
         title
-        excerpt
+        _rawText
       }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {

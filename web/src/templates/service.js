@@ -96,7 +96,7 @@ const ServiceTemplate = props => {
       {service && (
         <SEO
           title={service.title || "Untitled"}
-          description={toPlainText(service._rawExcerpt)}
+          description={toPlainText(service._rawText)}
           image={service.mainImage}
         />
       )}
