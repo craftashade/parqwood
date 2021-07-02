@@ -34,4 +34,10 @@ export default {
       of: [{ type: 'illustration' }]
     }
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'thumbnail.image'
+    }
+  }
 }
