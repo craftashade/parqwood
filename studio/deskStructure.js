@@ -45,7 +45,7 @@ export default () =>
           .items([
             S.documentTypeListItem('service').title('Services').icon(GoTools),
             S.divider(),
-            S.documentTypeListItem('serviceCategory').title('Service Categories').icon(GoTools),
+            S.documentTypeListItem('serviceCategory').title('Categories').icon(GoTools),
           ]),
         ),
       S.documentTypeListItem('project').title('Projects').icon(BiCamera),
