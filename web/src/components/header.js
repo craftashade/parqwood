@@ -132,13 +132,16 @@ const Megamenu = ({ selected, data }) => {
         })}
         {selected === 'Projects' && projectsToShow.map((projectToShow, index) => {
           const project = data.projects.nodes.find(p => p.title === projectToShow)
+          if (!project) return null
           const img = maybeIllustration(project.thumbnail)
+          const thumbnail = project._rawThumbnail && project._rawThumbnail.image && project._rawThumbnail.image.asset
+          if (!thumbnail) return null
           return (
-            <a className={`w-1/4${index ? ' ml-5' : ''}`} href={`/projects/${slugify(projectToShow)}`}>
+            <a className={`${index ? 'w-1/4 ml-5' : 'w-1/4'}`} href={`/projects/${slugify(projectToShow)}`}>
               <div className="rounded-3xl overflow-hidden">
                 <img
-                  src={project._rawThumbnail.image.asset.url}
-                  alt={project.thumbnail.image.alt}
+                  src={thumbnail.url}
+                  alt={thumbnail.alt}
                   className="w-full mx-auto"
                 />
               </div>
