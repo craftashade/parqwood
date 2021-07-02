@@ -1,10 +1,11 @@
 import React from "react";
 import PortableText from "./portableText";
-import { maybeIllustration } from "../lib/helpers"
+import { maybeIllustration, slugify } from "../lib/helpers"
 import Features from "./Features"
 import CTA from "./cta";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { Link } from "gatsby"
 
 const ImageCarousel = ({ data, className }) => (
   <div className={className}>
@@ -55,7 +56,9 @@ export default function Service({ data }) {
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
         <div className="my-8 text-gray-400 text-sm">
-          Home > {data.service.serviceCategory.title} > <span className="font-semibold">{data.service.title}</span>
+          <Link to="/">Home</Link> > 
+          <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link> > 
+          <span className="font-semibold">{data.service.title}</span>
         </div>
         <h1 className="font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
         <div className="lg:flex flex-row text-cas mt-4">

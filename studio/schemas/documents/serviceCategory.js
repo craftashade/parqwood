@@ -17,6 +17,25 @@ export default {
       name: 'image',
       type: 'illustration',
       title: 'Image'
+    },
+    {
+      name: 'services',
+      type: 'array',
+      title: 'Services',
+      of: [
+        {
+          type: 'reference',
+          to: {
+            type: 'service',
+          }
+        }
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'image.image'
     }
-  ]
+  }
 }

@@ -67,20 +67,32 @@ const Footer = ({ data }) => {
             <h2 class="font-bold mb-4">Contact Us</h2>
             
             <nav class="list-none mb-4">
-              <li>
-                <a href={site.addressLink} target="_blank">
-                  <PortableText blocks={site._rawAddress} />
-                </a>
-              </li>
-              <li className="mt-4">
-                <a href={`tel: ${site.mobile}`}><strong>M</strong> {site.mobile}</a>
-              </li>
-              <li className="mt-4">
-                <a href={`tel: ${site.tel}`}><strong>T</strong> {site.tel}</a>
-              </li>
-              <li className="mt-4">
-                <a href={`mailto: ${site.email}`}><strong>E</strong> {site.email}</a>
-              </li>
+              {
+                site._rawAddress &&
+                <li>
+                  <a href={site.addressLink} target="_blank">
+                    <PortableText blocks={site._rawAddress} />
+                  </a>
+                </li>
+              }
+              { 
+                site.mobile && 
+                <li className="mt-4">
+                  <a href={`tel: ${site.mobile}`}><strong>M</strong> {site.mobile}</a>
+                </li>
+              }
+              {
+                site.tel &&
+                <li className="mt-4">
+                  <a href={`tel: ${site.tel}`}><strong>T</strong> {site.tel}</a>
+                </li>
+              }
+              {
+                site.email &&
+                <li className="mt-4">
+                  <a href={`mailto: ${site.email}`}><strong>E</strong> {site.email}</a>
+                </li>
+              }
             </nav>
           </div>
         </div>

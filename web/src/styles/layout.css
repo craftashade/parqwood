@@ -38,7 +38,12 @@
     height: 60px;
   }
   .fixed-service-text-height {
-    height: 80px;
+    height: 100px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -48,6 +53,9 @@
   }
   .hero-overlay {
     top: 20%;
+  }
+  .fixed-service-text-height p {
+    display: block;
   }
 }
 

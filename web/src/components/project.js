@@ -3,6 +3,7 @@ import { maybeIllustration, slugify } from "../lib/helpers"
 import Features from "./Features"
 import CTA from "./cta";
 import { SRLWrapper } from "simple-react-lightbox";
+import { Link } from "gatsby"
 
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
@@ -13,7 +14,7 @@ export default function Project({ data }) {
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
         <div className="my-8 text-gray-400 text-sm">
-          Home > <span className="font-semibold">Projects</span>
+          <Link to="/">Home</Link> > <span className="font-semibold">Projects</span>
         </div>
         <div className="flex flex-row">
           {projectsToShow.map(proj => {

@@ -4,6 +4,7 @@ import { maybeIllustration, slugify } from "../lib/helpers"
 import Features from "./Features"
 import CTA from "./cta";
 import Services from "./Services"
+import { Link } from "gatsby"
 
 export default function ServiceCategory({ data }) {
   const cta = data.frontpage._rawContent.find(c => c._type === 'ctaPlug')
@@ -13,7 +14,7 @@ export default function ServiceCategory({ data }) {
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
         <div className="my-8 text-gray-400 text-sm">
-          Home > <span className="font-semibold">{data.serviceCategory.title}</span>
+          <Link to="/">Home</Link> > <span className="font-semibold">{data.serviceCategory.title}</span>
         </div>
         <h1 className="font-bold text-3xl lg:text-5xl text-cas">{data.serviceCategory.title}</h1>
         <div className="lg:flex flex-row text-cas mt-4">
@@ -23,10 +24,10 @@ export default function ServiceCategory({ data }) {
         </div>
       </div>
       <Services rows={data.servicesForRows.nodes.map(node => {
-        const { excerpt, title, _rawThumbnail } = node
+        const { title, _rawText, _rawThumbnail } = node
         return {
-          excerpt,
           title,
+          text: _rawText,
           illustration: _rawThumbnail,
           url: `/${slugify(data.serviceCategory.title)}/${slugify(title)}`
         }

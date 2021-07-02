@@ -15,11 +15,7 @@ export default {
       to: [{ type: 'serviceCategory' }],
       title: 'Service Category',
       description: 'Category of service',
-    },
-    {
-      name: 'excerpt',
-      type: 'text',
-      title: 'Excerpt'
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'text',
@@ -38,4 +34,10 @@ export default {
       of: [{ type: 'illustration' }]
     }
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'thumbnail.image'
+    }
+  }
 }
