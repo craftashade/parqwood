@@ -6,7 +6,7 @@ import { maybeIllustration, slugify } from "../lib/helpers"
 import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 
-const categories = ['Services', 'Brands', 'Projects']
+const categories = ['Services', 'Projects']
 const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
