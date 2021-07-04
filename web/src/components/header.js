@@ -116,7 +116,7 @@ const Megamenu = ({ selected, data }) => {
               </div>
               <h4 className="font-bold my-4">{cat}</h4>
               <div className="flex flex-row">
-                <div className="w-1/2">
+                <div className={`${secondCol.length ? "w-1/2" : "w-full"}`}>
                   {firstCol.map(s => (
                     <a href={`/${slugify(cat)}/${slugify(s.title)}`} className="block mb-4">{s.title}</a>
                   ))}
