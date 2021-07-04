@@ -6,7 +6,7 @@ export default {
   title: 'Brands carousel',
   fields: [
     {
-      name: 'illustration',
+      name: 'images',
       type: 'array',
       of: [
         {
