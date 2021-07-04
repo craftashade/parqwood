@@ -56,8 +56,8 @@ export default function Service({ data }) {
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
         <div className="my-8 text-gray-400 text-sm">
-          <Link to="/">Home</Link> > 
-          <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link> > 
+          <Link to="/">Home</Link>&nbsp;>&nbsp;
+          <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link>&nbsp;>&nbsp;
           <span className="font-semibold">{data.service.title}</span>
         </div>
         <h1 className="font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
