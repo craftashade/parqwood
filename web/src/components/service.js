@@ -60,10 +60,11 @@ export default function Service({ data }) {
           <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link>&nbsp;>&nbsp;
           <span className="font-semibold">{data.service.title}</span>
         </div>
-        <h1 className="font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
         <div className="lg:flex flex-row text-cas mt-4">
+          <h1 className="lg:hidden font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
           <ImageCarousel className="lg:hidden block mb-4" data={data} />
           <div className="lg:w-1/2 p-mb text-lg">
+            <h1 className="hidden lg:block font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
             <PortableText blocks={data.service._rawText} />
           </div>
           <ImageCarousel className="hidden lg:block lg:w-1/2" data={data} />
