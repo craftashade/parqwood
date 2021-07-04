@@ -12,29 +12,29 @@ const ImageCarousel = ({ data, className }) => (
     {
       data.service.images.length ?
       <Carousel showStatus={false} showThumbs={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
-        const indicatorClasses = "inline-block mr-2 w-4 h-4 mt-8 mb-6 bg-white"
-        if (isSelected) {
+          const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-white"
+          if (isSelected) {
+            return (
+              <li
+                className={indicatorClasses}
+                aria-label={`Selected: ${label} ${index + 1}`}
+                title={`Selected: ${label} ${index + 1}`}
+              />
+            );
+          }
           return (
             <li
-              className={indicatorClasses}
-              aria-label={`Selected: ${label} ${index + 1}`}
-              title={`Selected: ${label} ${index + 1}`}
+              className={`${indicatorClasses} opacity-50`}
+              onClick={onClickHandler}
+              onKeyDown={onClickHandler}
+              value={index}
+              key={index}
+              role="button"
+              tabIndex={0}
+              title={`${label} ${index + 1}`}
+              aria-label={`${label} ${index + 1}`}
             />
           );
-        }
-        return (
-          <li
-            className={`${indicatorClasses} opacity-50`}
-            onClick={onClickHandler}
-            onKeyDown={onClickHandler}
-            value={index}
-            key={index}
-            role="button"
-            tabIndex={0}
-            title={`${label} ${index + 1}`}
-            aria-label={`${label} ${index + 1}`}
-          />
-        );
       }}>
         {data.service.images.map(slide => {
           const img = maybeIllustration(slide);
