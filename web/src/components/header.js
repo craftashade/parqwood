@@ -5,8 +5,9 @@ import { getHref } from "../lib/helpers"
 import { maybeIllustration, slugify } from "../lib/helpers"
 import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
+import { Link } from "gatsby"
 
-const categories = ['Services', 'Brands', 'Projects']
+const categories = ['Services', 'Projects']
 const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
@@ -112,11 +113,16 @@ const Megamenu = ({ selected, data }) => {
           return (
             <div className={`w-1/3${index ? ' ml-5' : ''}`}>
               <div className="rounded-3xl overflow-hidden">
-                <img src={imageUrl} alt={imageAlt} className="mx-auto w-full" />
+                <div style={{
+                  background: `center / cover no-repeat url(${imageUrl})`,
+                  height: 160
+                }} />
               </div>
-              <h4 className="font-bold my-4">{cat}</h4>
+              <Link to={`/${slugify(cat)}`}>
+                <h4 className="font-bold my-4">{cat}</h4>
+              </Link>
               <div className="flex flex-row">
-                <div className="w-1/2">
+                <div className={`${secondCol.length ? "w-1/2" : "w-full"}`}>
                   {firstCol.map(s => (
                     <a href={`/${slugify(cat)}/${slugify(s.title)}`} className="block mb-4">{s.title}</a>
                   ))}
@@ -132,18 +138,20 @@ const Megamenu = ({ selected, data }) => {
         })}
         {selected === 'Projects' && projectsToShow.map((projectToShow, index) => {
           const project = data.projects.nodes.find(p => p.title === projectToShow)
-          if (!project) return null
+          if (!project) {
+            if (index !== 3) return null
+            return <div className="w-1/4"></div>
+          }
           const img = maybeIllustration(project.thumbnail)
           const thumbnail = project._rawThumbnail && project._rawThumbnail.image && project._rawThumbnail.image.asset
           if (!thumbnail) return null
           return (
             <a className={`${index ? 'w-1/4 ml-5' : 'w-1/4'}`} href={`/projects/${slugify(projectToShow)}`}>
               <div className="rounded-3xl overflow-hidden">
-                <img
-                  src={thumbnail.url}
-                  alt={thumbnail.alt}
-                  className="w-full mx-auto"
-                />
+                <div style={{
+                  background: `center / cover no-repeat url(${thumbnail.url})`,
+                  height: 160
+                }} />
               </div>
               <h4 className="font-bold my-4 text-center">{projectToShow}</h4>
             </a>
@@ -194,8 +202,8 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
-      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' shadow-md' : ''}`}>
-        <div class="container mx-auto flex py-5 flex-row items-center w-11/12 items-">
+      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
+        <div class="container mx-auto flex py-4 flex-row items-center w-11/12 items-">
           <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
             {categories.map(menu => (
               <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>

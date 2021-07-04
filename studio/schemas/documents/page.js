@@ -44,6 +44,7 @@ export default {
         { type: 'fullWidthImage' },
         { type: 'textParagraph' },
         { type: 'contactForm' },
+        { type: 'brands' },
       ],
     },
     {
