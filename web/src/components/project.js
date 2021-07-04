@@ -18,6 +18,8 @@ export default function Project({ data }) {
         </div>
         <div className="flex flex-row">
           {projectsToShow.map(proj => {
+            const project = data.projects.nodes.find(p => p.title === proj)
+            if (!project) return null
             const btnClass = 'py-4 px-6 rounded-2xl font-bold text-sm mr-4'
             if (proj === data.project.title) {
               return <div className={`bg-airbnb text-white ${btnClass}`}>{proj}</div>
