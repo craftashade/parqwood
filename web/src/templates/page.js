@@ -13,6 +13,7 @@ import Features from "../components/Features"
 import FullWidthImage from "../components/FullWidthImage"
 import TextParagraph from "../components/TextParagraph"
 import ContactForm from "../components/ContactForm"
+import Brands from "../components/Brands"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -154,6 +155,9 @@ const Page = props => {
           break;
         case "contactForm":
           el = <ContactForm key={c._key} {...c} siteData={site} />;
+          break;
+        case "brands":
+          el = <Brands key={c._key} {...c} />;
           break;
         case "articles":
           // el = <div>articles"</div>;
