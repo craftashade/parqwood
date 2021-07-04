@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#___gatsby {
+  overflow-x: hidden;
+}
+
 .hero-overlay {
   top: 10%;
 }
@@ -86,6 +90,14 @@
   visibility: hidden;
   pointer-events: none;
   position: absolute;
+}
+
+.overflow-visible .react-multi-carousel-list {
+  overflow: visible;
+}
+
+.react-multi-carousel-list ul {
+  align-items: center;
 }
 
 /*
