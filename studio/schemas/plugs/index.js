@@ -17,6 +17,8 @@ export { default as fullWidthImage } from './fullWidthImage'
 export { default as textParagraph } from './text'
 export { default as contactForm } from './contactForm'
 export { default as brands } from './brands'
+export { default as illustrationWithURL } from './illustrationWithURL'
+export { default as face } from './face'
 /*
 export { default as cta } from './cta'
 export { default as generalArticle } from './article'
