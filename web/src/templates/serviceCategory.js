@@ -12,6 +12,14 @@ export const query = graphql`
     frontpage: sanityPage(title: {eq: "Frontpage"}) {
       ...PageInfo
     }
+    serviceCategories: allSanityServiceCategory {
+      nodes {
+        title
+        services {
+          title
+        }
+      }
+    }
     serviceCategory: sanityServiceCategory(title: {eq: $title}) {
       description
       title
@@ -19,6 +27,17 @@ export const query = graphql`
         image {
         ...SanityImage
         }
+      }
+      services {
+        id
+        thumbnail {
+          image {
+            ...SanityImage
+          }
+        }
+        _rawThumbnail(resolveReferences: {maxDepth: 10})
+        title
+        _rawText
       }
     }
     servicesForRows: allSanityService(filter: {id: { in: $ids }}) {

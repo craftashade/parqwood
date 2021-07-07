@@ -12,6 +12,14 @@ export const query = graphql`
     frontpage: sanityPage(title: {eq: "Frontpage"}) {
       ...PageInfo
     }
+    serviceCategories: allSanityServiceCategory {
+      nodes {
+        title
+        services {
+          title
+        }
+      }
+    }
     project: sanityProject(id: { eq: $id }) {
       id
       title
