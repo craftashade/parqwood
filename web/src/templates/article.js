@@ -85,6 +85,14 @@ export const query = graphql`
         }
       }
     }
+    serviceCategories: allSanityServiceCategory {
+      nodes {
+        title
+        services {
+          title
+        }
+      }
+    }
     categories: allSanityServiceCategory {
       nodes {
         title
