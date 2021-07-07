@@ -9,9 +9,7 @@ export default {
       name: 'images',
       type: 'array',
       of: [
-        {
-          type: 'illustration',
-        }
+        { type: 'illustrationWithURL' }
       ]
     },
   ],
