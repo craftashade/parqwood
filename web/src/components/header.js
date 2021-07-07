@@ -111,7 +111,7 @@ const Megamenu = ({ selected, data }) => {
           let firstCol = services.slice(0, slicer)
           let secondCol = services.slice(slicer, services.length)
           return (
-            <div className={`w-1/3${index ? ' ml-5' : ''}`}>
+            <div className={`${index ? 'w-1/3 ml-5' : 'w-1/3'}`}>
               <div className="rounded-3xl overflow-hidden">
                 <div style={{
                   background: `center / cover no-repeat url(${imageUrl})`,
