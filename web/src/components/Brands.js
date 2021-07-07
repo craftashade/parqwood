@@ -77,7 +77,7 @@ const Brands = ({ images }) => {
           >
             {
               images.map(image => {
-                return <div className="text-center">{maybeImage(image.image)}</div>
+                return <a target="_blank" href={image.url} className="text-center">{maybeImage(image.image.image)}</a>
               })
             }
           </Carousel>

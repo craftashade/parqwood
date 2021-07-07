@@ -23,7 +23,7 @@ export default function ServiceCategory({ data }) {
           </div>
         </div>
       </div>
-      <Services rows={data.servicesForRows.nodes.map(node => {
+      <Services rows={data.serviceCategory.services.map(node => {
         const { title, _rawText, _rawThumbnail } = node
         return {
           title,

@@ -27,6 +27,14 @@ export default {
       name: 'transparentBg',
       title: 'Use transparent background',
       type: 'boolean',
+    },
+    {
+      name: 'faces',
+      title: 'Faces',
+      type: 'array',
+      of: [
+        { type: 'face' }
+      ]
     }
   ],
   preview: {

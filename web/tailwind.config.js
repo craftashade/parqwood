@@ -15,6 +15,7 @@ module.exports = {
         grey: "#CFD9E1",
         "light-grey": "#EEEEEE",
         airbnb: "#FA565D",
+        pink: "#EE8079",
         f6: "#F6F6F6"
       }
     },
