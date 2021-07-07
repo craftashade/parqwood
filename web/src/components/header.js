@@ -105,7 +105,7 @@ const Megamenu = ({ selected, data }) => {
             if (image.asset) imageUrl = image.asset.url
             imageAlt = image.alt
           }
-          const services = data.services.nodes.filter(s => s.serviceCategory.title === cat)
+          const services = data.serviceCategories.nodes.filter(s => s.title === cat)[0].services
           let slicer = 6
           if (services.length > 12) slicer = Math.ceil(services.length / 2)
           let firstCol = services.slice(0, slicer)
