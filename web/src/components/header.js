@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CTALink from "./CTALink";
 import Logo from "../images/cas-logo.svg"
 import { getHref } from "../lib/helpers"
@@ -10,6 +10,10 @@ import { Link } from "gatsby"
 const categories = ['Services', 'Projects']
 const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
+
+const CloseIcon = () => (
+  <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+)
 
 const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCTA, data }) => {
   const [openService, toggleOpenService] = useCycle(false, true)
@@ -177,6 +181,18 @@ const ChevronLine = () => (
 const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false }) => {
   const [megamenu, setMegamenu] = useState('')
   const [isOpen, toggleOpen] = useCycle(false, true);
+  const [showBanner, setShowBanner] = useState(true)
+
+  const { banner } = data.site
+
+  useEffect(() => {
+    if (typeof localStorage === 'undefined') return
+    if (banner) {
+      if (localStorage.getItem('casBannerMessage') === banner.message) {
+        setBanner(false)
+      }
+    }
+  }, [])
 
   let navActionClass = "mx-auto lg:mx-0 rounded-xl mt-4 lg:mt-0 py-4 px-6 border-2 hover:bg-white hover:text-black";
 
@@ -199,6 +215,28 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
 
   return (
     <>
+      {
+        banner && <div className="w-full bg-cas lg:text-center p-2 text-white text-xs">
+          <div className="flex justify-center">
+            <div>
+              {banner.message}
+              {
+                banner.page ?
+                <Link to={`/${banner.page.slug.current}`}>
+                  <span className="font-bold ml-2 inline">Read More</span>
+                </Link> :
+                  banner.url ?
+                  <a href={banner.url} target="_blank" className="font-bold ml-4 inline">Read More</a> : 
+                    null
+              }
+            </div>
+            <button role="button" className="lg:absolute lg:right-0 lg:mr-4" onClick={() => {
+              setBanner(false)
+              localStorage.setItem('casBannerMessage', banner.message)
+            }}><CloseIcon /></button>
+          </div>
+        </div>
+      }
       <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
