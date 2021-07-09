@@ -28,6 +28,10 @@
   @apply text-left m-0 mx-auto left-0 right-0;
 }
 
+.carousel-root.slider-dots-top .control-dots {
+  @apply top-0;
+}
+
 @media (min-width: 640px) {
   .carousel-root.dots-left .carousel .control-dots {
     max-width: 640px;
