@@ -20,6 +20,17 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
     }
 
     navs: allSanityNavigationMenu {
