@@ -1,6 +1,7 @@
 :root {
   /* Brand colors */
-  --brand-primary: #20215B;
-  --brand-primary--inverted: #ffffff;
+  --brand-primary: color(var(--main-navigation-color) contrast(80%));
   --main-navigation-color: #20215B;
+  --main-navigation-color--inverted: #ffffff;
+  --main-navigation-color--inverted-muted: #ffffff;
 }
