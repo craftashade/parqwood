@@ -13,6 +13,11 @@ export default {
             of: [
                 {type: 'quote'}
             ]
+        },
+        {
+            name: 'link',
+            type: 'url',
+            title: 'Link to more reviews'
         }
     ],
     preview: {
