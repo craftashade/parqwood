@@ -1,6 +1,7 @@
 import React from "react";
 import PortableText from "./portableText";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
+import { toPlainText } from "../lib/helpers"
 
 const Quotes = ({ quotes, link }) => {
   return (
@@ -34,7 +35,7 @@ const Quotes = ({ quotes, link }) => {
           <div class="container px-5 pt-24 mx-auto lg:w-full w-11/12 mx-auto">
             <div class="xl:w-2/3 w-full mx-auto text-center">
               <p class="leading-snug text-3xl font-bold">
-                <PortableText blocks={q.content} />
+                &ldquo;{toPlainText(q.content)}&rdquo;
               </p>
               <h2 class="text-lg italic mt-8">{q.person}</h2>
             </div>
