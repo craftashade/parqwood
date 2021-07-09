@@ -58,5 +58,10 @@ export default {
       title: 'Contact form submission destination',
       description: 'Enter an email address or a secret token (token preferred)',
     },
+    {
+      name: 'banner',
+      type: 'banner',
+      title: 'Site-wide banner',
+    },
   ]
 }
