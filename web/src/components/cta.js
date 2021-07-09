@@ -16,10 +16,10 @@ const CTA = ({ label, title, body, cta, transparentBg, faces }) => (
         </div>
         <div className={`lg:w-1/2 w-full sm:w-auto mt-4 lg:mt-0 ${faces && faces.length ? 'text-center' : 'text-right'}`}>
           {faces && faces.length ? <p className="font-bold text-2xl mb-6">Our Experts</p> : <CTALink {...cta} kind="button" buttonActionClass={`bg-cas w-full sm:w-auto text-white text-sm font-medium px-16 py-4 rounded-2xl hover:bg-white hover:text-cas font-semibold ${transparentBg ? 'border border-cas' : ''}`}></CTALink>}
-          <div className="grid grid-cols-2 px-4 lg:px-10 lg:grid-cols-4">
+          <div className={`grid ${faces.length === 1 ? 'grid-cols-1' : 'grid-cols-2'} px-4 lg:px-10 ${faces.length >= 4 ? 'lg:grid-cols-4' : faces.length === 3 ? 'lg:grid-cols-3' : faces.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
             {faces && faces.map(face => {
               return <div>
-                <div>{maybeImage(face.image, { height: 72, width: 72, objectFit: "fill" }, "rounded-full overflow-hidden")}</div>
+                <div>{maybeImage(face.image, { height: 88, width: 88, objectFit: "fill" }, "rounded-full overflow-hidden")}</div>
                 <p className="mt-2 font-bold text-xs">{face.name}</p>
                 <p className="italic text-xs mb-4">{face.role}</p>
               </div>
