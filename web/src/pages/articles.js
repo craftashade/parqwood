@@ -148,12 +148,15 @@ const IndexPage = props => {
     );
   }
 
+  const { title, description, keywords } = site.openGraph || {}
+  const kw = keywords || ""
+
   return (
     <Layout textWhite={false} data={data}>
       <SEO
-        title={site.openGraph.title || site.title || "Missing title"}
-        description={site.openGraph.description || "Missing description"}
-        keywords={site.openGraph.keywords.split(',').map(k => k.trim()) || []}
+        title={title || site.title || "Missing title"}
+        description={description || "Missing description"}
+        keywords={kw.split(',').map(k => k.trim())}
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
