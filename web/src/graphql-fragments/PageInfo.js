@@ -11,5 +11,13 @@ export const PostInfo = graphql`
     breadcrumb
     ctaBlock
     featuresBlock
+    openGraph {
+      description
+      title
+      keywords
+      image {
+        ...SanityImage
+      }
+    }
   }
 `;

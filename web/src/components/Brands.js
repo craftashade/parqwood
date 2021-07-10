@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { maybeImage } from '../lib/helpers'
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css";
@@ -38,7 +38,7 @@ const Brands = ({ images }) => {
             draggable
             focusOnSelect={false}
             infinite={false}
-            itemClass=""
+            itemClass="pr-20"
             keyBoardControl
             minimumTouchDrag={80}
             renderButtonGroupOutside

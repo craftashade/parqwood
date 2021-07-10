@@ -17,6 +17,12 @@ export default {
       validation: Rule => Rule.max(155).warning('Should be under 155 characters')
     },
     {
+      title: 'Keywords',
+      description: 'Enter comma-delimited keywords',
+      name: 'keywords',
+      type: 'string'
+    },
+    {
       title: 'Image',
       description: 'Facebook recommends 1200x630 (will be auto resized)',
       name: 'image',

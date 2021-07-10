@@ -54,6 +54,25 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
     }
 
     navs: allSanityNavigationMenu {

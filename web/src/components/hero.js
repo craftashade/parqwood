@@ -59,8 +59,9 @@ function Hero(props) {
         {slides.length && slides.map(slide => {
           const img = maybeImage(slide);
           return (
-            <div style={{ background: `center / cover no-repeat url('${slide.image.asset.url}')` }} className="img-overlay">
+            <div style={{ background: `center / cover no-repeat url('${slide.image.asset.url}')` }} className="img-overlay relative">
               <img src={slide.image.asset.url} style={{ maxHeight: 1000 }} className="invisible pointer-events-none" />
+              <div className="absolute right-0 bottom-0 text-2xl text-white m-20 hidden lg:block">{slide.image.caption}</div>
             </div>
           )
         })}

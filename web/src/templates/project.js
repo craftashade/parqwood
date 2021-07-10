@@ -49,6 +49,25 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
     }
     navs: allSanityNavigationMenu {
       edges {
@@ -104,8 +123,8 @@ const ProjectTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {project && (
         <SEO
-          title={project.title || "Untitled"}
-          description={project.title}
+          title={`Projects | ${project.title}` || "Untitled"}
+          description={`${project.title} Projects`}
           image={project.thumbnail.image}
         />
       )}

@@ -20,6 +20,33 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
+      openGraph {
+        description
+        title
+        keywords
+        image {
+          ...SanityImage
+        }
+      }
     }
 
     navs: allSanityNavigationMenu {
@@ -124,9 +151,9 @@ const IndexPage = props => {
   return (
     <Layout textWhite={false} data={data}>
       <SEO
-        title={site.title || "Missing title"}
-        description={site.description || "Missing description"}
-        keywords={site.keywords || []}
+        title={site.openGraph.title || site.title || "Missing title"}
+        description={site.openGraph.description || "Missing description"}
+        keywords={site.openGraph.keywords.split(',').map(k => k.trim()) || []}
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>

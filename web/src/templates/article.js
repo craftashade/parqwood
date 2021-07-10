@@ -53,6 +53,14 @@ export const query = graphql`
           name
         }
       }
+      openGraph {
+        description
+        title
+        keywords
+        image {
+          ...SanityImage
+        }
+      }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
@@ -68,6 +76,25 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
     }
     navs: allSanityNavigationMenu {
       edges {
@@ -131,9 +158,10 @@ const ArticleTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {article && (
         <SEO
-          title={article.title || "Untitled"}
-          description={toPlainText(article._rawExcerpt)}
-          image={article.mainImage}
+          title={article.openGraph.title || article.title || "Untitled"}
+          description={article.openGraph.description || toPlainText(article._rawExcerpt)}
+          image={article.openGraph.image || article.mainImage}
+          keywords={article.openGraph.keywords.split(',').map(k => k.trim()) || []}
         />
       )}
 

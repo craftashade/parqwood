@@ -33,6 +33,11 @@ export const query = graphql`
       serviceCategory {
         title
       }
+      thumbnail {
+        image {
+          ...SanityImage
+        }
+      }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
@@ -48,6 +53,25 @@ export const query = graphql`
       mobile
       tel
       email
+      banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
+        message
+        page {
+          ... on SanityRoute {
+            slug {
+              current
+            }
+          }
+        }
+        url
+      }
     }
     navs: allSanityNavigationMenu {
       edges {
@@ -103,9 +127,10 @@ const ServiceTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {service && (
         <SEO
-          title={service.title || "Untitled"}
+          title={`${service.serviceCategory.title} | ${service.title}` || "Untitled"}
           description={toPlainText(service._rawText)}
-          image={service.mainImage}
+          image={service.thumbnail.image}
+          keywords={[service.serviceCategory.title, service.title]}
         />
       )}
 
