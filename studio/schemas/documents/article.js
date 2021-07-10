@@ -65,6 +65,11 @@ export default {
       type: 'bodyPortableText',
       title: 'Body',
     },
+    {
+      name: 'openGraph',
+      type: 'openGraph',
+      description: 'Enter custom open graph values here to override the content above'
+    }
   ],
   orderings: [
     {
