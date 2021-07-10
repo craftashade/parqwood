@@ -189,7 +189,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
     if (typeof localStorage === 'undefined') return
     if (banner) {
       if (localStorage.getItem('casBannerMessage') === banner.message) {
-        setBanner(false)
+        setShowBanner(false)
       }
     }
   }, [])
@@ -217,32 +217,32 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
 
   return (
     <>
-      {
-        banner && <div className="w-full bg-cas lg:text-center p-2 text-white text-xs" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
-          <div className="flex justify-center">
-            <div>
-              {banner.message}
-              {
-                banner.page ?
-                <Link to={`/${banner.page.slug.current}`}>
-                  <span className="font-bold ml-2 inline">Read More</span>
-                </Link> :
-                  banner.url ?
-                  <a href={banner.url} target="_blank" className="font-bold ml-4 inline">Read More</a> : 
-                    null
-              }
-            </div>
-            <button role="button" className="lg:absolute lg:right-0 lg:mr-4" onClick={() => {
-              setBanner(false)
-              localStorage.setItem('casBannerMessage', banner.message)
-            }}><CloseIcon /></button>
-          </div>
-        </div>
-      }
       <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
+        {
+          !isOpen && showBanner && <div className="w-full bg-cas lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
+            <div className="flex justify-center">
+              <div>
+                {banner.message}
+                {
+                  banner.page ?
+                    <Link to={`/${banner.page.slug.current}`}>
+                      <span className="font-bold ml-2 inline">Read More</span>
+                    </Link> :
+                    banner.url ?
+                      <a href={banner.url} target="_blank" className="font-bold ml-4 inline">Read More</a> :
+                      null
+                }
+              </div>
+              <button role="button" className="md:absolute md:right-0 md:mr-4" onClick={() => {
+                setShowBanner(false)
+                localStorage.setItem('casBannerMessage', banner.message)
+              }}><CloseIcon /></button>
+            </div>
+          </div>
+        }
         <div class="container mx-auto flex py-4 flex-row items-center w-11/12 items-">
           <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
             {categories.map(menu => (
