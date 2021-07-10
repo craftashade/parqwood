@@ -210,12 +210,15 @@ const Page = props => {
   const menuItems = page.navMenu && (page.navMenu.items || []);
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
 
+  const { title: ogTitle, description: ogDesc, keywords: ogKw, image: ogImg } = page.openGraph || data.site.openGraph
+
   return (
     <Layout navMenuItems={menuItems} textWhite={!data.route} data={data} absolute={!data.route}>
       <SEO
-        title={pageTitle}
-        description={site.description}
-        keywords={site.keywords}
+        title={ogTitle || pageTitle}
+        description={ogDesc || site.description}
+        keywords={ogKw.split(',').map(k => k.trim()) || site.keywords}
+        image={ogImg}
       />
       <div className="font-body">
         { 
