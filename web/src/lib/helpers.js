@@ -101,7 +101,7 @@ export const maybeImage = (image, imgStyles, classes, maxWidth) => {
   return img;
 };
 
-export const getHref = (item) => {
+export const getHref = (item, external) => {
   if (!item) return "#"
   let link = item.route || item.link || "#";
   if (
@@ -111,7 +111,7 @@ export const getHref = (item) => {
   ) {
     link = item.landingPageRoute.slug.current;
   }
-  if (link.slice(0,1) !== "/") link = "/" + link
+  if (link.slice(0,1) !== "/" && !external) link = "/" + link
   return link
 }
 
