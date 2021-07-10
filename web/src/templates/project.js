@@ -123,8 +123,8 @@ const ProjectTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {project && (
         <SEO
-          title={project.title || "Untitled"}
-          description={project.title}
+          title={`Projects | ${project.title}` || "Untitled"}
+          description={`${project.title} Projects`}
           image={project.thumbnail.image}
         />
       )}
