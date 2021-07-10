@@ -209,10 +209,8 @@ const Page = props => {
 
   const menuItems = page.navMenu && (page.navMenu.items || []);
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
-
   const { title: ogTitle, description: ogDesc, keywords: ogKw, image: ogImg } = page.openGraph || data.site.openGraph
-
-  const kw = ogKw || site.keywords || []
+  const kw = ogKw || site.keywords || ""
 
   return (
     <Layout navMenuItems={menuItems} textWhite={!data.route} data={data} absolute={!data.route}>

@@ -153,15 +153,17 @@ export const query = graphql`
 const ArticleTemplate = props => {
   const { data, errors } = props;
   const article = data && data.article;
+  const { title, description, keywords, image } = article.openGraph || data.site.openGraph
+  const kw = keywords || ""
   return (
     <Layout showNav={true} data={data} textWhite={false}>
       {errors && <SEO title="GraphQL Error" />}
       {article && (
         <SEO
-          title={article.openGraph.title || article.title || "Untitled"}
-          description={article.openGraph.description || toPlainText(article._rawExcerpt)}
-          image={article.openGraph.image || article.mainImage}
-          keywords={article.openGraph.keywords.split(',').map(k => k.trim()) || []}
+          title={title || article.title || "Untitled"}
+          description={description || toPlainText(article._rawExcerpt)}
+          image={image || article.mainImage}
+          keywords={kw.split(',').map(k => k.trim())}
         />
       )}
 
