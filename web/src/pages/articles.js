@@ -42,6 +42,7 @@ export const query = graphql`
       openGraph {
         description
         title
+        keywords
         image {
           ...SanityImage
         }
@@ -152,7 +153,7 @@ const IndexPage = props => {
       <SEO
         title={site.openGraph.title || site.title || "Missing title"}
         description={site.openGraph.description || "Missing description"}
-        keywords={site.openGraph.keywords || []}
+        keywords={site.openGraph.keywords.split(',').map(k => k.trim()) || []}
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
