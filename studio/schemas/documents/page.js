@@ -67,5 +67,10 @@ export default {
       type: 'boolean',
       fieldset: 'options'
     },
+    {
+      name: 'openGraph',
+      type: 'openGraph',
+      description: 'Does not apply to frontpage. Frontpage will get settings from site settings'
+    }
   ],
 }
