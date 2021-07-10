@@ -38,7 +38,7 @@ const Brands = ({ images }) => {
             draggable
             focusOnSelect={false}
             infinite={false}
-            itemClass="pr-20"
+            itemClass="pr-10 lg:pr-20"
             keyBoardControl
             minimumTouchDrag={80}
             renderButtonGroupOutside
@@ -58,7 +58,7 @@ const Brands = ({ images }) => {
                   max: 464,
                   min: 0
                 },
-                items: 2,
+                items: 1,
                 partialVisibilityGutter: 40
               },
               tablet: {
@@ -66,7 +66,7 @@ const Brands = ({ images }) => {
                   max: 1024,
                   min: 464
                 },
-                items: 3,
+                items: 2,
                 partialVisibilityGutter: 30
               }
             }}

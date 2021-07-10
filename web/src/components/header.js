@@ -68,13 +68,13 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
             {
               socials.length && 
               <div className="flex flex-row items-center justify-center">
-                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Instagram"))} target="_blank">
+                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Instagram"), true)} target="_blank">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                   </svg>
                 </a>
-                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Facebook"))} target="_blank">
+                <a className="py-6 px-4" href={getHref(socials.find(s => s.title === "Facebook"), true)} target="_blank">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
@@ -189,7 +189,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
     if (typeof localStorage === 'undefined') return
     if (banner) {
       if (localStorage.getItem('casBannerMessage') === banner.message) {
-        setBanner(false)
+        setShowBanner(false)
       }
     }
   }, [])
@@ -217,32 +217,32 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
 
   return (
     <>
-      {
-        banner && <div className="w-full bg-cas lg:text-center p-2 text-white text-xs" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
-          <div className="flex justify-center">
-            <div>
-              {banner.message}
-              {
-                banner.page ?
-                <Link to={`/${banner.page.slug.current}`}>
-                  <span className="font-bold ml-2 inline">Read More</span>
-                </Link> :
-                  banner.url ?
-                  <a href={banner.url} target="_blank" className="font-bold ml-4 inline">Read More</a> : 
-                    null
-              }
-            </div>
-            <button role="button" className="lg:absolute lg:right-0 lg:mr-4" onClick={() => {
-              setBanner(false)
-              localStorage.setItem('casBannerMessage', banner.message)
-            }}><CloseIcon /></button>
-          </div>
-        </div>
-      }
       <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
+        {
+          !isOpen && showBanner && <div className="w-full bg-cas lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
+            <div className="flex justify-center">
+              <div>
+                {banner.message}
+                {
+                  banner.page ?
+                    <Link to={`/${banner.page.slug.current}`}>
+                      <span className="font-bold ml-2 inline">Read More</span>
+                    </Link> :
+                    banner.url ?
+                      <a href={banner.url} target="_blank" className="font-bold ml-4 inline">Read More</a> :
+                      null
+                }
+              </div>
+              <button role="button" className="md:absolute md:right-0 md:mr-4" onClick={() => {
+                setShowBanner(false)
+                localStorage.setItem('casBannerMessage', banner.message)
+              }}><CloseIcon /></button>
+            </div>
+          </div>
+        }
         <div class="container mx-auto flex py-4 flex-row items-center w-11/12 items-">
           <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
             {categories.map(menu => (
@@ -270,7 +270,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
                     </li>
                   ))}
                   <li className="mr-6">
-                    <a className="" href={getHref(socials.find(s => s.title === "Instagram"))} target="_blank">
+                    <a className="" href={getHref(socials.find(s => s.title === "Instagram"), true)} target="_blank">
                       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
@@ -278,7 +278,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
                     </a>
                   </li>
                   <li className="mr-6">
-                    <a className="" href={getHref(socials.find(s => s.title === "Facebook"))} target="_blank">
+                    <a className="" href={getHref(socials.find(s => s.title === "Facebook"), true)} target="_blank">
                       <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                       </svg>
