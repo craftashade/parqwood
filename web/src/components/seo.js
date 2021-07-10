@@ -119,6 +119,7 @@ const detailsQuery = graphql`
       openGraph {
         title
         description
+        keywords
       }
     }
   }
