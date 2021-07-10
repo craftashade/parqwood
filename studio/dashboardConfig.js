@@ -1,6 +1,11 @@
 export default {
   widgets: [
-    {name: 'structure-menu'},
+    { name: 'structure-menu' },
+    {
+      name: 'document-list',
+      options: { title: 'Recent articles', order: '_createdAt desc', types: ['article'] },
+      layout: { width: 'medium' }
+    },
     {
       name: 'project-info',
       options: {
@@ -26,17 +31,8 @@ export default {
               ]
             }
           }
-        ],
-        data: [
-          { title: 'Frontend', value: 'https://craftashade.com', category: 'apps'}
         ]
       }
-    },
-    {name: 'project-users', layout: {height: 'auto'}},
-    {
-      name: 'document-list',
-      options: {title: 'Recent articles', order: '_createdAt desc', types: ['article']},
-      layout: {width: 'medium'}
     }
   ]
 }
