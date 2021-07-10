@@ -142,9 +142,10 @@ const ServiceCategoryTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {serviceCategory && (
         <SEO
-          title={serviceCategory.title || "Untitled"}
+          title={`Service | ${serviceCategory.title}` || "Untitled"}
           description={serviceCategory.description}
           image={serviceCategory.image.image}
+          keywords={[serviceCategory.title, "service"]}
         />
       )}
 
