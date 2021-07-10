@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../containers/layout";
 import SEO from "../components/seo";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Container from "../components/container";
 
 export const query = graphql`
@@ -108,7 +108,7 @@ const NotFoundPage = (props) => {
         <div className="font-body my-24">
           <h1 className="text-5xl text-center font-bold text-cas mb-12">Page not found</h1>
           <div className="w-full text-center">
-            <a href="/" target="_blank" className="text-cas border border-cas rounded-2xl px-12 py-4 font-bold text-sm hover:bg-cas hover:text-white">Back to Home</a>
+            <Link to="/" className="text-cas border border-cas rounded-2xl px-12 py-4 font-bold text-sm hover:bg-cas hover:text-white">Back to Home</Link>
           </div>
         </div>
       </Container>
