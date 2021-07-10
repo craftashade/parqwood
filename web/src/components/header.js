@@ -183,7 +183,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [showBanner, setShowBanner] = useState(true)
 
-  const { banner } = data.site || {}
+  const { banner } = data ? data.site : {}
 
   useEffect(() => {
     if (typeof localStorage === 'undefined') return
