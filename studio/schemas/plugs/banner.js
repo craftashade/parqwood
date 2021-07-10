@@ -3,6 +3,11 @@ export default {
   name: 'banner',
   fields: [
     {
+      type: 'color',
+      name: 'color',
+      title: 'Background Color'
+    },
+    {
       type: 'string',
       name: 'message'
     },

@@ -49,6 +49,14 @@ export const query = graphql`
       tel
       email
       banner {
+        color {
+          rgb {
+            r
+            g
+            b
+            a
+          }
+        }
         message
         page {
           ... on SanityRoute {

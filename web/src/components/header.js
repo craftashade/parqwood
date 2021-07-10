@@ -213,10 +213,12 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
     if (navMenuItems) navMenuItems = navMenuItems.node.items
   }
 
+  const { r, g, b, a } = banner.color.rgb
+
   return (
     <>
       {
-        banner && <div className="w-full bg-cas lg:text-center p-2 text-white text-xs">
+        banner && <div className="w-full bg-cas lg:text-center p-2 text-white text-xs" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
           <div className="flex justify-center">
             <div>
               {banner.message}
