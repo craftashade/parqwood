@@ -6,7 +6,7 @@ import { toPlainText } from "../lib/helpers"
 const Quotes = ({ quotes, link }) => {
   return (
     <section class="text-cas body-font mb-24">
-      <Carousel showStatus={false} showThumbs={false} className="slider-dots-top" renderIndicator={(onClickHandler, isSelected, index, label) => {
+      <Carousel dynamicHeight={true} showStatus={false} showThumbs={false} className="slider-dots-top" renderIndicator={(onClickHandler, isSelected, index, label) => {
         const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6"
         if (isSelected) {
           return (
@@ -44,7 +44,7 @@ const Quotes = ({ quotes, link }) => {
       </Carousel>
       { 
         link &&
-        <div className="w-full text-center">
+        <div className="w-full text-center mt-8">
           <a href={link} target="_blank" className="border border-cas rounded-2xl px-12 py-4 font-bold text-sm hover:bg-cas hover:text-white">All reviews</a>
         </div>
       }
