@@ -104,6 +104,10 @@
   align-items: center;
 }
 
+.underline-links a {
+  @apply border-b border-cas;
+}
+
 /*
 blockquote {
   font-family: monospace;
