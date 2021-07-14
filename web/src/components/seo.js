@@ -89,6 +89,10 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradie
               }
             `}</style>
             )}
+            {
+              data.site.favicon && data.site.favicon.asset && data.site.favicon.asset.url &&
+              <link rel="icon" type="image/png" href={data.site.favicon.asset.url} sizes="16x16" />
+            }
           </Helmet>
         );
       }}
@@ -116,6 +120,11 @@ const detailsQuery = graphql`
   query DefaultSEOQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
+      favicon {
+        asset {
+          url
+        }
+      }
       openGraph {
         title
         description
