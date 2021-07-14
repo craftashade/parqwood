@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 
+const buttonOptions = {
+  facebook: "913015825427987", // Facebook page ID
+  facebook_chat: true, // Facebook customer chat
+  whatsapp: "+65 88836588", // WhatsApp number
+  call_to_action: "Contact us", // Call to action
+  button_color: "#FF318E", // Color of button
+  position: "right", // Position may be 'right' or 'left'
+  order: "facebook,whatsapp", // Order of buttons
+};
+
 // https://ogp.me
 
 function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradient }) {
+  useLayoutEffect(() => {
+    const proto = document.location.protocol, 
+      host = "getbutton.io", 
+      url = proto + "//static." + host
+    const s = document.createElement('script')
+    s.type = 'text/javascript'
+    s.async = true
+    s.src = url + '/widget-send-button/js/init.js'
+    s.onload = function () {
+      WhWidgetSendButton.init(host, proto, buttonOptions)
+    }
+    document.body.appendChild(s);
+
+    return () => {
+      document.body.removeChild(s);
+    }
+  }, [])
   return (
     <StaticQuery
       query={detailsQuery}
@@ -18,8 +45,8 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradie
         const metaImage =
           image && image.asset
             ? imageUrlFor(buildImageObj(image))
-                .width(1200)
-                .url()
+              .width(1200)
+              .url()
             : "";
 
         const pageTitle = title || siteTitle;
@@ -75,9 +102,9 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradie
               .concat(
                 keywords && keywords.length > 0
                   ? {
-                      name: "keywords",
-                      content: keywords.join(", ")
-                    }
+                    name: "keywords",
+                    content: keywords.join(", ")
+                  }
                   : []
               )
               .concat(meta)}
@@ -89,6 +116,10 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradie
               }
             `}</style>
             )}
+            {
+              data.site.favicon && data.site.favicon.asset && data.site.favicon.asset.url &&
+              <link rel="icon" type="image/png" href={data.site.favicon.asset.url} sizes="16x16" />
+            }
           </Helmet>
         );
       }}
@@ -116,6 +147,11 @@ const detailsQuery = graphql`
   query DefaultSEOQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
+      favicon {
+        asset {
+          url
+        }
+      }
       openGraph {
         title
         description

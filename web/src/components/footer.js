@@ -27,7 +27,7 @@ const Footer = ({ data }) => {
 
   return (
     <footer className="text-cas font-body text-lg pb-20 relative" style={{ background: "#F6F6F6", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
-      <div className="p-3 bg-gray-200 absolute rounded-full right-0 bottom-0 m-10 hover:text-gray-200 hover:bg-cas cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Arrow /></div>
+      <div className="p-3 bg-gray-200 absolute rounded-full right-0 bottom-0 mr-6 mb-24 hover:text-gray-200 hover:bg-cas cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Arrow /></div>
       <div className="container px-5 pt-24 pb-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="md:w-1/5 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left w-full">
           <a className="flex title-font font-medium items-center md:justify-start justify-center logo-wrapper-fixed">

@@ -63,7 +63,7 @@ export default function Service({ data }) {
         <div className="lg:flex flex-row text-cas mt-4">
           <h1 className="lg:hidden font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
           <ImageCarousel className="lg:hidden block mb-4" data={data} />
-          <div className="lg:w-1/2 p-mb text-lg">
+          <div className="lg:w-1/2 p-mb text-lg underline-links">
             <h1 className="hidden lg:block font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
             <PortableText blocks={data.service._rawText} />
           </div>
