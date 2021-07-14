@@ -222,7 +222,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
         {
-          !isOpen && showBanner && <div className="w-full bg-cas lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
+          !isOpen && showBanner && !banner.disabled && <div className="w-full bg-cas lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
             <div className="flex justify-center">
               <div>
                 {banner.message}

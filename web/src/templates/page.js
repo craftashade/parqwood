@@ -57,6 +57,7 @@ export const query = graphql`
       email
       emailTo
       banner {
+        disabled
         color {
           rgb {
             r

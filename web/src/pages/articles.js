@@ -21,6 +21,7 @@ export const query = graphql`
       tel
       email
       banner {
+        disabled
         color {
           rgb {
             r
