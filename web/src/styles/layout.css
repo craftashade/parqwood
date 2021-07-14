@@ -105,7 +105,11 @@
 }
 
 .underline-links a {
-  @apply border-b border-cas;
+  @apply border-b-2 border-sunshine;
+}
+
+.underline-links a:hover {
+  @apply text-sunshine;
 }
 
 /*
