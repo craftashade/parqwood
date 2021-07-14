@@ -16,6 +16,11 @@ export default {
       title: 'Title'
     },
     {
+      name: 'favicon',
+      type: 'image',
+      title: 'Favicon'
+    },
+    {
       title: 'Open graph',
       name: 'openGraph',
       description: 'These will be the default meta tags on all pages that have not set their own',
