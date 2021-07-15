@@ -112,6 +112,10 @@
   @apply text-sunshine;
 }
 
+.webkit-none {
+  -webkit-appearance: none;
+}
+
 /*
 blockquote {
   font-family: monospace;

@@ -142,7 +142,7 @@ const ContactForm = ({ text, heading, siteData }) => {
             </div>
             <div className="mb-5">
               <div className="text-lg text-gray-500 mb-2">Select a date</div>
-              <input required type="date" name="date" value={date} onChange={handleChange} min={minDate()} className="p-3 w-full bg-f6 rounded-2xl" />
+              <input required type="date" name="date" value={date} onChange={handleChange} min={minDate()} className="p-3 w-full bg-f6 rounded-2xl webkit-none h-12" />
             </div>
             <div className="mb-5">
               <div className="text-lg text-gray-500 mb-2">Timeslot</div>
@@ -156,7 +156,7 @@ const ContactForm = ({ text, heading, siteData }) => {
             <div className="mb-5">
               <div className="text-lg text-gray-500 mb-2">What services would you like: </div>
               <div className="relative">
-                <select name="service" value={service} onChange={handleChange} className="p-3 w-full bg-f6 rounded-2xl appearance-none">
+                <select name="service" value={service} onChange={handleChange} className="p-3 w-full bg-f6 rounded-2xl appearance-none webkit-none h-12">
                   {serviceSelection.map(s => (<option value={s}>{s}</option>))}
                 </select>
                 <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
