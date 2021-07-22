@@ -21,6 +21,7 @@
     "framer-motion": "^4.1.17",
     "gatsby": "^3.0.4",
     "gatsby-plugin-google-analytics": "^3.0.0",
+    "gatsby-plugin-google-tagmanager": "^3.10.0",
     "gatsby-plugin-image": "^1.0.1",
     "gatsby-plugin-postcss": "^4.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
