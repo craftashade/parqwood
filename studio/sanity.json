@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "Craft A Shade Website"
+    "name": "Parqwood Website"
   },
   "api": {
-    "projectId": "gfx99q26",
+    "projectId": "qukf7irm",
     "dataset": "production"
   },
   "plugins": [
