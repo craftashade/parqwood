@@ -1,4 +1,4 @@
-# Craft A Shade Studio + Frond End
+# Parqwood Studio + Frond End
 
 ## Technologies
 
@@ -17,7 +17,7 @@
 
 ## Enable real-time content preview on development
 
-1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/gfx99q26/settings/api) and create a token with read rights.
+1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/qukf7irm/settings/api) and create a token with read rights.
 2. Rename `.env.development.template` to `.env.development` and paste in the token: `SANITY_READ_TOKEN="yourTokenHere"`.
 3. Restart the development server (`ctrl + C` and `npm run dev`).
 
