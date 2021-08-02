@@ -6,13 +6,14 @@ import CTA from "./cta";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from "gatsby"
+import Spacer from "./BreadcrumbSpacer";
 
 const ImageCarousel = ({ data, className }) => (
   <div className={className}>
     {
       data.service.images.length ?
       <Carousel showStatus={false} showThumbs={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
-          const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-white"
+          const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-bg"
           if (isSelected) {
             return (
               <li
@@ -56,15 +57,15 @@ export default function Service({ data }) {
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
         <div className="my-8 text-gray-400 text-sm">
-          <Link to="/">Home</Link>&nbsp;>&nbsp;
-          <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link>&nbsp;>&nbsp;
+          <Link to="/">Home</Link><Spacer />
+          <Link to={`/${slugify(data.service.serviceCategory.title)}`}>{data.service.serviceCategory.title}</Link><Spacer />
           <span className="font-semibold">{data.service.title}</span>
         </div>
-        <div className="lg:flex flex-row text-cas mt-4">
-          <h1 className="lg:hidden font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
+        <div className="lg:flex flex-row text-primary mt-4">
+          <h1 className="lg:hidden font-bold text-3xl lg:text-5xl text-primary">{data.service.title}</h1>
           <ImageCarousel className="lg:hidden block mb-4" data={data} />
           <div className="lg:w-1/2 p-mb text-lg underline-links">
-            <h1 className="hidden lg:block font-bold text-3xl lg:text-5xl text-cas">{data.service.title}</h1>
+            <h1 className="hidden lg:block font-bold text-3xl lg:text-5xl text-primary">{data.service.title}</h1>
             <PortableText blocks={data.service._rawText} />
           </div>
           <ImageCarousel className="hidden lg:block lg:w-1/2" data={data} />
