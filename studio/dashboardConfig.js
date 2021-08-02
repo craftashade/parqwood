@@ -17,16 +17,16 @@ export default {
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
                 {
-                  buildHookId: '60a9c3588533be55fa23c9df',
+                  buildHookId: '610520c6f1ddb0ca86620f9e',
                   title: 'Sanity Studio',
-                  name: 'craft-a-shade-studio',
-                  apiId: '269c6d8b-859c-42aa-84b8-2e7e155af605'
+                  name: 'parqwood-studio',
+                  apiId: '54244bd9-9f5d-454d-bfd6-924807312be7'
                 },
                 {
-                  buildHookId: '60a9c358ceae0771c59444a7',
+                  buildHookId: '6104f88aac082896a234da03',
                   title: 'Website',
-                  name: 'craft-a-shade',
-                  apiId: 'f042e0c0-e245-4801-8c6f-e782a466b681'
+                  name: 'parqwood',
+                  apiId: 'f873f803-7f82-4ba3-b0b6-b5cdad5212e5'
                 }
               ]
             }
