@@ -10,17 +10,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cas: "#20215B",
-        sunshine: "#F6C35C",
-        grey: "#CFD9E1",
-        "light-grey": "#EEEEEE",
-        airbnb: "#FA565D",
-        pink: "#EE8079",
-        f6: "#F6F6F6"
+        primary: "#384337",
+        secondary: "#E1E0D4",
+        bg: "#E5E5E5",
+        link: "#FF7B00",
+        grey: "#999999"
       }
     },
     fontFamily: {
-      'body': ['Source Sans Pro'],
+      'body': ['Overpass'],
     },
   },
   variants: {},

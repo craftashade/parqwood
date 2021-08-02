@@ -45,7 +45,7 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "Source Sans Pro",
+              family: "Overpass",
               variants: [`400`, `700`, `900`],
             },
           ],

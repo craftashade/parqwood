@@ -105,11 +105,11 @@
 }
 
 .underline-links a {
-  @apply border-b-2 border-sunshine;
+  @apply border-b-2 border-link;
 }
 
 .underline-links a:hover {
-  @apply text-sunshine;
+  @apply text-link;
 }
 
 .webkit-none {
