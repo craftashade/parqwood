@@ -45,6 +45,8 @@ export default {
         { type: 'textParagraph' },
         { type: 'contactForm' },
         { type: 'brands' },
+        { type: 'heading' },
+        { type: 'imageWithSideContent' },
       ],
     },
     {
