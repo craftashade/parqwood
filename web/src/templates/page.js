@@ -14,10 +14,13 @@ import FullWidthImage from "../components/FullWidthImage"
 import TextParagraph from "../components/TextParagraph"
 import ContactForm from "../components/ContactForm"
 import Brands from "../components/Brands"
+import Heading from "../components/Heading"
+import ImageWithSideContent from "../components/ImageWithSideContent"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import Spacer from "../components/BreadcrumbSpacer";
 
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
@@ -187,6 +190,13 @@ const Page = props => {
         case "brands":
           el = <Brands key={c._key} {...c} />;
           break;
+        case "heading":
+          el = <Heading key={c._key} {...c} />;
+          break;
+        case "imageWithSideContent":
+          console.log("content: ", content)
+          el = <ImageWithSideContent key={c._key} {...c} />;
+          break;
         case "articles":
           // el = <div>articles"</div>;
           break;
@@ -214,7 +224,7 @@ const Page = props => {
   const kw = ogKw || site.keywords || ""
 
   return (
-    <Layout navMenuItems={menuItems} textWhite={!data.route} data={data} absolute={!data.route}>
+    <Layout navMenuItems={menuItems} textWhite={false} data={data} absolute={false}>
       <SEO
         title={ogTitle || pageTitle}
         description={ogDesc || site.description}
@@ -224,20 +234,24 @@ const Page = props => {
       <div className="font-body">
         { 
           page && page.breadcrumb && page.title &&
-          <div className="my-8 text-gray-400 text-sm container mx-auto lg:w-5/6 w-11/12">
-            <Link to="/">Home</Link>&nbsp;>&nbsp;<span className="font-semibold">{page.title}</span>
+          <div className="my-8 text-grey text-sm container mx-auto lg:w-5/6 w-11/12">
+            <Link to="/">Home</Link><Spacer /><span className="font-semibold">{page.title}</span>
           </div>
         }
         {content}
         {
           data.route && 
           page.ctaBlock && 
-          <CTA {...(data.frontpage ? data.frontpage._rawContent.find(c => c._type === 'ctaPlug') : [])} />
+          data.frontpage &&
+          data.frontpage._rawContent &&
+          <CTA {...(data.frontpage._rawContent.find(c => c._type === 'ctaPlug'))} />
         }
         {
           data.route &&
           page.featuresBlock && 
-          <Features {...(data.frontpage ? data.frontpage._rawContent.find(c => c._type === 'features') : [])}  />
+          data.frontpage &&
+          data.frontpage._rawContent &&
+          <Features {...(data.frontpage._rawContent.find(c => c._type === 'features'))}  />
         }
       </div>
     </Layout>
