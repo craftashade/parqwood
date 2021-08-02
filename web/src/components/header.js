@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CTALink from "./CTALink";
-import Logo from "../images/cas-logo.svg"
+import Logo from "../images/logo.svg"
 import { getHref } from "../lib/helpers"
 import { maybeIllustration, slugify } from "../lib/helpers"
 import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 import { Link } from "gatsby"
 
-const categories = ['Services', 'Projects']
+const categories = ["Services", "Projects"]
 const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
@@ -30,7 +30,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
       initial={false}
       animate={isOpen ? "open" : "closed"}
     >
-      <motion.div className="absolute top-0 right-0 w-full h-screen bg-white z-10" variants={menu}>
+      <motion.div className="absolute top-0 right-0 w-full h-screen bg-bg z-10" variants={menu}>
         <div className="pt-24">
           <ul>
             {categories.map((i, index) => {
@@ -84,7 +84,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
             { 
               headerCTA.length && 
               <div className="mb-4 text-center">
-                <CTALink {...headerCTA[0]} buttonActionClass="border-2 rounded-2xl py-3 px-8 border-cas w-11/12 text-sm font-semibold" />
+                <CTALink {...headerCTA[0]} buttonActionClass="border-2 rounded-2xl py-3 px-8 border-primary w-11/12 text-sm font-semibold" />
               </div>
             }
           </ul>
@@ -97,7 +97,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
 
 const Megamenu = ({ selected, data }) => {
   return (
-    <div className="container mx-auto p-5 text-cas">
+    <div className="container mx-auto p-5 text-primary">
       <h2 className="font-bold text-xl mb-5">{selected}</h2>
       <div className="flex flex-row">
         {selected === 'Services' && serviceCategoriesToShow.map((cat, index) => {
@@ -194,7 +194,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
     }
   }, [])
 
-  let navActionClass = "mx-auto lg:mx-0 rounded-xl mt-4 lg:mt-0 py-4 px-6 border-2 hover:bg-white hover:text-black";
+  let navActionClass = "mx-auto lg:mx-0 rounded-xl mt-4 lg:mt-0 py-4 px-6 border-2 hover:bg-bg hover:text-black";
 
   let navContentClass =
     "w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 p-4 lg:p-0 z-20";
@@ -217,12 +217,12 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
 
   return (
     <>
-      <div className={`font-body absolute w-full bg-white pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
+      <div className={`font-body absolute w-full bg-bg pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
-      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-cas'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
+      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-primary'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
         {
-          !isOpen && showBanner && !banner.disabled && <div className="w-full bg-cas lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
+          !isOpen && banner && showBanner && !banner.disabled && <div className="w-full bg-primary lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
             <div className="flex justify-center">
               <div>
                 {banner.message}
@@ -244,26 +244,24 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
           </div>
         }
         <div class="container mx-auto flex py-4 flex-row items-center w-11/12 items-">
-          <nav class="lg:w-2/5 flex-wrap items-center text-base lg:ml-auto z-10 hidden lg:flex">
-            {categories.map(menu => (
-              <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
-                <span>{menu}</span>
-                <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
-                  <Chevron />
-                </div>
-              </div>
-            ))}
-          </nav>
           <div className="block lg:hidden ml-auto">
             <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} data={data} />
           </div>
-          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-0 z-10 logo-wrapper" href="/">
+          <a class="flex order-first lg:order-none lg:w-1/6 title-font font-medium items-center lg:items-center lg:justify-center mb-0 z-10 logo-wrapper" href="/">
             <Logo />
           </a>
-          <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+          <nav class="lg:w-5/6 inline-flex lg:justify-end ml-5 lg:ml-0">
             {showNav && navMenuItems && (
               <div className={navContentClass} id="nav-content">
                 <ul className="list-reset lg:flex justify-end flex-1 items-center">
+                  {/* {categories.map(menu => (
+                    <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
+                      <span>{menu}</span>
+                      <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
+                        <Chevron />
+                      </div>
+                    </div>
+                  ))} */}
                   {navMenuItems.map(i => (
                     <li className="mr-6">
                       <CTALink {...i} buttonActionClass={navActionClass} />
@@ -284,11 +282,11 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
                       </svg>
                     </a>
                   </li>
-                  {headerCTA.length ? <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-white hover:bg-white hover:text-cas' : 'border-cas hover:bg-cas hover:text-white'}`} /> : <></>}
+                  {headerCTA.length ? <CTALink {...headerCTA[0]} buttonActionClass={`border-2 rounded-2xl py-3 px-8 ${(textWhite && !megamenu) ? 'border-secondary hover:bg-bg hover:text-primary' : 'border-primary hover:bg-primary hover:text-white'}`} /> : <></>}
                 </ul>
               </div>
             )}
-          </div>
+          </nav>
         </div>
       </header>
     </>

@@ -22,7 +22,7 @@ const CustomButtonGroupAsArrows = ({ next, previous, ...rest }) => {
 
 const Brands = ({ images }) => {
   return (
-    <section class="text-cas mb-24">
+    <section class="text-primary mb-24">
       <div class="container px-5 mx-auto">
         <h1 class="sm:text-4xl text-3xl font-bold mb-8">Our Brands</h1>
         <div className="overflow-visible relative">

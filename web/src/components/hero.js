@@ -32,7 +32,7 @@ function Hero(props) {
   return (
     <section class="relative">
       <Carousel showStatus={false} showThumbs={false} className="dots-left hidden lg:block" renderIndicator={(onClickHandler, isSelected, index, label) => {
-        const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-white"
+        const indicatorClasses = "inline-block h-2 mr-2 w-10 rounded mt-8 mb-6 bg-bg"
         if (isSelected) {
           return (
             <li
@@ -73,7 +73,7 @@ function Hero(props) {
           <p class="mb-8 leading-relaxed text-lg">
             <PortableText blocks={tagline} />
           </p>
-          <CTALink {...cta} buttonActionClass="bg-airbnb py-3 px-10 focus:outline-none hover:bg-white rounded-xl text-sm hover:text-airbnb font-semibold"></CTALink>
+          <CTALink {...cta} buttonActionClass="bg-airbnb py-3 px-10 focus:outline-none hover:bg-bg rounded-xl text-sm hover:text-airbnb font-semibold"></CTALink>
         </div>
         <div class="lg:max-w-lg lg:w-full xl:w-1/2 md:w-1/3 w-5/6 hidden lg:block">
         </div>

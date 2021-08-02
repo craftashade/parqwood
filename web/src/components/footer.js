@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import Logo from "../images/cas-logo.svg"
+import Logo from "../images/logo.svg"
 import PortableText from "./portableText";
 import { getHref } from "../lib/helpers"
 
@@ -26,8 +26,8 @@ const Footer = ({ data }) => {
   }
 
   return (
-    <footer className="text-cas font-body text-lg pb-20 relative" style={{ background: "#F6F6F6", borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
-      <div className="p-3 bg-gray-200 absolute rounded-full right-0 bottom-0 mr-6 mb-24 hover:text-gray-200 hover:bg-cas cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Arrow /></div>
+    <footer className="text-primary font-body text-lg pb-20 relative bg-secondary" style={{ borderTopRightRadius: 24, borderTopLeftRadius: 24 }}>
+      <div className="p-3 bg-gray-200 absolute rounded-full right-0 bottom-0 mr-6 mb-24 hover:text-gray-200 hover:bg-primary cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Arrow /></div>
       <div className="container px-5 pt-24 pb-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="md:w-1/5 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left w-full">
           <a className="flex title-font font-medium items-center md:justify-start justify-center logo-wrapper-fixed">
@@ -35,13 +35,13 @@ const Footer = ({ data }) => {
           </a>
           <p className="mt-6">Follow us on</p>
           <div className="mt-2 flex justify-center lg:justify-start">
-            <a className="bg-cas text-white p-2 mr-2 rounded-full border border-cas hover:text-cas hover:bg-white" href={getHref(socials.find(s => s.title === "Instagram"), true)} target="_blank">
+            <a className="bg-primary text-white p-2 mr-2 rounded-full border border-primary hover:text-primary hover:bg-bg" href={getHref(socials.find(s => s.title === "Instagram"), true)} target="_blank">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
               </svg>
             </a>
-            <a className="bg-cas text-white p-2 lg:mr-2 rounded-full border border-cas hover:text-cas hover:bg-white" href={getHref(socials.find(s => s.title === "Facebook"), true)} target="_blank">
+            <a className="bg-primary text-white p-2 lg:mr-2 rounded-full border border-primary hover:text-primary hover:bg-bg" href={getHref(socials.find(s => s.title === "Facebook"), true)} target="_blank">
               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
               </svg>
@@ -103,7 +103,7 @@ const Footer = ({ data }) => {
       </div>
       <div className="bg-transparent lg:-mt-8">
         <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-          <p className="text-cas text-center sm:text-left">© Craft a Shade Pte Ltd</p>
+          <p className="text-primary text-center sm:text-left">© Parqwood Pte Ltd</p>
         </div>
       </div>
     </footer>

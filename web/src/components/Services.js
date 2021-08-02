@@ -2,7 +2,7 @@ import React from "react";
 import { maybeIllustration, maybeImage, toPlainText } from "../lib/helpers";
 
 const Services = ({ title, text, rows }) => (
-  <section class="text-cas">
+  <section class="text-primary">
     <div class="container px-5 py-24 mx-auto">
       { text && title ? 
         <div class="text-center mb-16">
@@ -12,7 +12,7 @@ const Services = ({ title, text, rows }) => (
       }
 
       <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
-        {rows.map(row => {
+        {rows && rows.map(row => {
           const { text, title, icon, illustration, url } = row
           const iconSet = maybeImage(icon)
           const illustrationSet = maybeIllustration(illustration)
@@ -40,7 +40,7 @@ const Services = ({ title, text, rows }) => (
                   <div class="text-base leading-relaxed mt-2 fixed-service-text-height">
                     { toPlainText(text) }
                   </div>
-                  <a href={url} class="rounded-xl border border-cas w-full p-4 block mt-4 text-center hover:bg-cas hover:text-white font-bold text-sm">Find Out More</a>
+                  <a href={url} class="rounded-xl border border-primary w-full p-4 block mt-4 text-center hover:bg-primary hover:text-white font-bold text-sm">Find Out More</a>
                 </div>
               </div>
             </div>

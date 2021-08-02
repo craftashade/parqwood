@@ -44,19 +44,21 @@ class Layout extends React.Component {
     const { scrolled } = this.state;
     return (
       <SimpleReactLightbox>
-        <Header
-          navMenuItems={navMenuItems}
-          siteTitle={siteTitle}
-          onHideNav={onHideNav}
-          onShowNav={onShowNav}
-          showNav={showNav}
-          scrolled={scrolled}
-          textWhite={textWhite}
-          data={data}
-          absolute={absolute}
-        />
-        <>{children}</>
-        <Footer siteTitle={siteTitle} data={data} />
+        <div className="bg-bg">
+          <Header
+            navMenuItems={navMenuItems}
+            siteTitle={siteTitle}
+            onHideNav={onHideNav}
+            onShowNav={onShowNav}
+            showNav={showNav}
+            scrolled={scrolled}
+            textWhite={textWhite}
+            data={data}
+            absolute={absolute}
+          />
+          <>{children}</>
+          <Footer siteTitle={siteTitle} data={data} />
+        </div>
       </SimpleReactLightbox>
     );
   }

@@ -105,7 +105,7 @@ const ContactForm = ({ text, heading, siteData }) => {
     }
   }
   return (
-    <section className="container mx-auto my-8 lg:w-5/6 text-cas w-11/12" id="appointment">
+    <section className="container mx-auto my-8 lg:w-5/6 text-primary w-11/12" id="appointment">
       <div className="lg:flex flex-row items-center mb-6 lg:mb-0">
         <div className="lg:w-2/3">
           {heading && <h1 className="lg:text-5xl font-bold mb-4 leading-tight text-3xl">{heading}</h1>}
@@ -119,7 +119,7 @@ const ContactForm = ({ text, heading, siteData }) => {
             siteData && 
             <>
               <PortableText blocks={siteData._rawAddress} />
-              {siteData.addressLink && <a href={siteData.addressLink} target="_blank" className="text-airbnb text-sm font-semibold">View on Google Maps</a>}
+              {siteData.addressLink && <a href={siteData.addressLink} target="_blank" className="text-link text-sm font-semibold">View on Google Maps</a>}
             </>
           }
         </div>
@@ -132,31 +132,31 @@ const ContactForm = ({ text, heading, siteData }) => {
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Appointment Type</div>
+              <div className="text-lg text-grey mb-2">Appointment Type</div>
               <div className="flex flex-row">
                 {typeSelection.map((t, i) => (
-                  <div className={`w-1/${typeSelection.length} rounded-2xl py-3 text-center font-semibold ${i === (typeSelection.length - 1) ? '' : 'mr-3 '}${type === t ? 'border-2 border-cas' : 'bg-f6 border-f6 hover:bg-white border-2 hover:border-cas'} cursor-pointer`} onClick={() => setType(t)}>{t}</div>
+                  <div className={`w-1/${typeSelection.length} rounded-2xl py-3 text-center font-semibold ${i === (typeSelection.length - 1) ? '' : 'mr-3 '}${type === t ? 'border-2 border-primary' : 'bg-secondary border-f6 hover:bg-bg border-2 hover:border-primary'} cursor-pointer`} onClick={() => setType(t)}>{t}</div>
                 ))}
                 <input type="hidden" name="type" value={type} />
               </div>
             </div>
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Select a date</div>
-              <input required type="date" name="date" value={date} onChange={handleChange} min={minDate()} className="p-3 w-full bg-f6 rounded-2xl webkit-none h-12" />
+              <div className="text-lg text-grey mb-2">Select a date</div>
+              <input required type="date" name="date" value={date} onChange={handleChange} min={minDate()} className="p-3 w-full bg-secondary rounded-2xl webkit-none h-12" />
             </div>
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Timeslot</div>
+              <div className="text-lg text-grey mb-2">Timeslot</div>
               <div className="flex flex-wrap">
                 {timeslotSelection.map(t => (
-                  <div className={`rounded-2xl p-3 mr-3 mb-3 text-center font-semibold ${timeslot === t ? 'border-2 border-cas' : 'bg-f6 border-f6 hover:bg-white border-2 hover:border-cas'} cursor-pointer`} onClick={() => setTimeslot(t)}>{t}</div>
+                  <div className={`rounded-2xl p-3 mr-3 mb-3 text-center font-semibold ${timeslot === t ? 'border-2 border-primary' : 'bg-secondary border-f6 hover:bg-bg border-2 hover:border-primary'} cursor-pointer`} onClick={() => setTimeslot(t)}>{t}</div>
                 ))}
                 <input type="hidden" name="timeslot" value={timeslot} />
               </div>
             </div>
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">What services would you like: </div>
+              <div className="text-lg text-grey mb-2">What services would you like: </div>
               <div className="relative">
-                <select name="service" value={service} onChange={handleChange} className="p-3 w-full bg-f6 rounded-2xl appearance-none webkit-none h-12">
+                <select name="service" value={service} onChange={handleChange} className="p-3 w-full bg-secondary rounded-2xl appearance-none webkit-none h-12">
                   {serviceSelection.map(s => (<option value={s}>{s}</option>))}
                 </select>
                 <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
@@ -168,40 +168,40 @@ const ContactForm = ({ text, heading, siteData }) => {
           <div className="lg:w-1/6 hidden lg:block"></div>
           <div className="lg:w-5/12">
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Your Name</div>
-              <input required type="text" name="name" value={name} onChange={handleChange} className="p-3 w-full bg-f6 rounded-2xl" placeholder="Enter your full name" />
+              <div className="text-lg text-grey mb-2">Your Name</div>
+              <input required type="text" name="name" value={name} onChange={handleChange} className="p-3 w-full bg-secondary rounded-2xl" placeholder="Enter your full name" />
             </div>
             <div className="flex flex-row">
               <div className="w-5/12">
                 <div className="mb-5">
-                  <div className="text-lg text-gray-500 mb-2">Mobile number</div>
-                  <input required type="text" name="mobile" value={mobile} onChange={handleChange} className="p-3 w-full bg-f6 rounded-2xl" />
+                  <div className="text-lg text-grey mb-2">Mobile number</div>
+                  <input required type="text" name="mobile" value={mobile} onChange={handleChange} className="p-3 w-full bg-secondary rounded-2xl" />
                 </div>
               </div>
               <div className="w-1/12" />
               <div className="w-1/2">
                 <div className="mb-5">
-                  <div className="text-lg text-gray-500 mb-2">Email</div>
-                  <input required type="email" name="email" value={email} onChange={handleChange} placeholder="email@domain.com" className="p-3 w-full bg-f6 rounded-2xl" />
+                  <div className="text-lg text-grey mb-2">Email</div>
+                  <input required type="email" name="email" value={email} onChange={handleChange} placeholder="email@domain.com" className="p-3 w-full bg-secondary rounded-2xl" />
                 </div>
               </div>
             </div>
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Upload your layout/floorplan (Optional)</div>
-              <div {...getRootProps()} className="border-dashed border-cas rounded-2xl text-center p-4 cursor-pointer hover:border-solid" style={{ borderWidth: 3 }}>
+              <div className="text-lg text-grey mb-2">Upload your layout/floorplan (Optional)</div>
+              <div {...getRootProps()} className="border-dashed border-primary rounded-2xl text-center p-4 cursor-pointer hover:border-solid" style={{ borderWidth: 3 }}>
                 <input {...getInputProps()} name="file" />
                 <div className="flex flex-row items-center justify-center">{file ? <><FileIcon /> {file.name}</> : "Click to select a file for upload"}</div>
               </div>
             </div>
             <div className="mb-5">
-              <div className="text-lg text-gray-500 mb-2">Your Message (Optional)</div>
-              <textarea name="message" value={message} onChange={handleChange} placeholder="You can share the type of products you are looking for, your unit type, the dimensions and other relevant info."  className="p-3 w-full bg-f6 rounded-2xl" rows={5} />
+              <div className="text-lg text-grey mb-2">Your Message (Optional)</div>
+              <textarea name="message" value={message} onChange={handleChange} placeholder="You can share the type of products you are looking for, your unit type, the dimensions and other relevant info."  className="p-3 w-full bg-secondary rounded-2xl" rows={5} />
             </div>
           </div>
         </div>
         <div className="w-full flex flex-row justify-center mt-4">
-          <button type="submit" className="text-sm font-semibold py-4 px-6 rounded-2xl bg-airbnb text-white border border-airbnb hover:bg-white hover:text-airbnb">Submit</button>
-          <button type="button" onClick={resetForm} className="text-sm font-semibold py-4 px-6 rounded-2xl flex flex-row items-center" style={{ color: "#BBBBBB" }}><ResetIcon /> Reset Form</button>
+          <button type="submit" className="text-sm font-semibold py-4 px-6 rounded-2xl bg-primary text-bg border border-primary hover:bg-bg hover:text-primary">Submit</button>
+          <button type="button" onClick={resetForm} className="text-sm font-semibold py-4 px-6 rounded-2xl flex flex-row items-center text-grey"><ResetIcon /> Reset Form</button>
         </div>
       </form>
     </section>

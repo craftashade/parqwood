@@ -107,9 +107,9 @@ const NotFoundPage = (props) => {
       <Container>
         <SEO title="404: Not found" />
         <div className="font-body my-24">
-          <h1 className="text-5xl text-center font-bold text-cas mb-12">Page not found</h1>
+          <h1 className="text-5xl text-center font-bold text-primary mb-12">Page not found</h1>
           <div className="w-full text-center">
-            <Link to="/" className="text-cas border border-cas rounded-2xl px-12 py-4 font-bold text-sm hover:bg-cas hover:text-white">Back to Home</Link>
+            <Link to="/" className="text-primary border border-primary rounded-2xl px-12 py-4 font-bold text-sm hover:bg-primary hover:text-white">Back to Home</Link>
           </div>
         </div>
       </Container>
