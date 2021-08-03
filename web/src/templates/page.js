@@ -16,6 +16,7 @@ import ContactForm from "../components/ContactForm"
 import Brands from "../components/Brands"
 import Heading from "../components/Heading"
 import ImageWithSideContent from "../components/ImageWithSideContent"
+import Columns from "../components/Columns"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -195,6 +196,9 @@ const Page = props => {
           break;
         case "imageWithSideContent":
           el = <ImageWithSideContent key={c._key} {...c} />;
+          break;
+        case "columns":
+          el = <Columns key={c._key} {...c} />;
           break;
         case "articles":
           // el = <div>articles"</div>;
