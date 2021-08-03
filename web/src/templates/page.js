@@ -194,7 +194,6 @@ const Page = props => {
           el = <Heading key={c._key} {...c} />;
           break;
         case "imageWithSideContent":
-          console.log("content: ", content)
           el = <ImageWithSideContent key={c._key} {...c} />;
           break;
         case "articles":
