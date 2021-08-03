@@ -47,6 +47,7 @@ export default {
         { type: 'brands' },
         { type: 'heading' },
         { type: 'imageWithSideContent' },
+        { type: 'columns' },
       ],
     },
     {

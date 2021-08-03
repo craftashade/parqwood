@@ -22,6 +22,7 @@ export { default as illustrationWithURL } from './illustrationWithURL'
 export { default as face } from './face'
 export { default as banner } from './banner'
 export { default as imageWithSideContent } from './imageWithSideContent'
+export { default as columns } from './columns'
 /*
 export { default as cta } from './cta'
 export { default as generalArticle } from './article'
