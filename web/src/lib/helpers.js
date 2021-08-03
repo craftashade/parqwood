@@ -86,7 +86,7 @@ export const maybeImage = (image, imgStyles, classes, maxWidth) => {
 
     if (imageData.images.sources.length && imageData.images.sources[0].type.includes('svg')) {
       const set = imageData.images.sources[0]
-      img = <img src={set.srcSet.split(' ')[0]} className="mx-auto" />
+      img = <img src={set.srcSet.split(' ')[0]} className={`mx-auto ${classes}`} style={imgStyles} />
     } else {
       img = (
         <GatsbyImage
