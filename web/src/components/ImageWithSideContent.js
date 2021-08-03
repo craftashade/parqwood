@@ -7,7 +7,7 @@ const ImageWithSideContent = ({ title, rows }) => {
   return (
     <section className="text-primary">
       <div className="container px-5 pt-40 mx-auto relative">
-        <h1 className="text-4xl font-bold mb-10 leading-tight lg:w-1/3 w-full">{title}</h1>
+        <h1 className="text-4xl font-bold mb-10 leading-tight xl:w-1/3 lg:w-1/2 w-full">{title}</h1>
         {rows.map((row, index) => {
           const img = maybeImage(row.illustration, { borderRadius: 24, height: 400, width: "100%" })
           const elems = [
