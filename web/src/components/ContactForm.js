@@ -148,7 +148,7 @@ const ContactForm = ({ text, heading, siteData }) => {
               <div className="text-lg text-grey mb-2">Timeslot</div>
               <div className="flex flex-wrap">
                 {timeslotSelection.map(t => (
-                  <div className={`rounded-2xl p-3 mr-3 mb-3 text-center font-semibold ${timeslot === t ? 'border-2 border-primary' : 'bg-secondary border-f6 hover:bg-bg border-2 hover:border-primary'} cursor-pointer`} onClick={() => setTimeslot(t)}>{t}</div>
+                  <div className={`rounded-2xl p-3 mr-3 mb-3 text-center font-semibold ${timeslot === t ? 'border-2 border-primary' : 'bg-secondary border-bg hover:bg-bg border-2 hover:border-primary'} cursor-pointer`} onClick={() => setTimeslot(t)}>{t}</div>
                 ))}
                 <input type="hidden" name="timeslot" value={timeslot} />
               </div>
