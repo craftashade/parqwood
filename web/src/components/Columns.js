@@ -11,7 +11,7 @@ const Columns = ({ title, titlePosition, columns }) => {
           {columns.map((column, index) => {
             const icon = maybeImage(column.icon, { width: 64, height: 64 }, "mr-0 ml-0 mb-4")
             return (
-              <div key={column.title}>
+              <div key={column.title} className="mt-4 lg:mt-0">
                 {icon}
                 {column.subtitle && <p className="text-xs font-black my-2">{column.subtitle}</p>}
                 <p className={`font-bold mb-4 leading-tight ${column.subtitle ? 'text-2xl' : ''}`}>{column.title}</p>
