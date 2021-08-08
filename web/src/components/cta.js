@@ -4,7 +4,7 @@ import CTALink from "./CTALink";
 import {maybeImage} from "../lib/helpers"
 
 const CTA = ({ label, title, body, cta, transparentBg, faces }) => (
-  <section className={`lg:w-full w-11/12 mx-auto container mx-auto my-24 ${transparentBg ? "lg:w-5/6 text-primary" : "text-white bg-primary"}`} style={{ borderRadius: 40 }}>
+  <section className={`lg:w-full w-11/12 mx-auto container mx-auto my-24 relative ${transparentBg ? "lg:w-5/6 text-primary" : "cut-off-tr text-white bg-primary"}`} style={{ borderRadius: 16 }}>
     <div className={`container mx-auto ${transparentBg ? "-my-12" : "p-10"}`}>
       <div className="flex flex-col sm:flex-row sm:items-center items-start mx-auto">
         <div className="sm:w-1/2">
