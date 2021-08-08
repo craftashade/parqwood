@@ -116,7 +116,7 @@ const Megamenu = ({ selected, data }) => {
           let secondCol = services.slice(slicer, services.length)
           return (
             <div className={`${index ? 'w-1/3 ml-5' : 'w-1/3'}`}>
-              <div className="rounded-3xl overflow-hidden">
+              <div className="rounded-2xl overflow-hidden">
                 <div style={{
                   background: `center / cover no-repeat url(${imageUrl})`,
                   height: 160
@@ -151,7 +151,7 @@ const Megamenu = ({ selected, data }) => {
           if (!thumbnail) return null
           return (
             <a className={`${index ? 'w-1/4 ml-5' : 'w-1/4'}`} href={`/projects/${slugify(projectToShow)}`}>
-              <div className="rounded-3xl overflow-hidden">
+              <div className="rounded-2xl overflow-hidden">
                 <div style={{
                   background: `center / cover no-repeat url(${thumbnail.url})`,
                   height: 160
@@ -220,7 +220,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
       <div className={`font-body absolute w-full bg-bg pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
-      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-primary'}${!textWhite && !megamenu ? ' border-b border-gray-200' : ''}`}>
+      <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-primary'}${!textWhite && !megamenu ? ' border-b border-secondary' : ''}`}>
         {
           !isOpen && banner && showBanner && !banner.disabled && <div className="w-full bg-primary lg:text-center p-2 text-white" style={{ backgroundColor: `rgba(${r},${g},${b},${a})` }}>
             <div className="flex justify-center">

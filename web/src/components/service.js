@@ -40,7 +40,7 @@ const ImageCarousel = ({ data, className }) => (
         {data.service.images.map(slide => {
           const img = maybeIllustration(slide);
           return (
-            <div className="rounded-3xl overflow-hidden lg:w-9/12 mx-auto w-full" style={{ height: "98%" }}>
+            <div className="rounded-2xl overflow-hidden lg:w-9/12 mx-auto w-full" style={{ height: "98%" }}>
               {img}
             </div>
           )

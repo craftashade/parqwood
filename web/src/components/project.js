@@ -34,7 +34,7 @@ export default function Project({ data }) {
             {data.project._rawImages && data.project._rawImages.map(i => {
                 const img = maybeIllustration(i)
                 return <a href="#" className="">
-                  <img src={i.image.asset.url} alt={i.image.alt} className="w-full mx-auto rounded-3xl overflow-hidden object-cover h-32 lg:h-64" />
+                  <img src={i.image.asset.url} alt={i.image.alt} className="w-full mx-auto rounded-2xl overflow-hidden object-cover h-32 lg:h-64" />
                 </a>
               })}
           </div>

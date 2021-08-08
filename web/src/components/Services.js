@@ -24,7 +24,7 @@ const Services = ({ title, text, rows }) => (
           }
           return (
             <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
-              <div class="rounded-3xl overflow-hidden">
+              <div class="rounded-2xl overflow-hidden">
                 <img
                   src={imgUrl}
                   alt={imgAlt}
