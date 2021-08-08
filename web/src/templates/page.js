@@ -17,6 +17,7 @@ import Brands from "../components/Brands"
 import Heading from "../components/Heading"
 import ImageWithSideContent from "../components/ImageWithSideContent"
 import Columns from "../components/Columns"
+import Team from "../components/Team"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -200,6 +201,9 @@ const Page = props => {
         case "columns":
           el = <Columns key={c._key} {...c} />;
           break;
+        case "team":
+          el = <Team key={c._key} {...c} />;
+          break;
         case "articles":
           // el = <div>articles"</div>;
           break;
@@ -247,14 +251,14 @@ const Page = props => {
           page.ctaBlock && 
           data.frontpage &&
           data.frontpage._rawContent &&
-          <CTA {...(data.frontpage._rawContent.find(c => c._type === 'ctaPlug'))} />
+          <CTA {...(data.frontpage._rawContent.reverse().find(c => c._type === 'ctaPlug'))} />
         }
         {
           data.route &&
           page.featuresBlock && 
           data.frontpage &&
           data.frontpage._rawContent &&
-          <Features {...(data.frontpage._rawContent.find(c => c._type === 'features'))}  />
+          <Features {...(data.frontpage._rawContent.reverse().find(c => c._type === 'features'))}  />
         }
       </div>
     </Layout>

@@ -48,6 +48,7 @@ export default {
         { type: 'heading' },
         { type: 'imageWithSideContent' },
         { type: 'columns' },
+        { type: 'team' },
       ],
     },
     {
