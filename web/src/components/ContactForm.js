@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone'
 import Toast from 'light-toast';
 
 const typeSelection = ['Visit Showroom', 'Request for Callback']
-const serviceSelection = ['General Enquiries', 'Sales - Curtains', 'Sales - Window Blinds']
+const serviceSelection = ['General Enquiries', 'Sales - Indoor Flooring', 'Sales - Outdoor Decking']
 const timeslotSelection = ['09:00am', '10:00am', '11:00am', '12:00pm', '01:00pm', '02:00pm', '03:00pm', '04:00pm', '05:00pm', '06:00pm', ]
 
 const FileIcon = () => (
@@ -128,7 +128,7 @@ const ContactForm = ({ text, heading, siteData }) => {
         <div className="lg:flex lg:flex-row w-full">
           <div className="lg:w-5/12 relative">
             <input type="text" name="_honey" className="madu" />
-            <input type="hidden" name="_next" value={`${process.env.GATSBY_BASE_URL}/visit-us?submitted=true#appointment`} />
+            <input type="hidden" name="_next" value={`${process.env.GATSBY_BASE_URL}/make-an-appointment?submitted=true#appointment`} />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <div className="mb-5">
