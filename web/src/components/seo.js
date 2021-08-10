@@ -19,21 +19,21 @@ const buttonOptions = {
 
 function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradient }) {
   useLayoutEffect(() => {
-    const proto = document.location.protocol, 
-      host = "getbutton.io", 
-      url = proto + "//static." + host
-    const s = document.createElement('script')
-    s.type = 'text/javascript'
-    s.async = true
-    s.src = url + '/widget-send-button/js/init.js'
-    s.onload = function () {
-      WhWidgetSendButton.init(host, proto, buttonOptions)
-    }
-    document.body.appendChild(s);
+    // const proto = document.location.protocol, 
+    //   host = "getbutton.io", 
+    //   url = proto + "//static." + host
+    // const s = document.createElement('script')
+    // s.type = 'text/javascript'
+    // s.async = true
+    // s.src = url + '/widget-send-button/js/init.js'
+    // s.onload = function () {
+    //   WhWidgetSendButton.init(host, proto, buttonOptions)
+    // }
+    // document.body.appendChild(s);
 
-    return () => {
-      document.body.removeChild(s);
-    }
+    // return () => {
+    //   document.body.removeChild(s);
+    // }
   }, [])
   return (
     <StaticQuery
