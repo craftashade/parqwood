@@ -35,6 +35,11 @@ export default {
       of: [
         { type: 'face' }
       ]
+    },
+    {
+      name: 'buttonFixedLeft',
+      title: 'Show button on left even if no faces are added',
+      type: 'boolean'
     }
   ],
   preview: {
