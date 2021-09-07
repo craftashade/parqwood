@@ -82,81 +82,93 @@ export default function Product({ data }) {
             <div className="w-1/6 hidden md:block" />
           </div>
         </div>
-        <div className="mt-20">
-          <h2 className="text-4xl tracking-004 font-black text-primary">{flooringSelectionTitle ?? 'Flooring selections'}</h2>
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-            {flooringSelectionColumns.map(col => {
-              const flooringImg = maybeIllustration(col.illustration, "100%", "rounded-2xl")
-              return (
-                <div>
-                  <section className="container mx-auto my-8 w-full mx-auto">
-                    {flooringImg}
-                  </section>
-                  <div className="text-center">
-                    <h4 className="font-black tracking-004 font-black text-2xl text-primary">{col.title}</h4>
-                    <div className="px-10 pt-4 text-primary">
-                      <PortableText blocks={col._rawText} />
+        {
+          !!flooringSelectionColumns.length &&
+          <div className="mt-20">
+            <h2 className="text-4xl tracking-004 font-black text-primary">{flooringSelectionTitle ?? 'Flooring selections'}</h2>
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+              {flooringSelectionColumns.map(col => {
+                const flooringImg = maybeIllustration(col.illustration, "100%", "rounded-2xl")
+                return (
+                  <div>
+                    <section className="container mx-auto my-8 w-full mx-auto">
+                      {flooringImg}
+                    </section>
+                    <div className="text-center">
+                      <h4 className="font-black tracking-004 font-black text-2xl text-primary">{col.title}</h4>
+                      <div className="px-10 pt-4 text-primary">
+                        <PortableText blocks={col._rawText} />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 my-10">
+                      {col.flooringProperties.map(prop => (
+                        <div className="text-center flex flex-col items-center text-primary tracking-004 leading-tight">
+                          <img src={prop._rawImage.asset.url} />
+                          <p className="mt-2">{prop.name}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                  <div className="grid grid-cols-3 gap-4 my-10">
-                    {col.flooringProperties.map(prop => (
-                      <div className="text-center flex flex-col items-center text-primary tracking-004 leading-tight">
-                        <img src={prop._rawImage.asset.url} />
-                        <p className="mt-2">{prop.name}</p>
-                      </div>
-                    ))}
+                )
+              })}
+            </div>
+          </div>
+        }
+        {
+          !!colorOptionGroups.length &&
+          <div className="mt-20">
+            <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{colorOptionTitle ?? 'Your colour options'}</h2>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
+              {colorOptionGroups.map(group => {
+                return (
+                  <div>
+                    <h3 className="uppercase text-primary tracking-widest font-extrabold">{group.name}</h3>
+                    <div className="grid grid-cols-4 gap-4 mb-10 mt-4">
+                      {group.options.map(opt => (
+                        <div className="text-center flex flex-col items-center text-primary tracking-004 text-lg font-black mb-4">
+                          <img src={opt._rawImage.asset.url} className="rounded-full" />
+                          <p className="mt-4">{opt.name}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
-        </div>
-        <div className="mt-20">
-          <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{colorOptionTitle ?? 'Your colour options'}</h2>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
-            {colorOptionGroups.map(group => {
-              return (
-                <div>
-                  <h3 className="uppercase text-primary tracking-widest font-extrabold">{group.name}</h3>
-                  <div className="grid grid-cols-4 gap-4 mb-10 mt-4">
-                    {group.options.map(opt => (
-                      <div className="text-center flex flex-col items-center text-primary tracking-004 text-lg font-black mb-4">
-                        <img src={opt._rawImage.asset.url} className="rounded-full" />
-                        <p className="mt-4">{opt.name}</p>
-                      </div>
-                    ))}
+        }
+        {
+          !!patterns.length &&
+          <div className="mt-20">
+            <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{patternTitle ?? 'Patterns'}</h2>
+            <div className="grid grid-cols-4 md:grid-cols-6 gap-4 mb-10 mt-4">
+              {patterns.map(opt => (
+                <div className="text-center flex flex-col items-center text-primary tracking-004 text-lg font-black mb-4">
+                  <img src={opt._rawImage.asset.url} />
+                  <p className="mt-4">{opt.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        }
+        {
+          !!downloads.length &&
+          <div className="mt-20">
+            <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{downloadTitle ?? 'Downloads'}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 mt-4">
+              {downloads.map(dl => (
+                <a href={dl._rawFile.asset.url} download target="_blank" className="flex border border-primary rounded-2xl justify-between">
+                  <div className="text-primary tracking-004 text-sm font-semibold py-5 px-4 overflow-hidden" style={{ textOverflow: 'ellipsis' }}>
+                    {dl.name}
                   </div>
-                </div>
-              )
-            })}
+                  <div className="p-4 bg-primary" style={{ borderTopRightRadius: '1rem', borderBottomRightRadius: '1rem' }}>
+                    <DownloadIcon />
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="mt-20">
-          <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{patternTitle ?? 'Patterns'}</h2>
-          <div className="grid grid-cols-4 md:grid-cols-6 gap-4 mb-10 mt-4">
-            {patterns.map(opt => (
-              <div className="text-center flex flex-col items-center text-primary tracking-004 text-lg font-black mb-4">
-                <img src={opt._rawImage.asset.url} />
-                <p className="mt-4">{opt.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mt-20">
-          <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{downloadTitle ?? 'Downloads'}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 mt-4">
-            {downloads.map(dl => (
-              <a href={dl._rawFile.asset.url} download target="_blank" className="flex border border-primary rounded-2xl justify-between">
-                <div className="text-primary tracking-004 text-sm font-semibold py-5 px-4 overflow-hidden" style={{ textOverflow: 'ellipsis' }}>
-                  {dl.name}
-                </div>
-                <div className="p-4 bg-primary" style={{ borderTopRightRadius: '1rem', borderBottomRightRadius: '1rem' }}>
-                  <DownloadIcon />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
+        }
       </div>
       <CTA {...cta} />
     </div>
