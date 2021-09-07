@@ -19,6 +19,16 @@ export default {
         { type: 'ctaWithImage' }
       ]
     },
+    {
+      name: 'topPadding',
+      type: 'boolean',
+      title: 'Add large top padding'
+    },
+    {
+      name: 'centerText',
+      type: 'boolean',
+      title: 'Center the title for this section'
+    },
   ],
   preview: {
     select: {

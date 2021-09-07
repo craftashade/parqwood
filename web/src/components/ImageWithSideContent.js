@@ -3,11 +3,11 @@ import PortableText from "./portableText";
 import CTALink from "./CTALink";
 import { maybeImage } from "../lib/helpers"
 
-const ImageWithSideContent = ({ title, rows }) => {
+const ImageWithSideContent = ({ title, rows, topPadding, centerText }) => {
   return (
     <section className="text-primary">
-      <div className="container px-5 pt-40 mx-auto relative">
-        <h1 className="text-4xl font-bold mb-10 leading-tight xl:w-1/3 lg:w-1/2 w-full">{title}</h1>
+      <div className={`container px-5 mx-auto relative ${topPadding ? 'pt-40' : 'pt-10'}`}>
+        <h1 className={`mb-10 leading-tight w-full ${centerText ? 'font-black text-5xl text-center' : 'font-bold xl:w-1/3 lg:w-1/2 text-4xl'}`}>{title}</h1>
         {rows.map((row, index) => {
           const img = maybeImage(row.illustration, { borderRadius: 16, height: 400, width: "100%" })
           return (
