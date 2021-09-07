@@ -161,11 +161,12 @@ async function createProjectPages(pathPrefix = "/projects", graphql, actions, re
     });
 
   // create base projects page also
-  if (projectEdges[0]) {
+  const baseProject = projectEdges.find(edge => edge.node.title === 'Residential')
+  if (baseProject) {
     createPage({
       path: pathPrefix,
       component: require.resolve("./src/templates/project.js"),
-      context: { id: projectEdges[0].node.id }
+      context: { id: baseProject.node.id }
     });
   }
 }
