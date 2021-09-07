@@ -1,8 +1,8 @@
 export default [
-  {
-    type: 'boolean',
-    name: 'disabled'
-  }
+  // {
+  //   type: 'boolean',
+  //   name: 'disabled'
+  // }
   // {
   //   name: 'background',
   //   type: 'object',

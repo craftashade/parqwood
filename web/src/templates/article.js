@@ -77,7 +77,6 @@ export const query = graphql`
       tel
       email
       banner {
-        disabled
         color {
           rgb {
             r
@@ -105,31 +104,25 @@ export const query = graphql`
         }
       }
     }
-    services: allSanityService {
+    products: allSanityProduct {
       nodes {
         title
-        serviceCategory {
+        productCategory {
           title
         }
       }
     }
-    serviceCategories: allSanityServiceCategory {
+    productCategories: allSanityProductCategory {
       nodes {
         title
-        services {
+        products {
           title
         }
       }
     }
-    categories: allSanityServiceCategory {
+    categories: allSanityProductCategory {
       nodes {
         title
-        image {
-          image {
-            ...SanityImage
-          }
-        }
-        _rawImage(resolveReferences: {maxDepth: 10})
       }
     }
     projects: allSanityProject {
