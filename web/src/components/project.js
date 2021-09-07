@@ -6,7 +6,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "gatsby"
 import Spacer from "./BreadcrumbSpacer"
 
-const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
+const projectsToShow = ["Residential", "Commercial"]
 
 export default function Project({ data }) {
   const cta = data.frontpage._rawContent.find(c => c._type === 'ctaPlug')
@@ -23,7 +23,7 @@ export default function Project({ data }) {
             if (!project) return null
             const btnClass = 'py-4 px-6 rounded-2xl font-bold text-sm mr-4'
             if (proj === data.project.title) {
-              return <div className={`bg-airbnb text-white ${btnClass}`}>{proj}</div>
+              return <div className={`bg-primary text-white ${btnClass}`}>{proj}</div>
             } else {
               return <a href={`/projects/${slugify(proj)}`} className={`bg-light-grey text-primary hover:bg-bg ${btnClass}`}>{proj}</a>
             }
