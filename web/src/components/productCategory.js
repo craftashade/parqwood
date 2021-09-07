@@ -18,7 +18,7 @@ export default function ProductCategory({ data }) {
         </div>
         { data.productCategories.nodes.map(category => {
           return <div>
-            <div className="text-center text-sm uppercase text-primary p-10" style={{ letterSpacing: '0.2em' }}>{category.title}</div>
+            <div className="text-center text-sm uppercase text-primary pt-10" style={{ letterSpacing: '0.2em' }}>{category.title}</div>
             <div className="grid gap-10 grid-cols-1 md:grid-cols-2">
               {category.products.map(product => {
                 const img = maybeIllustration(product.image, "100%", "rounded-2xl max-h-192")
