@@ -10,7 +10,6 @@ const projectsToShow = ["Residential", "Commercial"]
 
 export default function Project({ data }) {
   const cta = data.frontpage._rawContent.find(c => c._type === 'ctaPlug')
-  const features = data.frontpage._rawContent.find(c => c._type === 'features')
   return (
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
@@ -41,7 +40,6 @@ export default function Project({ data }) {
         </SRLWrapper>
       </div>
       <CTA {...cta} />
-      <Features {...features} />
     </div>
   );
 }
