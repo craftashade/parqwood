@@ -124,6 +124,24 @@
   @apply absolute top-0 right-0 z-10;
 }
 
+.max-h-192,
+.max-h-192 [data-main-image] {
+  max-height: 192px;
+}
+
+.tracking-004 {
+  letter-spacing: -0.04em;
+}
+
+.fixed-product-text-height {
+  height: 48px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media screen and (min-width: 768px) {
   .cut-off-tr > *:before {
     background: url('/cutout.svg');
