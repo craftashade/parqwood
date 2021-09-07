@@ -7,7 +7,7 @@ import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 import { Link } from "gatsby"
 
-const categories = ["Our Products", "Projects"]
+const categories = ["Products", "Projects"]
 const productCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
@@ -255,12 +255,14 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
               <div className={navContentClass} id="nav-content">
                 <ul className="list-reset lg:flex justify-end flex-1 items-center">
                   {categories.map(menu => (
-                    <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
-                      <span>{menu}</span>
-                      <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
-                        <Chevron />
+                    <Link to={`/${slugify(menu)}`}>
+                      <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`}>
+                        <span>{menu}</span>
+                        {/* <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
+                          <Chevron />
+                        </div> */}
                       </div>
-                    </div>
+                    </Link>
                   ))}
                   {navMenuItems.map(i => (
                     <li className="mr-6">
