@@ -102,7 +102,6 @@ export const query = graphql`
 
 const ProductCategoryTemplate = props => {
   const { data, errors } = props;
-  console.log(data)
   return (
     <Layout showNav={true} data={data} textWhite={false}>
       {errors && <SEO title="GraphQL Error" />}

@@ -61,7 +61,6 @@ const ContactForm = ({ text, heading, siteData }) => {
 
   }, [])
   const onDrop = acceptedFiles => {
-    console.log(acceptedFiles)
     setFile(acceptedFiles[0])
   }
   
