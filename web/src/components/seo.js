@@ -6,11 +6,10 @@ import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 
 const buttonOptions = {
-  facebook: "913015825427987", // Facebook page ID
-  facebook_chat: true, // Facebook customer chat
-  whatsapp: "+65 88836588", // WhatsApp number
-  call_to_action: "Contact us", // Call to action
-  button_color: "#FF318E", // Color of button
+  facebook: "108313258199824", // Facebook page ID
+  whatsapp: "+6590227722", // WhatsApp number
+  call_to_action: "", // Call to action
+  button_color: "#A8CE50", // Color of button
   position: "right", // Position may be 'right' or 'left'
   order: "facebook,whatsapp", // Order of buttons
 };
@@ -19,21 +18,21 @@ const buttonOptions = {
 
 function SEO({ description, lang, meta, keywords, title, image, bodyAttr, gradient }) {
   useLayoutEffect(() => {
-    // const proto = document.location.protocol, 
-    //   host = "getbutton.io", 
-    //   url = proto + "//static." + host
-    // const s = document.createElement('script')
-    // s.type = 'text/javascript'
-    // s.async = true
-    // s.src = url + '/widget-send-button/js/init.js'
-    // s.onload = function () {
-    //   WhWidgetSendButton.init(host, proto, buttonOptions)
-    // }
-    // document.body.appendChild(s);
+    const proto = document.location.protocol, 
+      host = "getbutton.io", 
+      url = proto + "//static." + host
+    const s = document.createElement('script')
+    s.type = 'text/javascript'
+    s.async = true
+    s.src = url + '/widget-send-button/js/init.js'
+    s.onload = function () {
+      WhWidgetSendButton.init(host, proto, buttonOptions)
+    }
+    document.body.appendChild(s);
 
-    // return () => {
-    //   document.body.removeChild(s);
-    // }
+    return () => {
+      document.body.removeChild(s);
+    }
   }, [])
   return (
     <StaticQuery
