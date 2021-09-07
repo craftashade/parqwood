@@ -12,10 +12,10 @@ export const query = graphql`
     frontpage: sanityPage(title: {eq: "Frontpage"}) {
       ...PageInfo
     }
-    serviceCategories: allSanityServiceCategory {
+    productCategories: allSanityProductCategory {
       nodes {
         title
-        services {
+        products {
           title
         }
       }
@@ -50,7 +50,6 @@ export const query = graphql`
       tel
       email
       banner {
-        disabled
         color {
           rgb {
             r
@@ -78,23 +77,17 @@ export const query = graphql`
         }
       }
     }
-    services: allSanityService {
+    products: allSanityProduct {
       nodes {
         title
-        serviceCategory {
+        productCategory {
           title
         }
       }
     }
-    categories: allSanityServiceCategory {
+    categories: allSanityProductCategory {
       nodes {
         title
-        image {
-          image {
-            ...SanityImage
-          }
-        }
-        _rawImage(resolveReferences: {maxDepth: 10})
       }
     }
     projects: allSanityProject {
@@ -126,7 +119,6 @@ const ProjectTemplate = props => {
         <SEO
           title={`Projects | ${project.title}` || "Untitled"}
           description={`${project.title} Projects`}
-          image={project.thumbnail.image}
         />
       )}
 

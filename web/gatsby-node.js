@@ -89,16 +89,16 @@ async function createArticlePages(pathPrefix = "/articles", graphql, actions, re
     });
 }
 
-async function createServicePages(graphql, actions, reporter) {
+async function createProductPages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanityService {
+      allSanityProduct {
         edges {
           node {
             id
-            title
-            serviceCategory {
+            productName
+            productCategory {
               title
             }
           }
@@ -109,40 +109,24 @@ async function createServicePages(graphql, actions, reporter) {
 
   if (result.errors) throw result.errors;
 
-  const serviceEdges = (result.data.allSanityService || {}).edges || [];
-  serviceEdges
+  const productEdges = (result.data.allSanityProduct || {}).edges || [];
+  productEdges
     .forEach(edge => {
-      const { id, title, serviceCategory } = edge.node;
-      const path = `${slugify(serviceCategory.title)}/${slugify(title)}/`;
-      reporter.info(`Creating service page: ${path}`);
+      const { id, productName, productCategory } = edge.node;
+      const path = `${slugify(productCategory.title)}/${slugify(productName)}/`;
+      reporter.info(`Creating product page: ${path}`);
       createPage({
         path,
-        component: require.resolve("./src/templates/service.js"),
+        component: require.resolve("./src/templates/product.js"),
         context: { id }
       });
     });
 
-  // Create category pages
-  const categoriesObj = serviceEdges.reduce((obj, edge) => {
-    if (obj.hasOwnProperty(edge.node.serviceCategory.title)) {
-      obj[edge.node.serviceCategory.title] = [...obj[edge.node.serviceCategory.title], edge.node.id]
-    } else {
-      obj[edge.node.serviceCategory.title] = [edge.node.id]
-    }
-    return obj
-  }, {})
-
-  Object.keys(categoriesObj)
-    .forEach(category => {
-      const ids = categoriesObj[category];
-      const path = `${slugify(category)}/`;
-      reporter.info(`Creating service category page: ${path}`);
-      createPage({
-        path,
-        component: require.resolve("./src/templates/serviceCategory.js"),
-        context: { title: category, ids }
-      });
-    });
+  reporter.info(`Creating product category page`);
+  createPage({
+    path: 'products/',
+    component: require.resolve("./src/templates/productCategory.js")
+  });
 
 }
 
@@ -189,6 +173,6 @@ async function createProjectPages(pathPrefix = "/projects", graphql, actions, re
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter);
   await createArticlePages("/articles", graphql, actions, reporter);
-  await createServicePages(graphql, actions, reporter);
+  await createProductPages(graphql, actions, reporter);
   await createProjectPages("/projects", graphql, actions, reporter);
 };

@@ -13,8 +13,8 @@ import article from './documents/article'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import route from './documents/route'
-import service from './documents/service'
-import serviceCategory from './documents/serviceCategory'
+import product from './documents/product'
+import productCategory from './documents/productCategory'
 import project from './documents/project'
 
 import experiment from './objects/experiment'
@@ -65,8 +65,8 @@ export default createSchema({
       videoEmbed,
       bodyPortableText,
       excerptPortableText,
-      service,
-      serviceCategory,
+      product,
+      productCategory,
       project
     ])
     .concat(allPlugs),

@@ -7,8 +7,8 @@ import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 import { Link } from "gatsby"
 
-const categories = ["Services", "Projects"]
-const serviceCategoriesToShow = ["Curtains", "Blinds", "Others"]
+const categories = ["Our Products", "Projects"]
+const productCategoriesToShow = ["Curtains", "Blinds", "Others"]
 const projectsToShow = ["Landed", "Condo", "HDB", "Others"]
 
 const CloseIcon = () => (
@@ -45,7 +45,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
                     </div>
                     {
                       openService && <ul>
-                        {serviceCategoriesToShow.map((cat, index) => (
+                        {productCategoriesToShow.map((cat, index) => (
                           <a href={`/${cat.toLowerCase()}`} className={`px-6 pb-6 font-semibold w-full block${index === 0 ? ' border-t pt-6' : ''}`}>{cat}</a>
                         ))}
                       </ul>
@@ -100,7 +100,7 @@ const Megamenu = ({ selected, data }) => {
     <div className="container mx-auto p-5 text-primary">
       <h2 className="font-bold text-xl mb-5">{selected}</h2>
       <div className="flex flex-row">
-        {selected === 'Services' && serviceCategoriesToShow.map((cat, index) => {
+        {selected === 'Services' && productCategoriesToShow.map((cat, index) => {
           const category = data.categories.nodes.find(c => c.title === cat)
           const img = maybeIllustration(category.image)
           const image = category._rawImage && category._rawImage.image
@@ -109,11 +109,11 @@ const Megamenu = ({ selected, data }) => {
             if (image.asset) imageUrl = image.asset.url
             imageAlt = image.alt
           }
-          const services = data.serviceCategories.nodes.filter(s => s.title === cat)[0].services
+          const products = data.productCategories.nodes.filter(s => s.title === cat)[0].products
           let slicer = 6
-          if (services.length > 12) slicer = Math.ceil(services.length / 2)
-          let firstCol = services.slice(0, slicer)
-          let secondCol = services.slice(slicer, services.length)
+          if (products.length > 12) slicer = Math.ceil(products.length / 2)
+          let firstCol = products.slice(0, slicer)
+          let secondCol = products.slice(slicer, products.length)
           return (
             <div className={`${index ? 'w-1/3 ml-5' : 'w-1/3'}`}>
               <div className="rounded-2xl overflow-hidden">
@@ -254,14 +254,14 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
             {showNav && navMenuItems && (
               <div className={navContentClass} id="nav-content">
                 <ul className="list-reset lg:flex justify-end flex-1 items-center">
-                  {/* {categories.map(menu => (
+                  {categories.map(menu => (
                     <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`} onClick={() => setMegamenu(megamenu === menu ? '' : menu)}>
                       <span>{menu}</span>
                       <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
                         <Chevron />
                       </div>
                     </div>
-                  ))} */}
+                  ))}
                   {navMenuItems.map(i => (
                     <li className="mr-6">
                       <CTALink {...i} buttonActionClass={navActionClass} />

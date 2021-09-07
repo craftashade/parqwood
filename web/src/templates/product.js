@@ -2,55 +2,73 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import ServiceCategory from "../components/serviceCategory";
+import Product from "../components/product";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { toPlainText } from "../lib/helpers";
 
 export const query = graphql`
-  query ServiceCategoryTemplateQuery($title: String!, $ids: [String]) {
+  query ProductTemplateQuery($id: String!) {
     frontpage: sanityPage(title: {eq: "Frontpage"}) {
       ...PageInfo
     }
-    serviceCategories: allSanityServiceCategory {
+    productCategories: allSanityProductCategory {
       nodes {
         title
-        services {
+        products {
           title
         }
       }
     }
-    serviceCategory: sanityServiceCategory(title: {eq: $title}) {
-      description
-      title
+    product: sanityProduct(id: { eq: $id }) {
+      id
       image {
         image {
-        ...SanityImage
+          ...SanityImage
         }
       }
-      services {
-        id
-        thumbnail {
+      _rawLogo(resolveReferences: {maxDepth: 10})
+      _rawImage(resolveReferences: {maxDepth: 10})
+      productName
+      title
+      _rawText
+      productCategory {
+        title
+      }
+      bgColor {
+        hex
+      }
+      flooringSelectionTitle
+      flooringSelectionColumns {
+        title
+        illustration {
           image {
             ...SanityImage
           }
         }
-        _rawThumbnail(resolveReferences: {maxDepth: 10})
-        title
         _rawText
-      }
-    }
-    servicesForRows: allSanityService(filter: {id: { in: $ids }}) {
-      nodes {
-        id
-        thumbnail {
-          image {
-            ...SanityImage
-          }
+        flooringProperties {
+          name
+          _rawImage(resolveReferences: {maxDepth: 10})
         }
-        _rawThumbnail(resolveReferences: {maxDepth: 10})
-        title
-        _rawText
+      }
+      colorOptionTitle
+      colorOptionGroups {
+        name
+        options {
+          name
+          _rawImage(resolveReferences: {maxDepth: 10})
+        }
+      }
+      patternTitle
+      patterns {
+        name
+        _rawImage(resolveReferences: {maxDepth: 10})
+      }
+      downloadTitle
+      downloads {
+        name
+        _rawFile(resolveReferences: {maxDepth: 10})
       }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -68,7 +86,6 @@ export const query = graphql`
       tel
       email
       banner {
-        disabled
         color {
           rgb {
             r
@@ -96,23 +113,17 @@ export const query = graphql`
         }
       }
     }
-    services: allSanityService {
+    products: allSanityProduct {
       nodes {
         title
-        serviceCategory {
+        productCategory {
           title
         }
       }
     }
-    categories: allSanityServiceCategory {
+    categories: allSanityProductCategory {
       nodes {
         title
-        image {
-          image {
-            ...SanityImage
-          }
-        }
-        _rawImage(resolveReferences: {maxDepth: 10})
       }
     }
     projects: allSanityProject {
@@ -134,19 +145,18 @@ export const query = graphql`
   }
 `;
 
-const ServiceCategoryTemplate = props => {
+const ProductTemplate = props => {
   const { data, errors } = props;
-  const services = data && data.services;
-  const serviceCategory = data && data.serviceCategory;
+  const product = data && data.product;
   return (
     <Layout showNav={true} data={data} textWhite={false}>
       {errors && <SEO title="GraphQL Error" />}
-      {serviceCategory && (
+      {product && (
         <SEO
-          title={`Service | ${serviceCategory.title}` || "Untitled"}
-          description={serviceCategory.description}
-          image={serviceCategory.image.image}
-          keywords={[serviceCategory.title, "service"]}
+          title={`${product.productCategory.title} | ${product.title}` || "Untitled"}
+          description={toPlainText(product._rawText)}
+          image={product.image ? product.image.image : ''}
+          keywords={[product.productCategory.title, product.title]}
         />
       )}
 
@@ -156,9 +166,9 @@ const ServiceCategoryTemplate = props => {
         </Container>
       )}
 
-      {serviceCategory && <ServiceCategory data={data} />}
+      {product && <Product {...product} data={data} />}
     </Layout>
   );
 };
 
-export default ServiceCategoryTemplate;
+export default ProductTemplate;

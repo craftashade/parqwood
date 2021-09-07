@@ -1,12 +1,12 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { GoBrowser as PageIcon, GoHome, GoSettings, GoTools } from "react-icons/go"
-import { BiCamera } from "react-icons/bi"
+import { GoBrowser as PageIcon, GoHome, GoSettings, GoTools } from 'react-icons/go'
+import { BiCamera } from 'react-icons/bi'
 import articles from './src/structure/articles'
 import landingPages from './src/structure/landingPages'
 import PreviewIFrame from './src/components/previewIFrame'
 
 const hiddenDocTypes = (listItem) =>
-  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'service', 'serviceCategory', 'project'].includes(
+  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'product', 'productCategory', 'project'].includes(
     listItem.getId()
   )
 
@@ -37,15 +37,15 @@ export default () =>
       articles,
       landingPages,
       S.listItem()
-        .title('Services')
+        .title('Products')
         .icon(GoTools)
         .child(
           S.list()
-          .title('Services')
+          .title('Products')
           .items([
-            S.documentTypeListItem('service').title('Services').icon(GoTools),
+            S.documentTypeListItem('product').title('Products').icon(GoTools),
             S.divider(),
-            S.documentTypeListItem('serviceCategory').title('Service Categories').icon(GoTools),
+            S.documentTypeListItem('productCategory').title('Product Categories').icon(GoTools),
           ]),
         ),
       S.documentTypeListItem('project').title('Projects').icon(BiCamera),

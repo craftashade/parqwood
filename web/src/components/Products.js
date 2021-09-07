@@ -1,7 +1,7 @@
 import React from "react";
 import { maybeIllustration, maybeImage, toPlainText } from "../lib/helpers";
 
-const Services = ({ title, text, rows }) => (
+const Products = ({ title, text, rows }) => (
   <section class="text-primary">
     <div class="container px-5 py-24 mx-auto">
       { text && title ? 
@@ -51,4 +51,4 @@ const Services = ({ title, text, rows }) => (
   </section>
 );
 
-export default Services;
+export default Products;

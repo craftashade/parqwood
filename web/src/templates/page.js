@@ -7,7 +7,7 @@ import CTAColumns from "../components/cta-columns";
 import CTA from "../components/cta";
 import CTAWithImage from "../components/ctaWithImage";
 import { TopWave, BottomWave } from "../components/wave";
-import Services from "../components/Services"
+import Products from "../components/Products"
 import QuoteBlock from "../components/QuoteBlock"
 import Features from "../components/Features"
 import FullWidthImage from "../components/FullWidthImage"
@@ -29,10 +29,10 @@ export const query = graphql`
     frontpage: sanityPage(title: {eq: "Frontpage"}) {
       ...PageInfo
     }
-    serviceCategories: allSanityServiceCategory {
+    productCategories: allSanityProductCategory {
       nodes {
         title
-        services {
+        products {
           title
         }
       }
@@ -62,7 +62,6 @@ export const query = graphql`
       email
       emailTo
       banner {
-        disabled
         color {
           rgb {
             r
@@ -92,23 +91,17 @@ export const query = graphql`
       }
     }
 
-    services: allSanityService {
+    products: allSanityProduct {
       nodes {
         title
-        serviceCategory {
+        productCategory {
           title
         }
       }
     }
-    categories: allSanityServiceCategory {
+    categories: allSanityProductCategory {
       nodes {
         title
-        image {
-          image {
-            ...SanityImage
-          }
-        }
-        _rawImage(resolveReferences: {maxDepth: 10})
       }
     }
     projects: allSanityProject {
@@ -156,8 +149,8 @@ const Page = props => {
     .map((c, i) => {
       let el = null;
       switch (c._type) {
-        case "services":
-          el = <Services key={c._key} {...c} />;
+        case "products":
+          el = <Products key={c._key} {...c} />;
           break;
         case "infoRows":
           el = <InfoRows key={c._key} {...c} />;
