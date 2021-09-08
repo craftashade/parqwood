@@ -48,7 +48,7 @@ export default function Product({ data }) {
   return (
     <div className="font-body">
       <div className="absolute right-0 z-0 -m-8">
-        {/* <BackgroundFigure fill={bgColor.hex} /> */}
+        <BackgroundFigure fill={bgColor.hex} />
       </div>
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto z-20 relative">
         <div className="my-8 text-gray-400 text-sm">
@@ -59,7 +59,7 @@ export default function Product({ data }) {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div>
             <div className="w-5/6">
-              <section className="container mx-auto my-8 w-full mx-auto cut-off-tr">
+              <section className="container mx-auto my-8 w-full mx-auto">
                 {img}
               </section>
             </div>
