@@ -13,7 +13,7 @@ const Arrow = () => (
 const CustomButtonGroupAsArrows = ({ next, previous, ...rest }) => {
   const { carouselState: { currentSlide, slidesToShow, totalItems } } = rest
   return (
-    <div className="absolute top-0 right-0 -mt-40">
+    <div className="absolute top-0 right-0 -mt-40 hidden md:block">
       <button role="button" onClick={previous} className={`${currentSlide === 0 ? "text-faded" : "text-primary"} rotate-180 transform`}><Arrow /></button>
       <button onClick={next} className={`${currentSlide + slidesToShow >= totalItems ? "text-faded" : "text-primary"} ml-8`}><Arrow /></button>
     </div>
