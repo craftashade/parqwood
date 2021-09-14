@@ -18,6 +18,7 @@ import Heading from "../components/Heading"
 import ImageWithSideContent from "../components/ImageWithSideContent"
 import Columns from "../components/Columns"
 import Team from "../components/Team"
+import ProjectCarousel from "../components/ProjectCarousel"
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -106,10 +107,13 @@ export const query = graphql`
     }
     projects: allSanityProject {
       nodes {
-        images {
+        projects {
           image {
-            ...SanityImage
+            image {
+              ...SanityImage
+            }
           }
+          _rawImage(resolveReferences: {maxDepth: 10})
         }
         thumbnail {
           image {
@@ -196,6 +200,9 @@ const Page = props => {
           break;
         case "team":
           el = <Team key={c._key} {...c} />;
+          break;
+        case "projectCarousel":
+          el = <ProjectCarousel key={c._key} {...c} categories={data.projects} />;
           break;
         case "articles":
           // el = <div>articles"</div>;
