@@ -6,7 +6,7 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Title'
     },
     {
       name: 'thumbnail',
@@ -15,10 +15,14 @@ export default {
       description: 'For megamenu'
     },
     {
-      name: 'images',
+      name: 'projects',
       type: 'array',
-      title: 'Images',
-      of: [{ type: 'illustration' }]
+      title: 'Projects',
+      of: [{
+        type: 'reference',
+        to: {type: 'projectSingle'},
+        title: 'Project'
+      }]
     }
   ],
 }

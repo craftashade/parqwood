@@ -16,6 +16,7 @@ import route from './documents/route'
 import product from './documents/product'
 import productCategory from './documents/productCategory'
 import project from './documents/project'
+import projectSingle from './documents/projectSingle'
 
 import experiment from './objects/experiment'
 import simpleBlockContent from './objects/simpleBlockContent'
@@ -67,7 +68,8 @@ export default createSchema({
       excerptPortableText,
       product,
       productCategory,
-      project
+      project,
+      projectSingle
     ])
     .concat(allPlugs),
 })

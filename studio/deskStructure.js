@@ -6,7 +6,7 @@ import landingPages from './src/structure/landingPages'
 import PreviewIFrame from './src/components/previewIFrame'
 
 const hiddenDocTypes = (listItem) =>
-  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'product', 'productCategory', 'project'].includes(
+  !['route', 'navigationMenu', 'article', 'page', 'siteSettings', 'author', 'category', 'product', 'productCategory', 'project', 'projectSingle'].includes(
     listItem.getId()
   )
 
@@ -41,14 +41,25 @@ export default () =>
         .icon(GoTools)
         .child(
           S.list()
-          .title('Products')
-          .items([
-            S.documentTypeListItem('product').title('Products').icon(GoTools),
-            S.divider(),
-            S.documentTypeListItem('productCategory').title('Product Categories').icon(GoTools),
-          ]),
+            .title('Products')
+            .items([
+              S.documentTypeListItem('product').title('Products').icon(GoTools),
+              S.divider(),
+              S.documentTypeListItem('productCategory').title('Product Categories').icon(GoTools),
+            ]),
         ),
-      S.documentTypeListItem('project').title('Projects').icon(BiCamera),
+      S.listItem()
+        .title('Projects')
+        .icon(BiCamera)
+        .child(
+          S.list()
+            .title('Projects')
+            .items([
+              S.documentTypeListItem('projectSingle').title('Projects').icon(BiCamera),
+              S.divider(),
+              S.documentTypeListItem('project').title('Project Categories').icon(BiCamera),
+            ]),
+        ),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above
