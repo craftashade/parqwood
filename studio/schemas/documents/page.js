@@ -49,6 +49,7 @@ export default {
         { type: 'imageWithSideContent' },
         { type: 'columns' },
         { type: 'team' },
+        { type: 'projectCarousel' },
       ],
     },
     {

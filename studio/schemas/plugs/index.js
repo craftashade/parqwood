@@ -29,6 +29,7 @@ export {default as flooringProperties} from './flooringProperties'
 export {default as colorOption} from './colorOption'
 export {default as colorOptionGroup} from './colorOptionGroup'
 export {default as download} from './download'
+export {default as projectCarousel} from './projectCarousel'
 /*
 export { default as cta } from './cta'
 export { default as generalArticle } from './article'
