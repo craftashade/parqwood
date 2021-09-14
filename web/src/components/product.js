@@ -1,7 +1,6 @@
 import React from "react";
 import PortableText from "./portableText";
 import { maybeIllustration, slugify } from "../lib/helpers"
-import Features from "./Features"
 import CTA from "./cta";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -51,14 +50,14 @@ export default function Product({ data }) {
         <BackgroundFigure fill={bgColor.hex} />
       </div>
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto z-20 relative">
-        <div className="my-8 text-gray-400 text-sm">
+        <div className="my-8 text-grey text-sm">
           <Link to="/">Home</Link><Spacer />
           <Link to={`/${slugify(productCategory.title)}`}>{productCategory.title}</Link><Spacer />
           <span className="font-semibold">{productName}</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div>
-            <div className="w-5/6">
+            <div className="md:w-5/6 w-full">
               <section className="container mx-auto my-8 w-full mx-auto">
                 {img}
               </section>
@@ -66,10 +65,10 @@ export default function Product({ data }) {
             <div className="w-1/6 hidden md:block" />
           </div>
           <div className="mt-16">
-            <div className="w-5/6">
+            <div className="md:w-5/6 w-full">
               <div className="flex items-center justify-between text-primary uppercase text-sm tracking-widest">
                 {_rawLogo ? <img src={_rawLogo.image.asset.url} /> : <div></div>}
-                <div>{productCategory.title} • {productName}</div>
+                <div className="pl-4">{productCategory.title} • {productName}</div>
               </div>
               <div className="h-px bg-black opacity-25 my-5" />
               <h1 className="hidden lg:block font-black text-3xl lg:text-4xl text-primary tracking-004 leading-tight mb-4">
@@ -161,7 +160,7 @@ export default function Product({ data }) {
                   <div className="text-primary tracking-004 text-sm font-semibold py-5 px-4 overflow-hidden" style={{ textOverflow: 'ellipsis' }}>
                     {dl.name}
                   </div>
-                  <div className="p-4 bg-primary" style={{ borderTopRightRadius: '1rem', borderBottomRightRadius: '1rem' }}>
+                  <div className="p-4 bg-primary" style={{ borderTopRightRadius: '0.8rem', borderBottomRightRadius: '0.8rem' }}>
                     <DownloadIcon />
                   </div>
                 </a>
