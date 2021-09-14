@@ -27,7 +27,8 @@ export default {
           to: [{type: 'projectSingle'}],
           title: 'Project'
         }
-      ]
+      ],
+      validation: Rule => Rule.max(10)
 
     }
   ],
