@@ -23,12 +23,14 @@ export const query = graphql`
     project: sanityProject(id: { eq: $id }) {
       id
       title
-      images {
+      projects {
         image {
-          ...SanityImage
+          image {
+            ...SanityImage
+          }
         }
-      } 
-      _rawImages(resolveReferences: {maxDepth: 10})
+        _rawImage(resolveReferences: {maxDepth: 10})
+      }
       thumbnail {
         image {
           ...SanityImage
@@ -92,9 +94,11 @@ export const query = graphql`
     }
     projects: allSanityProject {
       nodes {
-        images {
+        projects {
           image {
-            ...SanityImage
+            image {
+              ...SanityImage
+            }
           }
         }
         thumbnail {

@@ -128,9 +128,11 @@ export const query = graphql`
     }
     projects: allSanityProject {
       nodes {
-        images {
+        projects {
           image {
-            ...SanityImage
+            image {
+              ...SanityImage
+            }
           }
         }
         thumbnail {

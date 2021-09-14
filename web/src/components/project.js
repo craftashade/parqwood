@@ -1,6 +1,5 @@
 import React from "react";
 import { maybeIllustration, slugify } from "../lib/helpers"
-import Features from "./Features"
 import CTA from "./cta";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "gatsby"
@@ -13,7 +12,7 @@ export default function Project({ data }) {
   return (
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
-        <div className="my-8 text-gray-400 text-sm">
+        <div className="my-8 text-grey text-sm">
           <Link to="/">Home</Link><Spacer /><span className="font-semibold">Projects</span>
         </div>
         <div className="flex flex-row">
@@ -30,10 +29,10 @@ export default function Project({ data }) {
         </div>
         <SRLWrapper>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-10">
-            {data.project._rawImages && data.project._rawImages.map(i => {
+            {data.project.projects && data.project.projects.map(i => {
                 const img = maybeIllustration(i)
-                return <a href="#" className="">
-                  <img src={i.image.asset.url} alt={i.image.alt} className="w-full mx-auto rounded-2xl overflow-hidden object-cover h-32 lg:h-64" />
+                return <a href={i._rawImage.image.asset.url} className="">
+                  <img src={i._rawImage.image.asset.url} alt={i._rawImage.image.alt} className="w-full mx-auto rounded-2xl overflow-hidden object-cover h-32 lg:h-64" />
                 </a>
               })}
           </div>
