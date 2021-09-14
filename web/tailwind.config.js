@@ -14,7 +14,8 @@ module.exports = {
         secondary: "#E1E0D4",
         bg: "#F2F1E9",
         link: "#FF7B00",
-        grey: "#999999"
+        grey: "#999999",
+        faded: "#BBBBBB"
       }
     },
     fontFamily: {
