@@ -30,7 +30,7 @@ const MobileMenu = ({ navItems, textWhite, isOpen, toggleOpen, socials, headerCT
       initial={false}
       animate={isOpen ? "open" : "closed"}
     >
-      <motion.div className="absolute top-0 right-0 w-full h-screen bg-bg z-10" variants={menu}>
+      <motion.div className="absolute top-0 right-0 w-full h-screen bg-bg z-50" variants={menu}>
         <div className="pt-24">
           <ul>
             {categories.map((i, index) => {
@@ -217,7 +217,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
 
   return (
     <>
-      <div className={`font-body absolute w-full bg-bg pt-24 p-8 top-0 z-10 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
+      <div className={`font-body absolute w-full bg-bg pt-24 p-8 top-0 z-50 shadow-xl ${megamenu ? 'block' : 'hidden'}`} style={{ borderBottomRightRadius: 24, borderBottomLeftRadius: 24 }}>
         <Megamenu selected={megamenu} data={data} />
       </div>
       <header class={`${absolute ? 'absolute' : 'block'} font-body w-full z-20 ${(textWhite && !megamenu && !isOpen) ? 'text-white' : 'text-primary'}${!textWhite && !megamenu ? ' border-b border-secondary' : ''}`}>
@@ -247,7 +247,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
           <div className="block lg:hidden ml-auto">
             <MobileMenu navItems={navMenuItems} textWhite={textWhite} isOpen={isOpen} toggleOpen={toggleOpen} socials={socials} headerCTA={headerCTA} data={data} />
           </div>
-          <a class="flex order-first lg:order-none lg:w-1/6 title-font font-medium items-center lg:items-center lg:justify-center mb-0 z-10 logo-wrapper" href="/">
+          <a class="flex order-first lg:order-none lg:w-1/6 title-font font-medium items-center lg:items-center lg:justify-center mb-0 z-50 logo-wrapper" href="/">
             <Logo />
           </a>
           <nav class="lg:w-5/6 inline-flex lg:justify-end ml-5 lg:ml-0">
