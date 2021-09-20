@@ -52,8 +52,8 @@ export default function Product({ data }) {
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto z-20 relative">
         <div className="my-8 text-grey text-sm">
           <Link to="/">Home</Link><Spacer />
-          <Link to={`/${slugify(productCategory.title)}`}>{productCategory.title}</Link><Spacer />
-          <span className="font-semibold">{productName}</span>
+          <Link to={`/products`}>Products</Link><Spacer />
+          <span className="font-semibold">{productName} ({productCategory.title})</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div>
@@ -67,7 +67,7 @@ export default function Product({ data }) {
           <div className="mt-16">
             <div className="md:w-5/6 w-full">
               <div className="flex items-center justify-between text-primary uppercase text-sm tracking-widest">
-                {_rawLogo ? <img src={_rawLogo.image.asset.url} /> : <div></div>}
+                {_rawLogo && _rawLogo.image && _rawLogo.image.asset ? <img src={_rawLogo.image.asset.url} /> : <div></div>}
                 <div className="pl-4">{productCategory.title} • {productName}</div>
               </div>
               <div className="h-px bg-black opacity-25 my-5" />
@@ -154,7 +154,7 @@ export default function Product({ data }) {
           !!downloads.length &&
           <div className="mt-20">
             <h2 className="text-4xl tracking-004 font-black text-primary mb-10">{downloadTitle ?? 'Downloads'}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 mt-4">
               {downloads.map(dl => (
                 <a href={dl._rawFile.asset.url} download target="_blank" className="flex border border-primary rounded-2xl justify-between">
                   <div className="text-primary tracking-004 text-sm font-semibold py-5 px-4 overflow-hidden" style={{ textOverflow: 'ellipsis' }}>
