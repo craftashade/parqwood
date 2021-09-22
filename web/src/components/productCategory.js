@@ -13,7 +13,7 @@ export default function ProductCategory({ data }) {
   return (
     <div className="font-body">
       <div className="container mx-auto lg:w-5/6 w-11/12 mx-auto">
-        <div className="my-8 text-gray-400 text-sm">
+        <div className="my-8 text-gray text-sm">
           <Link to="/">Home</Link><Spacer /><span className="font-semibold">Our Products</span>
         </div>
         { data.productCategories.nodes.map(category => {
