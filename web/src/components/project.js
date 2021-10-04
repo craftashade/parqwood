@@ -5,8 +5,6 @@ import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "gatsby"
 import Spacer from "./BreadcrumbSpacer"
 
-const projectsToShow = ["Residential", "Commercial"]
-
 export default function Project({ data }) {
   const cta = data.frontpage._rawContent.find(c => c._type === 'ctaPlug')
   return (
@@ -16,9 +14,8 @@ export default function Project({ data }) {
           <Link to="/">Home</Link><Spacer /><span className="font-semibold">Projects</span>
         </div>
         <div className="flex flex-row">
-          {projectsToShow.map(proj => {
-            const project = data.projects.nodes.find(p => p.title === proj)
-            if (!project) return null
+          {data.projects.nodes.map(project => {
+            const proj = project.title
             const btnClass = 'py-4 px-6 rounded-2xl font-bold text-sm mr-4'
             if (proj === data.project.title) {
               return <div className={`bg-primary text-white ${btnClass}`}>{proj}</div>

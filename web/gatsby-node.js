@@ -134,7 +134,7 @@ async function createProjectPages(pathPrefix = "/projects", graphql, actions, re
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanityProject {
+      allSanityProject(sort: {fields: _updatedAt, order: DESC}) {
         edges {
           node {
             id
@@ -161,7 +161,7 @@ async function createProjectPages(pathPrefix = "/projects", graphql, actions, re
     });
 
   // create base projects page also
-  const baseProject = projectEdges.find(edge => edge.node.title === 'Residential')
+  const baseProject = projectEdges[0]
   if (baseProject) {
     createPage({
       path: pathPrefix,

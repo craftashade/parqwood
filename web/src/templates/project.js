@@ -92,7 +92,7 @@ export const query = graphql`
         title
       }
     }
-    projects: allSanityProject {
+    projects: allSanityProject(sort: {fields: _updatedAt, order: DESC}) {
       nodes {
         projects {
           image {
