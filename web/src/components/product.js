@@ -85,7 +85,7 @@ export default function Product({ data }) {
           !!flooringSelectionColumns.length &&
           <div className="mt-20">
             <h2 className="text-4xl tracking-004 font-black text-primary">{flooringSelectionTitle ?? 'Flooring selections'}</h2>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
               {flooringSelectionColumns.map(col => {
                 const flooringImg = maybeIllustration(col.illustration, "100%", "rounded-2xl")
                 return (
@@ -95,7 +95,7 @@ export default function Product({ data }) {
                     </section>
                     <div className="text-center">
                       <h4 className="font-black tracking-004 font-black text-2xl text-primary">{col.title}</h4>
-                      <div className="px-10 pt-4 text-primary">
+                      <div className="px-10 pt-4 text-primary md:h-40">
                         <PortableText blocks={col._rawText} />
                       </div>
                     </div>
