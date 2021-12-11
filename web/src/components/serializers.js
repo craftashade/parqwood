@@ -1,6 +1,6 @@
 import React from "react";
 import Figure from "./Figure";
-import MainImage from "./MainImage";
+import MainImage, { MainImageRaw } from "./MainImage";
 import ReactPlayer from "react-player";
 import InstagramEmbed from "react-instagram-embed";
 import LatexRenderer from "./Latex";
@@ -24,5 +24,12 @@ const serializers = {
     math: ({ node, isInline = false }) => <LatexRenderer isInline={isInline} latex={node.latex} />
   }
 };
+
+export const serializersWithoutImage = {
+  types: {
+    ...serializers.types,
+    mainImage: ({ node }) => <MainImageRaw mainImage={node} />,
+  }
+}
 
 export default serializers;
