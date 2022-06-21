@@ -11,7 +11,7 @@ import { responsiveTitle3 } from "./typography.module.css";
 function ArticlePreview(props) {
   return (
     <Link
-      className={props.isInList ? styles.inList : styles.inGrid}
+      className={`${props.isInList ? styles.inList : styles.inGrid} font-body`}
       to={getArticleUrl(props.slug.current)}
     >
       <div className={styles.leadMediaThumb}>
@@ -26,15 +26,21 @@ function ArticlePreview(props) {
           />
         )}
       </div>
-      <div className={styles.text}>
-        <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      <div className="mt-4 text-gray-500">{format(props.publishedAt, "MMMM Do, YYYY")}</div>
+      <div className="mt-2">
+        <h3 className="text-xl font-bold">{props.title}</h3>
         {props._rawExcerpt && (
-          <div className={styles.excerpt}>
+          <div className="mt-2" style={{
+            display: "-webkit-box",
+            "-webkit-line-clamp": "3",
+            "-webkit-box-orient": "vertical",
+            overflow: "hidden"
+          }}>
             <PortableText blocks={props._rawExcerpt} />
           </div>
         )}
-        <div className={styles.date}>{format(props.publishedAt, "MMMM Do, YYYY")}</div>
       </div>
+      <div className="mt-2 font-bold text-orange-500">Read more</div>
     </Link>
   );
 }

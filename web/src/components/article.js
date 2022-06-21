@@ -45,19 +45,6 @@ function Article(props) {
           <span className="font-semibold">{title}</span>
         </div>
       }
-      {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit("crop")
-              .auto("format")
-              .url()}
-            alt={mainImage.alt}
-          />
-        </div>
-      )}
       <Container>
         <div className={styles.grid}>
           <div className={styles.mainContent}>
@@ -69,13 +56,26 @@ function Article(props) {
               </div>
             )}
             <h1 className={styles.title}>{title}</h1>
-            {categories && (
+            {categories.length > 0 && (
               <div className={styles.categories}>
                 <ul>
                   {categories.map(category => (
                     <li key={category._id}>{category.title}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+            {mainImage && mainImage.asset && (
+              <div className={styles.mainImage}>
+                <img
+                  src={imageUrlFor(buildImageObj(mainImage))
+                    .width(1200)
+                    .height(Math.floor((9 / 16) * 1200))
+                    .fit("crop")
+                    .auto("format")
+                    .url()}
+                  alt={mainImage.alt}
+                />
               </div>
             )}
             {_rawBody && <PortableText blocks={_rawBody} isArticle />}

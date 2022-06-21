@@ -10,6 +10,8 @@ import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import { Link } from "gatsby";
+import Spacer from "../components/BreadcrumbSpacer";
 
 export const query = graphql`
   query IndexPageQuery {
@@ -148,18 +150,23 @@ const IndexPage = props => {
   const kw = keywords || ""
 
   return (
-    <Layout textWhite={false} data={data}>
-      <SEO
-        title={title || site.title || "Missing title"}
-        description={description || "Missing description"}
-        keywords={kw.split(',').map(k => k.trim())}
-      />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        <div className="py-6">{articleNodes && <ArticlePreviewList nodes={articleNodes} />}</div>
-      </Container>
-    </Layout>
-  );
-};
+    <>
+      <Layout textWhite={false} data={data}>
+        <SEO
+          title={title || site.title || "Missing title"}
+          description={description || "Missing description"}
+          keywords={kw.split(',').map(k => k.trim())}
+        />
+        <div className="my-8 text-grey text-sm container mx-auto lg:w-5/6 w-11/12 font-body">
+          <Link to="/">Home</Link><Spacer />
+          <Link to="/articles" className="font-bold">Articles</Link>
+        </div>
+        <div class="lg:w-5/6 w-11/12 mx-auto text-primary">
+          <h1 class="lg:w-2/5 w-100 font-body font-bold text-3xl">Get more tips and advice from us and our partners</h1>
+          <div className="py-6">{articleNodes && <ArticlePreviewList nodes={articleNodes} />}</div>
+        </div>
+      </Layout>
+    </>
+)};
 
 export default IndexPage;

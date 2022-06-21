@@ -8,14 +8,14 @@ function ArticlePreviewGrid(props) {
   return (
     <div className={styles.root}>
       {props.title && <h2 className={styles.headline}>{props.title}</h2>}
-      <ul className={styles.grid}>
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
         {props.nodes &&
           props.nodes.map(node => (
-            <li key={node.id}>
-              <ArticlePreview {...node} isInList />
-            </li>
+            <div key={node.id}>
+              <ArticlePreview {...node} />
+            </div>
           ))}
-      </ul>
+      </div>
       {props.browseMoreHref && (
         <div className={styles.browseMoreNav}>
           <Link to={props.browseMoreHref}>Browse more</Link>
