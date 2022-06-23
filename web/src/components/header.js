@@ -255,7 +255,7 @@ const Header = ({ showNav, navMenuItems = [], data, textWhite, absolute = false 
               <div className={navContentClass} id="nav-content">
                 <ul className="list-reset lg:flex justify-end flex-1 items-center">
                   {categories.map(menu => (
-                    <Link to={`/${slugify(menu)}`}>
+                    <Link to={`/${slugify(menu)}`} className="mr-4">
                       <div className={`flex mr-5 items-center cursor-pointer ${megamenu === menu ? ' text-airbnb' : ''}`}>
                         <span>{menu}</span>
                         {/* <div className={`ml-2 ${megamenu === menu ? 'transform rotate-180' : ''}`}>
