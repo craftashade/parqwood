@@ -70,7 +70,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: "GTM-NJT8M22",
+        id: process.env.GTM_ID,
         includeInDevelopment: false,
 
         // datalayer to be set before GTM is loaded
